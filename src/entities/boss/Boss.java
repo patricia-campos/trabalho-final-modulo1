@@ -13,11 +13,11 @@ public class Boss {
     public Boss() {
     }
 
-    public Boss(String nome, int vida, int ataque, int defesa, Cenario reino) {
+    public Boss(String nome, Cenario reino) {
         this.nome = nome;
-        this.vida = vida;
-        this.ataque = ataque;
-        this.defesa = defesa;
+        this.vida = 100;
+        this.ataque = 20;
+        this.defesa = 15;
         this.reino = reino;
     }
 

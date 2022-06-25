@@ -10,11 +10,11 @@ public class BossReinoLuz extends Boss{
 
     Random random = new Random();
 
-    public BossReinoLuz() {
-    }
-
-    public BossReinoLuz(String nome, int vida, int ataque, int defesa, Cenario reino) {
-        super(nome, vida, ataque, defesa, reino);
+    public BossReinoLuz(String nome, Cenario reino) {
+        super(nome, reino);
+        this.setVida(300);
+        this.setAtaque(10);
+        this.setDefesa(10);
     }
 
     public void recuperarVida() {

@@ -1,5 +1,6 @@
 package view;
 
+import controller.Batalha;
 import controller.ClassePersonagemManipulacao;
 import controller.JogadorManipulacao;
 import controller.PersonagemManipulacao;
@@ -32,8 +33,9 @@ public class Main {
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
-        PersonagemManipulacao personagemManipulacao = new PersonagemManipulacao();
         ClassePersonagemManipulacao classePersonagemManipulacao = new ClassePersonagemManipulacao();
+        Jogador jogador = new Jogador();
+        PersonagemManipulacao personagem = new PersonagemManipulacao();
 
         int opcao = 0;
 
@@ -42,18 +44,19 @@ public class Main {
             System.out.println("Digite 2 para ver os jogadores cadastrados");
             System.out.println("Digite 3 para editar um jogador");
             System.out.println("Digite 4 para excluír um jogador");
+            System.out.println("Digite 5 para iniciar a batalha");
             opcao = sc.nextInt();
             sc.nextLine();
 
+
             switch (opcao) {
                 case 1 :
-                    Jogador jogador = new Jogador();
                     System.out.println("Olá jogador, digite seu nome: ");
                     jogador.setNomeJogador(sc.nextLine());
 
                     System.out.println("Agora você deve criar seu personagem: ");
 
-                    PersonagemManipulacao personagem = new PersonagemManipulacao();
+
                     System.out.println("Digite o nome do personagem: ");
                     personagem.adicionarPersonagem(sc.nextLine());
 
@@ -84,8 +87,14 @@ public class Main {
                     int id =sc.nextInt();
                     jogadorManipulacao.removerJogadorPorIndice(id);
                     break;
+
+                case 5:
+                    Batalha batalha = new Batalha();
+                    batalha.sortearCenario();
+                    batalha.setPersonagem(jogador.getPersonagem());
+                    batalha.inciarBatalha();
+                    break;
             }
         }
-
     }
 }

@@ -1,4 +1,6 @@
-package entities;
+package entities.boss;
+
+import entities.cenario.Cenario;
 
 import java.util.Random;
 
@@ -19,5 +21,6 @@ public class BossReinoLuz extends Boss{
     public int recuperarVida() {
         restaurarVida = random.nextInt(10) + this.getVida();
         return restaurarVida;
+
     }
 }

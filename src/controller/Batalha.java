@@ -1,6 +1,12 @@
 package controller;
 
-import entities.*;
+import entities.boss.Boss;
+import entities.boss.BossReinoLuz;
+import entities.boss.BossReinoSombrio;
+import entities.cenario.Cenario;
+import entities.cenario.ReinoLuz;
+import entities.cenario.ReinoSombrio;
+import entities.personagem.Personagem;
 
 import java.util.Random;
 

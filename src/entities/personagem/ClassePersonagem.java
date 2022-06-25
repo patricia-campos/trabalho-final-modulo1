@@ -1,4 +1,4 @@
-package entities;
+package entities.personagem;
 
 public class ClassePersonagem {
     private int tipo; //1 - Mago / 2 - Elfo / 3 - Guerreira

@@ -1,7 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
-import entities.Jogador;
+import entities.personagem.Jogador;
 import java.util.List;
 
 

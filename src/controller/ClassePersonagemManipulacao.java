@@ -1,6 +1,6 @@
 package controller;
 
-import entities.ClassePersonagem;
+import entities.personagem.ClassePersonagem;
 
 import java.util.ArrayList;
 import java.util.List;

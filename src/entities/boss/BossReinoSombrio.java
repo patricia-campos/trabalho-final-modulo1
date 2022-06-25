@@ -1,4 +1,6 @@
-package entities;
+package entities.boss;
+
+import entities.cenario.Cenario;
 
 import java.util.Random;
 
@@ -21,4 +23,5 @@ public class BossReinoSombrio extends Boss{
         danoAdicional = random.nextInt(10) + this.getAtaque();
         return danoAdicional;
     }
+
 }

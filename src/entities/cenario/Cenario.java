@@ -1,6 +1,7 @@
-package entities;
+package entities.cenario;
 
 import controller.Batalha;
+import entities.personagem.Personagem;
 
 import java.util.Random;
 

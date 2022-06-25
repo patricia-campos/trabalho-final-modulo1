@@ -1,4 +1,4 @@
-package entities;
+package entities.personagem;
 
 public class Personagem {
     private Jogador jogador;

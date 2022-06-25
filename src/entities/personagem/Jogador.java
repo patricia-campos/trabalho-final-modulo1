@@ -5,12 +5,15 @@ public class Jogador {
     private String nomeJogador;
     private Personagem personagem;
 
-    public Jogador () {
 
+
+    public Jogador(String nomeJogador, Personagem personagem) {
+        this.nomeJogador = nomeJogador;
+        this.personagem = personagem;
     }
 
-    public Jogador(String nomeJogador) {
-        this.nomeJogador = nomeJogador;
+    public Jogador() {
+
     }
 
     public String getNomeJogador() {

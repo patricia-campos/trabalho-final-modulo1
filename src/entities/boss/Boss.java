@@ -1,6 +1,7 @@
 package entities.boss;
 
 import entities.cenario.Cenario;
+import exceptions.VerificarNulls;
 
 public class Boss {
 

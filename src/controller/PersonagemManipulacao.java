@@ -11,6 +11,13 @@ public class PersonagemManipulacao {
     private Personagem personagem = new Personagem();
     private ClassePersonagemManipulacao classePersonagem = new ClassePersonagemManipulacao();
 
+    public Personagem getPersonagem() {
+        return personagem;
+    }
+
+    public ClassePersonagemManipulacao getClassePersonagem() {
+        return classePersonagem;
+    }
 
     public void adicionarPersonagem(String nome) {
         this.personagem.setNomePersonagem(nome);

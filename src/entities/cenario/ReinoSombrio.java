@@ -10,18 +10,18 @@ public class ReinoSombrio extends Cenario{
 
     public void ajudaSombria(Batalha batalha){
         Random random = new Random();
-        int sortear = random.nextInt(7);
+        int sortear = random.nextInt(7) + 1;
         if(batalha.getRoundAtual() == sortear){
-            System.out.println("A ajuda sombria te atacou enquanto você estava desatento e você perdeu " +sortear + " de vida");
+            System.out.println("A ajuda sombria te atacou enquanto você estava desatento e você perdeu " + sortear + " de vida");
             batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() - sortear);
         }
     }
 
     public void armadilha(Batalha batalha){
         Random random = new Random();
-        int sortear = random.nextInt(7);
+        int sortear = random.nextInt(7) + 1;
         if(batalha.getRoundAtual() == sortear){
-            System.out.println("Você deu um passo e não percebeu que tinha uma armadilha menos " +sortear + " de vida");
+            System.out.println("Você deu um passo e não percebeu que tinha uma armadilha menos " + sortear + " de vida");
             batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() - sortear);
         }
 

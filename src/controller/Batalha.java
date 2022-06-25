@@ -74,20 +74,33 @@ public class Batalha implements Ataca {
     }
 
     public void inciarBatalha(){
-        for(int roundAtual = 0; roundAtual < 10; roundAtual++)
-        if(this.boss == bossLuz){
-            bossLuz.recuperarVida();
-            reinoLuz.ajudaSoldados(this);
-            this.atacar();
-            this.ataqueBoss();
-            reinoLuz.bonusHorario(this);
-            cenario.buffDebuff(this);
-        }else if(this.boss == bossSombrio){
-            bossSombrio.danoAdicional();
-            reinoSombrio.ajudaSombria(this);
-            this.atacar();
-            this.ataqueBoss();
-            cenario.buffDebuff(this);
+        for(int i = 0; 0 == this.boss.getVida() || 0 == this.personagem.getClassePersonagem().getVidaJogador(); i++) {
+            roundAtual++;
+            if (this.boss == bossLuz) {
+                System.out.println("Round " +i);
+                bossLuz.recuperarVida();
+                reinoLuz.ajudaSoldados(this);
+                this.atacar();
+                this.ataqueBoss();
+                reinoLuz.bonusHorario(this);
+                cenario.buffDebuff(this);
+                System.out.println("Vida do Personagem: "+this.personagem.getClassePersonagem().getVidaJogador());
+                System.out.println("Vida atual do boss: " + this.boss.getVida());
+            } else if (this.boss == bossSombrio) {
+                System.out.println("Round " +i);
+                bossSombrio.danoAdicional();
+                reinoSombrio.ajudaSombria(this);
+                this.atacar();
+                this.ataqueBoss();
+                cenario.buffDebuff(this);
+                System.out.println("Vida do Personagem: "+this.personagem.getClassePersonagem().getVidaJogador());
+                System.out.println("Vida atual do boss: " + this.boss.getVida());
+            }
+            if(this.boss.getVida() == 0){
+                System.out.println("Vitoria");
+            }else if(this.getPersonagem().getClassePersonagem().getVidaJogador() == 0){
+                System.out.println("Derrota pois nao tirou a vida toda do boss");
+            }
         }
     }
 
@@ -100,9 +113,11 @@ public class Batalha implements Ataca {
         int valorAtq = atqJogador + valor;
         if(valor <= 2) {
             System.out.println("O boss desviou do seu ataque");
+            System.out.println("\n");
         }else {
             System.out.println("Ataque bem sucedido");
             System.out.println("Dano: "+ valorAtq);
+            System.out.println("\n");
             this.boss.setVida(vidaBoss - valorAtq);
         }
     }

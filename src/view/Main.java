@@ -90,8 +90,8 @@ public class Main {
 
                 case 5:
                     Batalha batalha = new Batalha();
+                    batalha.setPersonagem(personagem.getPersonagem());
                     batalha.sortearCenario();
-                    batalha.setPersonagem(jogador.getPersonagem());
                     batalha.inciarBatalha();
                     break;
             }

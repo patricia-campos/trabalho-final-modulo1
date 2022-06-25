@@ -1,34 +1,40 @@
 package controller;
 
 import entities.personagem.ClassePersonagem;
+import entities.personagem.Personagem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClassePersonagemManipulacao {
 
-        private List<ClassePersonagem> listaDeClasses;
+        ClassePersonagem classe;
 
-        public ClassePersonagemManipulacao() {
-            this.listaDeClasses = new ArrayList<>();
-        }
 
-        public void adicionarClasse(ClassePersonagem classePersonagem) {this.listaDeClasses.add(classePersonagem);}
-
-        public void removerClassePorIndice(Integer index) {this.listaDeClasses.remove(index.intValue());}
-
-        public void editarClasse(Integer index, ClassePersonagem classePersonagem) {
-            ClassePersonagem classeBusca = listaDeClasses.get(index);
-            classeBusca.setTipo(classeBusca.getTipo());
-            classeBusca.setVidaJogador(classeBusca.getVidaJogador());
-            classeBusca.setDefesaJogador(classeBusca.getDefesaJogador());
-            classeBusca.setAtaqueJogador(classeBusca.getAtaqueJogador());
+        public void adicionarClasse(int tipo, Personagem personagem) {
+            if(tipo == 1){
+                classe.setTipo(1);
+                classe.setAtaqueJogador(50);
+                classe.setVidaJogador(100);
+                classe.setDefesaJogador(50);
+                personagem.setClassePersonagem(classe);
+            }else if(tipo == 2){
+                classe.setTipo(2);
+                classe.setAtaqueJogador(50);
+                classe.setVidaJogador(100);
+                classe.setDefesaJogador(50);
+                personagem.setClassePersonagem(classe);
+            }else if(tipo == 3){
+                classe.setTipo(3);
+                classe.setAtaqueJogador(50);
+                classe.setVidaJogador(100);
+                classe.setDefesaJogador(50);
+                personagem.setClassePersonagem(classe);
+            }
         }
 
         public void listarPersonagens() {
-            for (int i = 0; i < listaDeClasses.size(); i++) {
-                System.out.println("id=" + i + " | " + listaDeClasses.get(i));
+            classe.imprimir();
             }
         }
-    }
 

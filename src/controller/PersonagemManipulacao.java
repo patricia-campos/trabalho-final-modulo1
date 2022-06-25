@@ -1,5 +1,6 @@
 package controller;
 
+import entities.personagem.ClassePersonagem;
 import entities.personagem.Personagem;
 
 import java.util.ArrayList;
@@ -7,31 +8,37 @@ import java.util.List;
 
 public class PersonagemManipulacao {
 
-        private List<Personagem> listaDePersonagens;
+    private Personagem personagem;
+    private ClassePersonagemManipulacao classePersonagem = new ClassePersonagemManipulacao();
 
-        public PersonagemManipulacao() {
-            this.listaDePersonagens = new ArrayList<>();
-        }
 
-        public void adicionarPersonagem(Personagem personagem) {
-            this.listaDePersonagens.add(personagem);
-        }
-
-        public void removerPersonagemPorIndice(Integer index) {
-            this.listaDePersonagens.remove(index.intValue());
-        }
-
-        public void editarPersonagem(Integer index, Personagem personagem) {
-            Personagem personagemBusca = listaDePersonagens.get(index);
-            personagemBusca.setJogador(personagem.getJogador());
-            personagemBusca.setNomePersonagem(personagem.getNomePersonagem());
-            personagemBusca.setClassePersonagem(personagem.getClassePersonagem());
-        }
-
-        public void listarPersonagens() {
-            for (int i = 0; i < listaDePersonagens.size(); i++) {
-                System.out.println("id=" + i + " | " + listaDePersonagens.get(i));
-            }
-        }
+    public void adicionarPersonagem(String nome, int clasePersonagem) {
+        this.personagem.setNomePersonagem(nome);
+        classePersonagem.adicionarClasse(clasePersonagem, this.personagem);
     }
+
+    public void removerPersonagemPorIndice(Personagem personagem) {
+        personagem = new Personagem();
+    }
+
+    public void editarPersonagem(Personagem personagem, String nomeNovo) {
+        personagem.setNomePersonagem(nomeNovo);
+    }
+
+    public void listarPersonagens() {
+        System.out.println(this.personagem);
+    }
+
+    public void removerClassePersonagem() {
+        this.classePersonagem = null;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonagemManipulacao{" +
+                "personagens=" + personagem +
+                ", classePersonagem=" + classePersonagem +
+                '}';
+    }
+}
 

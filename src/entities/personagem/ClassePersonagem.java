@@ -1,6 +1,8 @@
 package entities.personagem;
 
-public class ClassePersonagem {
+import interfaces.Impressao;
+
+public class ClassePersonagem implements Impressao {
     private int tipo; //1 - Mago / 2 - Elfo / 3 - Guerreira
     private int vidaJogador;
     private int defesaJogador;
@@ -54,5 +56,10 @@ public class ClassePersonagem {
 
     public void setAtaqueJogador(int ataqueJogador) {
         this.ataqueJogador = ataqueJogador;
+    }
+
+    @Override
+    public void imprimir() {
+        System.out.println(this);
     }
 }

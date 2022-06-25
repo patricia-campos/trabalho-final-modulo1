@@ -2,20 +2,18 @@ package entities.cenario;
 
 import controller.Batalha;
 import entities.personagem.Personagem;
+import exceptions.VerificarNulls;
 import interfaces.Impressao;
 
 import java.util.Random;
 
 public class Cenario implements Impressao {
 
-    private String lugar;
-    private String cor;
-    private int round;
-    private Personagem personagem;
     ReinoLuz reinoLuz;
     ReinoSombrio reinoSombrio;
 
     public void buffDebuff(Batalha batalha){
+
         Random random = new Random();
         int sortear = random.nextInt(5);
 

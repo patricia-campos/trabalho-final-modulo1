@@ -7,6 +7,7 @@ import entities.cenario.Cenario;
 import entities.cenario.ReinoLuz;
 import entities.cenario.ReinoSombrio;
 import entities.personagem.Personagem;
+import exceptions.VerificarNulls;
 import interfaces.Ataca;
 
 import java.util.Random;
@@ -55,13 +56,16 @@ public class Batalha implements Ataca {
     }
 
     public void sortearCenario(){
+        if(this.personagem == null){
+            System.out.println("Não a personagem para batalha");
+        }
         Random random = new Random();
         int sortear = random.nextInt(2) + 1;
         switch (sortear) {
             case 1 -> {
-                this.cenario = reinoLuz;
+                setCenario(reinoLuz);
                 bossLuz.recuperarVida();
-                this.boss = bossLuz;
+                setBoss(bossLuz);
             }
             case 2 -> {
                 this.cenario = reinoSombrio;
@@ -74,6 +78,7 @@ public class Batalha implements Ataca {
     }
 
     public void inciarBatalha(){
+
         if(this.boss == bossLuz){
             System.out.println("Boss da Luz está chegando");
         }else{
@@ -127,6 +132,7 @@ public class Batalha implements Ataca {
 
     @Override
     public void atacar() {
+
         Random random = new Random();
         int valor = random.nextInt(10);
         int atqJogador = this.personagem.getClassePersonagem().getAtaqueJogador();
@@ -147,6 +153,7 @@ public class Batalha implements Ataca {
 
     @Override
     public void ataqueBoss() {
+
         Random random = new Random();
         int valor = random.nextInt(10);
         int vidaJogador = this.personagem.getClassePersonagem().getVidaJogador();

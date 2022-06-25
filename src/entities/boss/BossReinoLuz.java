@@ -1,8 +1,10 @@
 package entities.boss;
 
 import entities.cenario.Cenario;
+import exceptions.VerificarNulls;
 
 import java.util.Random;
+import java.util.Vector;
 
 public class BossReinoLuz extends Boss{
 
@@ -18,6 +20,7 @@ public class BossReinoLuz extends Boss{
     }
 
     public void recuperarVida() {
+
         int sortear = random.nextInt(10);
         restaurarVida = sortear + this.getVida();
         System.out.println("Poder especial restaura " + sortear + " vida do Boss");

@@ -1,6 +1,7 @@
 package entities.cenario;
 
 import controller.Batalha;
+import exceptions.VerificarNulls;
 
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;

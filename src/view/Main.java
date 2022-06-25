@@ -1,9 +1,7 @@
 package view;
 
 import controller.Batalha;
-import controller.ClassePersonagemManipulacao;
 import controller.JogadorManipulacao;
-import controller.PersonagemManipulacao;
 import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
@@ -33,9 +31,9 @@ public class Main {
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
-        ClassePersonagemManipulacao classePersonagemManipulacao = new ClassePersonagemManipulacao();
-        Jogador jogador = new Jogador();
-        PersonagemManipulacao personagem = new PersonagemManipulacao();
+        ClassePersonagem classePersonagemManipulacao = new ClassePersonagem();
+        Jogador jogador;
+        Personagem personagem = new Personagem();
 
         int opcao = 0;
 
@@ -52,18 +50,20 @@ public class Main {
             switch (opcao) {
                 case 1 :
                     System.out.println("Olá jogador, digite seu nome: ");
+                    jogador = new Jogador();
                     jogador.setNomeJogador(sc.nextLine());
 
                     System.out.println("Agora você deve criar seu personagem: ");
 
 
                     System.out.println("Digite o nome do personagem: ");
-                    personagem.adicionarPersonagem(sc.nextLine());
+                    String nome = sc.nextLine();
 
                     System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
 
-                    personagem.adicionarClassePersonagem(sc.nextInt());
+                    jogadorManipulacao.addClasse(sc.nextInt());
                     sc.nextLine();
+                    jogadorManipulacao.adicionarPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
                     break;
 
@@ -90,7 +90,8 @@ public class Main {
 
                 case 5:
                     Batalha batalha = new Batalha();
-                    batalha.setPersonagem(personagem.getPersonagem());
+                    System.out.println("Escolha seu personagem");
+                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(0));
                     batalha.sortearCenario();
                     batalha.inciarBatalha();
                     break;

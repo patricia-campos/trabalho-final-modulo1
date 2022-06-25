@@ -5,7 +5,9 @@ public class Jogador {
     private String nomeJogador;
     private Personagem personagem;
 
-    public Jogador () {}
+    public Jogador () {
+
+    }
 
     public Jogador(String nomeJogador) {
         this.nomeJogador = nomeJogador;

@@ -58,12 +58,12 @@ public class Main {
 
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
+                    personagem.setNomePersonagem(nome);
 
                     System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
-
-                    jogadorManipulacao.addClasse(sc.nextInt());
+                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(sc.nextInt(),personagem));
                     sc.nextLine();
-                    jogadorManipulacao.adicionarPersonagem(personagem);
+                    jogadorManipulacao.addPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
                     break;
 

@@ -12,11 +12,11 @@ import java.util.List;
 public class JogadorManipulacao {
 
     private List<Jogador> listaDeJogadores;
-    private List<Personagem> listaPersonagem;
-    private ClassePersonagem classePersonagem;
+    private List<Personagem> listaPersonagem = new ArrayList<>();
+    private ClassePersonagem classePersonagem = new ClassePersonagem();
 
     public Personagem retornaPersonagem(int index){
-        return this.listaDeJogadores.get(index).getPersonagem();
+        return listaPersonagem.get(index);
     }
 
     public JogadorManipulacao() {
@@ -24,7 +24,7 @@ public class JogadorManipulacao {
     }
 
     public void adicionarJogador(Jogador jogador) {
-        System.out.println(jogador.getPersonagem());
+        System.out.println(this.retornaPersonagem(0));
         this.listaDeJogadores.add(jogador);
     }
 
@@ -32,31 +32,33 @@ public class JogadorManipulacao {
         listaPersonagem.add(personagem);
     }
 
-    public void addClasse(int tipo){
+    public ClassePersonagem addClasse(int tipo,Personagem personagem){
         if(tipo == 1){
-            classe.setTipo(1);
-            classe.setAtaqueJogador(50);
-
-            classe.setVidaJogador(100);
-            classe.setDefesaJogador(50);
-            personagem.setClassePersonagem(classe);
+            classePersonagem.setTipo(1);
+            classePersonagem.setAtaqueJogador(50);
+            classePersonagem.setVidaJogador(100);
+            classePersonagem.setDefesaJogador(50);
+            personagem.setClassePersonagem(classePersonagem);
+            return this.classePersonagem;
 
         }else if(tipo == 2){
-            classe.setTipo(2);
-            classe.setAtaqueJogador(50);
-            classe.setVidaJogador(100);
-            classe.setDefesaJogador(50);
-            personagem.setClassePersonagem(classe);
-
+            classePersonagem.setTipo(2);
+            classePersonagem.setAtaqueJogador(50);
+            classePersonagem.setVidaJogador(100);
+            classePersonagem.setDefesaJogador(50);
+            personagem.setClassePersonagem(classePersonagem);
+            return this.classePersonagem;
         }else if(tipo == 3){
-            classe.setTipo(3);
-            classe.setAtaqueJogador(50);
-            classe.setVidaJogador(100);
-            classe.setDefesaJogador(50);
-            personagem.setClassePersonagem(classe);
+            classePersonagem.setTipo(3);
+            classePersonagem.setAtaqueJogador(50);
+            classePersonagem.setVidaJogador(100);
+            classePersonagem.setDefesaJogador(50);
+            personagem.setClassePersonagem(classePersonagem);
+            return this.classePersonagem;
         } else {
-            System.out.println();
+            System.out.println("Tipo invalido");
         }
+        return null;
     }
 
 

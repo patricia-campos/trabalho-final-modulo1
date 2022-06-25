@@ -12,7 +12,7 @@ public class ReinoLuz extends Cenario{
         Random random = new Random();
         int sortear = random.nextInt(4);
         if(batalha.getRoundAtual() == 3){
-            boss.setVida(boss.getVida - sortear);
+            batalha.getBoss().setVida(batalha.getBoss().getVida() - sortear);
         }
     }
 
@@ -20,9 +20,9 @@ public class ReinoLuz extends Cenario{
         Random random = new Random();
         int sortear = random.nextInt(5);
         if(this.diaOuNoite == "dia"){
-            batalha.getPersonagem().setVida(batalha.getPersonagem().getVida + sortear);
+            batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() + sortear);
         }else if(this.diaOuNoite == "noite"){
-            batalha.getBoss().setVida(batalha.getBoss().getVida + sortear);
+            batalha.getBoss().setVida(batalha.getBoss().getVida() + sortear);
         }
     }
 

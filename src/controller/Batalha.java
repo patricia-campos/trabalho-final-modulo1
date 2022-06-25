@@ -1,8 +1,6 @@
 package controller;
 
-import entities.Cenario;
-import entities.ReinoLuz;
-import entities.ReinoSombrio;
+import entities.*;
 
 import java.util.Random;
 
@@ -15,15 +13,16 @@ public class Batalha {
     public void sortearCenario(){
         Random random = new Random();
         int sortear = random.nextInt(2);
-        switch (sortear){
-            case 1:
+        switch (sortear) {
+            case 1 -> {
                 this.cenario = new ReinoLuz();
-                this.boss = new BossLuz();
-                break;
-            case 2:
+                this.boss = new BossReinoLuz();
+            }
+            case 2 -> {
                 this.cenario = new ReinoSombrio();
-                this.boss = new BossSombrio();
-                break;
+                this.boss = new BossReinoSombrio();
+            }
+            case default -> System.out.println("Cenario Invalido");
         }
     }
 

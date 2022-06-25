@@ -2,9 +2,13 @@ package entities.cenario;
 
 import controller.Batalha;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Random;
 
 public class ReinoLuz extends Cenario{
+
     private String diaOuNoite;
 
 
@@ -12,16 +16,22 @@ public class ReinoLuz extends Cenario{
         Random random = new Random();
         int sortear = random.nextInt(4);
         if(batalha.getRoundAtual() == 3){
+            System.out.println("Os soldados da Luz chegaram e tiraram " + sortear + " de vida do boss");
             batalha.getBoss().setVida(batalha.getBoss().getVida() - sortear);
         }
     }
 
     public void bonusHorario(Batalha batalha){
+        SimpleDateFormat sdf = new SimpleDateFormat("HH");
+        Date dataAtual = new Date();
         Random random = new Random();
         int sortear = random.nextInt(5);
-        if(this.diaOuNoite == "dia"){
+        int horaAtual = Integer.parseInt(sdf.format(dataAtual));
+        if(horaAtual >= 6 && horaAtual < 18){
+            System.out.println("Como está de dia você ganhou um bonus de "+ sortear+" de vida");
             batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() + sortear);
-        }else if(this.diaOuNoite == "noite"){
+        }else {
+            System.out.println("Como está de noite o boss ganhou "+ sortear+" de vida");
             batalha.getBoss().setVida(batalha.getBoss().getVida() + sortear);
         }
     }

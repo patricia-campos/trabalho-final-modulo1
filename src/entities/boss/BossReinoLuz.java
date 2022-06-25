@@ -18,7 +18,9 @@ public class BossReinoLuz extends Boss{
     }
 
     public void recuperarVida() {
-        restaurarVida = random.nextInt(10) + this.getVida();
+        int sortear = random.nextInt(10);
+        restaurarVida = sortear + this.getVida();
+        System.out.println("Poder especial restaura " + sortear + " vida do Boss");
         this.setVida(restaurarVida);
     }
 }

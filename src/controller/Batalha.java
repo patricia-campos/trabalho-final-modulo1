@@ -74,13 +74,16 @@ public class Batalha implements Ataca {
     }
 
     public void inciarBatalha(){
+        if(this.boss == bossLuz){
+            System.out.println("Boss da Luz está chegando");
+        }else{
+            System.out.println("Boss da Sombras está chegando");
+        }
         for(int i = 0; 0 != this.boss.getVida() || 0 != this.personagem.getClassePersonagem().getVidaJogador(); i++) {
             roundAtual++;
             if (this.boss == bossLuz) {
-
-                System.out.println("Boss da Luz está chegando");
-                System.out.println(bossLuz.getVida());
                 System.out.println("Round " +i);
+                System.out.println("A vida inicial do boss e de: " +bossLuz.getVida());
                 bossLuz.recuperarVida();
                 reinoLuz.ajudaSoldados(this);
                 this.atacar();
@@ -100,7 +103,6 @@ public class Batalha implements Ataca {
                 System.out.println("Vida do Personagem: "+this.personagem.getClassePersonagem().getVidaJogador());
                 System.out.println("Vida atual do boss: " + this.boss.getVida());
             } else if (this.boss == bossSombrio) {
-                System.out.println("Boss da Sombras está chegando");
                 System.out.println(bossSombrio.getVida());
 
                 System.out.println("Round " +i);
@@ -129,6 +131,7 @@ public class Batalha implements Ataca {
         int valor = random.nextInt(10);
         int atqJogador = this.personagem.getClassePersonagem().getAtaqueJogador();
         int vidaBoss = this.boss.getVida();
+        int defesaBoss = this.boss.getDefesa();
         int valorAtq = atqJogador + valor;
         if(valor <= 2) {
             System.out.println("O boss desviou do seu ataque");
@@ -136,8 +139,9 @@ public class Batalha implements Ataca {
         }else {
             System.out.println("Ataque bem sucedido");
             System.out.println("Dano: "+ valorAtq);
+            System.out.println("Defesa do boss: " + defesaBoss);
             System.out.println("\n");
-            this.boss.setVida(vidaBoss - valorAtq);
+            this.boss.setVida(vidaBoss - valorAtq - defesaBoss);
         }
     }
 

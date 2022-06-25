@@ -1,5 +1,7 @@
 package entities;
 
+import controller.Batalha;
+
 import java.util.Random;
 
 public class Cenario {
@@ -9,16 +11,16 @@ public class Cenario {
     private int round;
     private Personagem personagem;
 
-    public void buffDebuff(Cenario cenario,Boss boss, Personagem personagem){
+    public void buffDebuff(Batalha batalha){
         Random random = new Random();
         int sortear = random.nextInt(5);
 
-        if(cenario == reinoLuz){
-            personagem.setAtaque(personagem.getAtaque() + sortear);
-            boss.setAtaque(boss.getAtaque() - sortear);
-        }else if(cenario == reinoSombrio){
-            boss.setAtaque(boss.getAtaque() + sortear);
-            personagem.setAtaque(personagem.getAtaque() - sortear);
+        if(batalha.getCenario() == reinoLuz){
+            batalha.getPersonagem().setAtaque(batalha.getAtaque() + sortear);
+            batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() - sortear);
+        }else if(batalha.getCenario() == reinoSombrio){
+            batalha.getPersonagem().setAtaque(batalha.getAtaque() - sortear);
+            batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() + sortear);
         }
     }
 

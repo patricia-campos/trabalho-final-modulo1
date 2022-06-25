@@ -1,27 +1,27 @@
 package entities;
 
 public class ClassePersonagem {
-    private String descricaoJogador;
     private int tipo; //1 - Mago / 2 - Elfo / 3 - Guerreira
     private int vidaJogador;
     private int defesaJogador;
     private int ataqueJogador;
 
 
-    public ClassePersonagem(String descricaoJogador, int tipo, int vidaJogador, int defesaJogador, int ataqueJogador) {
-        this.descricaoJogador = descricaoJogador;
+    public ClassePersonagem(int tipo, int vidaJogador, int defesaJogador, int ataqueJogador) {
         this.tipo = tipo;
         this.vidaJogador = vidaJogador;
         this.defesaJogador = defesaJogador;
         this.ataqueJogador = ataqueJogador;
     }
 
-    public String getDescricaoJogador() {
-        return descricaoJogador;
-    }
-
-    public void setDescricaoJogador(String descricaoJogador) {
-        this.descricaoJogador = descricaoJogador;
+    @Override
+    public String toString() {
+        return "Classe do Personagem:{" +
+                "Tipo: " + tipo + '\'' +
+                "Vida: " + vidaJogador +
+                "Defesa: " + defesaJogador +
+                "Ataque: " + ataqueJogador +
+                '}';
     }
 
     public int getTipo() {

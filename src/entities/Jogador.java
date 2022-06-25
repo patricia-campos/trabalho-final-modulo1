@@ -24,4 +24,12 @@ public class Jogador {
     public void setPersonagem(Personagem personagem) {
         this.personagem = personagem;
     }
+
+    @Override
+    public String toString() {
+        return "Jogador{" +
+                "Nome do Jogador: " + nomeJogador + '\'' +
+                "Nome do Personagem: '" + getPersonagem() + '\'' +
+                '}';
+    }
 }

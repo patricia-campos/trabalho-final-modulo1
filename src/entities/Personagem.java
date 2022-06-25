@@ -34,4 +34,14 @@ public class Personagem {
     public void setClassePersonagem(ClassePersonagem classePersonagem) {
         this.classePersonagem = classePersonagem;
     }
+
+    @Override
+    public String toString() {
+        return "Personagem{" +
+                "Jogador: " + getJogador() + '\'' +
+                "Nome do Personagem: '" + nomePersonagem + '\'' +
+                "Classe do Personagem: " + getClassePersonagem() +
+                '}';
+    }
 }
+

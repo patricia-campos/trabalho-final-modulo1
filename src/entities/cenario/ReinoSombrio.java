@@ -26,4 +26,17 @@ public class ReinoSombrio extends Cenario{
         }
 
     }
+    @Override
+    public void imprimir() {
+        System.out.println(this.reinoSombrio);
+    }
+
+    @Override
+    public String toString() {
+        return """
+                O Cenario Sombrio traz um lugar obscuro com muitos monstros e bruxas
+                Lugar fechado com muitas arvores secas e muita destruição
+                Um lugar tenebroso com muitos corvos
+                """;
+    }
 }

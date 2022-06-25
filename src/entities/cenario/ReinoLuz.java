@@ -25,5 +25,18 @@ public class ReinoLuz extends Cenario{
             batalha.getBoss().setVida(batalha.getBoss().getVida() + sortear);
         }
     }
+    @Override
+    public void imprimir() {
+        System.out.println(this.reinoLuz);
+    }
+
+    @Override
+    public String toString() {
+        return """
+                O Cenario da luz traz um lugar iluminado em mundo aberto
+                Lugar aberto com muitas arvores e vida
+                Um lugar iluminado
+                """;
+    }
 
 }

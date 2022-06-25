@@ -2,10 +2,11 @@ package entities.cenario;
 
 import controller.Batalha;
 import entities.personagem.Personagem;
+import interfaces.Impressao;
 
 import java.util.Random;
 
-public class Cenario {
+public class Cenario implements Impressao {
 
     private String lugar;
     private String cor;
@@ -27,4 +28,8 @@ public class Cenario {
         }
     }
 
+    @Override
+    public void imprimir() {
+
+    }
 }

@@ -15,12 +15,10 @@ public class BossReinoLuz extends Boss{
 
     public BossReinoLuz(String nome, int vida, int ataque, int defesa, Cenario reino) {
         super(nome, vida, ataque, defesa, reino);
-        this.restaurarVida = recuperarVida();
     }
 
-    public int recuperarVida() {
+    public void recuperarVida() {
         restaurarVida = random.nextInt(10) + this.getVida();
-        return restaurarVida;
-
+        this.setVida(restaurarVida);
     }
 }

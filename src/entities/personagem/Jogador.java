@@ -5,6 +5,8 @@ public class Jogador {
     private String nomeJogador;
     private Personagem personagem;
 
+    public Jogador () {}
+
     public Jogador(String nomeJogador) {
         this.nomeJogador = nomeJogador;
     }
@@ -29,7 +31,6 @@ public class Jogador {
     public String toString() {
         return "Jogador{" +
                 "Nome do Jogador: " + nomeJogador + '\'' +
-                "Nome do Personagem: '" + getPersonagem() + '\'' +
                 '}';
     }
 }

@@ -11,6 +11,7 @@ import entities.personagem.Personagem;
 import java.util.Random;
 
 public class Batalha {
+
     Cenario cenario;
     private Personagem personagem;
     private Boss boss;
@@ -18,15 +19,20 @@ public class Batalha {
 
     public void sortearCenario(){
         Random random = new Random();
-        int sortear = random.nextInt(2);
+        int sortear = random.nextInt(2) + 1;
         switch (sortear) {
             case 1 -> {
                 this.cenario = new ReinoLuz();
-                this.boss = new BossReinoLuz();
+                BossReinoLuz boss = new BossReinoLuz();
+                boss.recuperarVida();
+                this.boss = boss;
             }
             case 2 -> {
                 this.cenario = new ReinoSombrio();
-                this.boss = new BossReinoSombrio();
+                BossReinoSombrio boss = new BossReinoSombrio();
+                boss.danoAdiciona();
+                this.boss = boss;
+
             }
             case default -> System.out.println("Cenario Invalido");
         }

@@ -12,8 +12,13 @@ public class BossReinoSombrio extends Boss{
 
     }
 
-    public BossReinoSombrio(String nome, int vida, int ataque, int defesa, Cenario reino, int danoAdicional) {
+    public BossReinoSombrio(String nome, int vida, int ataque, int defesa, Cenario reino) {
         super(nome, vida, ataque, defesa, reino);
-        this.danoAdicional = danoAdicional;
+        this.danoAdicional = danoAdiciona();
+    }
+
+    public int danoAdiciona() {
+        danoAdicional = random.nextInt(10) + this.getAtaque();
+        return danoAdicional;
     }
 }

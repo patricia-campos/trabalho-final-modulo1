@@ -9,6 +9,9 @@ public class ClassePersonagem implements Impressao {
     private int ataqueJogador;
 
 
+    public ClassePersonagem() {
+    }
+
     public ClassePersonagem(int tipo, int vidaJogador, int defesaJogador, int ataqueJogador) {
         this.tipo = tipo;
         this.vidaJogador = vidaJogador;

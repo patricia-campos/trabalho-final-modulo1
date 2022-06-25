@@ -36,7 +36,6 @@ public class Main {
         ClassePersonagemManipulacao classePersonagemManipulacao = new ClassePersonagemManipulacao();
 
         int opcao = 0;
-        int opcaoPersonagem = 0;
 
         while (opcao != 9) {
             System.out.println("Digite 1 para cadastrar um novo jogador");
@@ -53,38 +52,38 @@ public class Main {
                     jogador.setNomeJogador(sc.nextLine());
 
                     System.out.println("Agora você deve criar seu personagem: ");
-                    Personagem personagem = new Personagem();
 
-
+                    PersonagemManipulacao personagem = new PersonagemManipulacao();
                     System.out.println("Digite o nome do personagem: ");
-                    personagem.setNomePersonagem(sc.nextLine());
-                    //ImprimirClassesPersonagens
-
+                    personagem.adicionarPersonagem(sc.nextLine());
 
                     System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
-                    opcaoPersonagem= sc.nextInt();
 
-                    switch (opcaoPersonagem) {
-                        case 1 -> {
-                            personagem.setClassePersonagem(new ClassePersonagem(1, 100, 50, 100));
-                            personagemManipulacao.adicionarPersonagem(personagem);
-                        }
-                        case 2 -> {
-                            personagem.setClassePersonagem(new ClassePersonagem(2, 100, 60, 80));
-                            personagemManipulacao.adicionarPersonagem(personagem);
-                        }
-                        case 3 -> {
-                            personagem.setClassePersonagem(new ClassePersonagem(3, 100, 70, 90));
-                            personagemManipulacao.adicionarPersonagem(personagem);
-                        }
-                    }
+                    personagem.adicionarClassePersonagem(sc.nextInt());
+                    sc.nextLine();
                     jogadorManipulacao.adicionarJogador(jogador);
                     break;
-                case 2:
-               personagemManipulacao.listarPersonagens();
-                    break;
-                case 3:
 
+                case 2:
+                    jogadorManipulacao.listarPessoas();
+                    break;
+
+                case 3:
+                    System.out.println("Qual jogador você quer alterar o nome?");
+                    jogadorManipulacao.listarPessoas();
+                    int index = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("Digite o novo nome do jogador: ");
+                    String novoNome = sc.nextLine();
+                    jogadorManipulacao.editarJogador(index, novoNome);
+                    break;
+
+                case 4:
+                    System.out.println("Qual jogador você deseja remover?");
+                    jogadorManipulacao.listarPessoas();
+                    int id =sc.nextInt();
+                    jogadorManipulacao.removerJogadorPorIndice(id);
+                    break;
             }
         }
 

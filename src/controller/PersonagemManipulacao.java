@@ -8,13 +8,16 @@ import java.util.List;
 
 public class PersonagemManipulacao {
 
-    private Personagem personagem;
+    private Personagem personagem = new Personagem();
     private ClassePersonagemManipulacao classePersonagem = new ClassePersonagemManipulacao();
 
 
-    public void adicionarPersonagem(String nome, int clasePersonagem) {
+    public void adicionarPersonagem(String nome) {
         this.personagem.setNomePersonagem(nome);
-        classePersonagem.adicionarClasse(clasePersonagem, this.personagem);
+    }
+
+    public void adicionarClassePersonagem(int tipo){
+        classePersonagem.adicionarClasse(tipo, this.personagem);
     }
 
     public void removerPersonagemPorIndice(Personagem personagem) {

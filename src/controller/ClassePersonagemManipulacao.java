@@ -5,7 +5,7 @@ import entities.personagem.Personagem;
 
 public class ClassePersonagemManipulacao {
 
-        ClassePersonagem classe;
+        ClassePersonagem classe = new ClassePersonagem();
 
         public void adicionarClasse(int tipo, Personagem personagem) {
             if(tipo == 1){

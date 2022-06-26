@@ -31,9 +31,11 @@ public class Personagem {
 
     @Override
     public String toString() {
-        return "Personagem{" +
-                "Classe do Personagem: " + getClassePersonagem() +
-                '}';
+        return  "========================="
+                + "\n"+
+                "| Classe do Personagem: " + getClassePersonagem()
+                + "\n"+
+                "=========================" ;
     }
 }
 

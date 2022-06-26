@@ -114,7 +114,7 @@ public class Main {
                     System.out.println("Qual jogador você deseja remover?");
                     jogadorManipulacao.listarPessoas();
                     int id =sc.nextInt();
-                    jogadorManipulacao.removerJogadorPorNome(jogador.getNomeJogador());
+                    jogadorManipulacao.removerJogadorPorIndice(id);
                     break;
 
                 case 5:

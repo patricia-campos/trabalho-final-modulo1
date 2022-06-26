@@ -39,40 +39,40 @@ public class Main {
 
         while (opcao != 9) {
             System.out.print("\n");
-            System.out.println("Digite 1 para cadastrar um novo jogador");
-            System.out.println("Digite 2 para ver os jogadores cadastrados");
-            System.out.println("Digite 3 para editar um jogador");
-            System.out.println("Digite 4 para excluír um jogador");
-            System.out.println("Digite 5 para iniciar a batalha");
+            System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
+            System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
+            System.out.println("Digite 3 para EDITAR um JOGADOR");
+            System.out.println("Digite 4 para EXCLUIR um JOGADOR");
+            System.out.println("Digite 5 para INICIAR a batalha");
             opcao = sc.nextInt();
             sc.nextLine();
 
 
             switch (opcao) {
                 case 1 :
-                    System.out.println("Olá jogador, digite seu nome: ");
+                    System.out.println("Olá jogador! Digite seu nome: ");
                     jogador = new Jogador();
                     String nomeJogador = sc.nextLine();
                     if(Objects.equals(nomeJogador, "")){
-                        System.out.println("Nome não pode ser vazio");
+                        System.out.println("Nome não pode ser vazio.");
                         break;
                     }
 
-                    System.out.println("Agora você deve criar seu personagem: ");
+                    System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
 
 
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
                     if(Objects.equals(nome, "")){
-                        System.out.println("Nome não pode ser vazio");
+                        System.out.println("Nome não pode ser vazio.");
                         break;
                     }
 
-                    System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
+                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
                     int escolhaClasse= sc.nextInt();
                     sc.nextLine();
                     if(escolhaClasse > 3 || escolhaClasse <=0){
-                        System.out.println("Tipo invalido");
+                        System.out.println("Tipo inválido.");
                         break;
                     }
 
@@ -86,7 +86,7 @@ public class Main {
 
                 case 2:
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Lista vazia");
+                        System.out.println("Lista vazia.");
                         break;
                     }
                     jogadorManipulacao.listarPessoas();
@@ -94,7 +94,7 @@ public class Main {
 
                 case 3:
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Jogadores vazios");
+                        System.out.println("Jogadores vazios.");
                         break;
                     }
                     System.out.println("Qual jogador você quer alterar o nome?");
@@ -108,7 +108,7 @@ public class Main {
 
                 case 4:
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Jogadores vazios");
+                        System.out.println("Jogadores vazios.");
                         break;
                     }
                     System.out.println("Qual jogador você deseja remover?");
@@ -120,7 +120,7 @@ public class Main {
                 case 5:
                     Batalha batalha = new Batalha();
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Jogadores vazios");
+                        System.out.println("Jogadores vazios.");
                         break;
                     }
                         System.out.println("Escolha seu personagem: ");

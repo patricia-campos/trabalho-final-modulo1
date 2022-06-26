@@ -63,8 +63,8 @@ public class JogadorManipulacao {
     public ClassePersonagem addClasse(int tipo,Personagem personagem){
         if(tipo == 1){
             classePersonagem.setTipo(1);
-            classePersonagem.setAtaqueJogador(50);
-            classePersonagem.setVidaJogador(100);
+            classePersonagem.setAtaqueJogador(40);
+            classePersonagem.setVidaJogador(150);
             classePersonagem.setDefesaJogador(50);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
@@ -72,19 +72,19 @@ public class JogadorManipulacao {
         }else if(tipo == 2){
             classePersonagem.setTipo(2);
             classePersonagem.setAtaqueJogador(50);
-            classePersonagem.setVidaJogador(100);
+            classePersonagem.setVidaJogador(150);
             classePersonagem.setDefesaJogador(50);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
         }else if(tipo == 3){
             classePersonagem.setTipo(3);
             classePersonagem.setAtaqueJogador(50);
-            classePersonagem.setVidaJogador(100);
-            classePersonagem.setDefesaJogador(50);
+            classePersonagem.setVidaJogador(150);
+            classePersonagem.setDefesaJogador(40);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
         } else {
-            System.out.println("Tipo invalido");
+            System.out.println("O tipo selecionado é inválido!");
         }
         return null;
     }
@@ -101,7 +101,7 @@ public class JogadorManipulacao {
 
     public void listarPessoas() {
         for (int i = 0; i < listaDeJogadores.size(); i++) {
-            System.out.println("id=" + i + " | " + listaDeJogadores.get(i));
+            System.out.println("ID JOGADOR=" + i + " | " + listaDeJogadores.get(i));
         }
     }
 }

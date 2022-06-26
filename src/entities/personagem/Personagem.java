@@ -12,6 +12,7 @@ public class Personagem {
         this.classePersonagem = classePersonagem;
     }
 
+
     public String getNomePersonagem() {
         return nomePersonagem;
     }

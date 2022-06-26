@@ -12,15 +12,11 @@ import java.util.List;
 public class JogadorManipulacao {
 
     private List<Jogador> listaDeJogadores;
-    private List<Personagem> listaPersonagem = new ArrayList<>();
     private ClassePersonagem classePersonagem = new ClassePersonagem();
 
-    public Personagem retornaPersonagem(int index){
-        if(this.listaPersonagem.size() == 0){
-            return null;
+    public Personagem retornaPersonagem(Jogador jogador,int index){
+        return jogador.retornaPersonagem(index);
 
-        }
-        return listaPersonagem.get(index);
     }
 
     public List<Jogador> getListaDeJogadores() {
@@ -29,14 +25,6 @@ public class JogadorManipulacao {
 
     public void setListaDeJogadores(List<Jogador> listaDeJogadores) {
         this.listaDeJogadores = listaDeJogadores;
-    }
-
-    public List<Personagem> getListaPersonagem() {
-        return listaPersonagem;
-    }
-
-    public void setListaPersonagem(List<Personagem> listaPersonagem) {
-        this.listaPersonagem = listaPersonagem;
     }
 
     public ClassePersonagem getClassePersonagem() {
@@ -51,12 +39,14 @@ public class JogadorManipulacao {
         this.listaDeJogadores = new ArrayList<>();
     }
 
-    public void adicionarJogador(Jogador jogador) {
+    public void adicionarJogador(Jogador jogador, Personagem personagem,ClassePersonagem classePersonagem,String nome) {
+        jogador.setPersonagem(personagem,classePersonagem,nome);
         this.listaDeJogadores.add(jogador);
     }
 
-    public void addPersonagem(Personagem personagem){
-        listaPersonagem.add(personagem);
+    public void addPersonagem(Personagem personagem, ClassePersonagem classePersonagem,String nomePersonagem){
+        Jogador jogador = new Jogador();
+        jogador.setPersonagem(personagem,classePersonagem,nomePersonagem);
     }
 
     public Jogador retornarJogador(int index) {
@@ -119,10 +109,8 @@ public class JogadorManipulacao {
         }
     }
 
-    public void listarPersonagens() {
-        for (int i = 0; i < listaPersonagem.size(); i++) {
-            System.out.println("id=" + i + " | " + listaPersonagem.get(i));
-        }
+    public void listarPersonagens(int index) {
+        this.listaDeJogadores.get(index).listarPersonagens();
     }
 }
 

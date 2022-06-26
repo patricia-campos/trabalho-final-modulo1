@@ -131,7 +131,6 @@ public class Batalha implements Ataca {
                 "" ;
     }
 
-
     @Override
     public void ataqueBoss() {
 
@@ -161,7 +160,6 @@ public class Batalha implements Ataca {
             case 2 -> {
                 this.cenario = reinoSombrio;
                 setBoss(bossSombrio);
-
             }
             case default -> System.out.println("| Cenário Inválido |");
         }
@@ -174,7 +172,8 @@ public class Batalha implements Ataca {
             System.out.println("""
                     --------------------
                     O BOSS DA LUZ ESTÁ CHEGANDO...
-                    --------------------        /                            )
+                    --------------------        
+                               /                            )
                               (                             |\\
                              /|                              \\\\
                             //                                \\\\
@@ -216,7 +215,8 @@ public class Batalha implements Ataca {
             System.out.println("""
                     --------------------
                     O BOSS DAS SOMBRAS ESTÁ CHEGANDO...
-                    --------------------                                             ,--,  ,.-.
+                    --------------------              
+                                                                       ,--,  ,.-.
                                    ,                   \\,       '-,-`,'-.' | ._
                                   /|           \\    ,   |\\         }  )/  / `-,',
                                   [ ,          |\\  /|   | |        /  \\|  |/`  ,`

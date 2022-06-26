@@ -36,6 +36,7 @@ public class Main {
         Personagem personagem = new Personagem();
 
         int opcao = 0;
+        int opcaoImprimir;
 
         while (opcao != 9) {
             System.out.print("\n");
@@ -85,12 +86,31 @@ public class Main {
                     break;
 
                 case 2:
-                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Lista vazia.");
-                        break;
+
+                    System.out.println("Digite 1 para ver jogadores cadastrados");
+                    System.out.println("Digite 2 para ver personagens cadastrados");
+                    System.out.println("Digite 3 para sair");
+                    opcaoImprimir = sc.nextInt();
+
+                    switch (opcaoImprimir) {
+
+                        case 1:
+                            if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                                System.out.println("Lista vazia");
+                                break;
+                            }
+                            jogadorManipulacao.listarPessoas();
+                            break;
+
+                        case 2:
+                            if(jogadorManipulacao.getListaPersonagem().size() == 0){
+                                System.out.println("Lista vazia");
+                                break;
+                            } else {
+                                jogadorManipulacao.listarPersonagens();
+                                break;}
+
                     }
-                    jogadorManipulacao.listarPessoas();
-                    break;
 
                 case 3:
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
@@ -108,7 +128,7 @@ public class Main {
 
                 case 4:
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Jogadores vazios.");
+                        System.out.println("Jogadores vazios");
                         break;
                     }
                     System.out.println("Qual jogador você deseja remover?");
@@ -120,14 +140,14 @@ public class Main {
                 case 5:
                     Batalha batalha = new Batalha();
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Jogadores vazios.");
+                        System.out.println("Jogadores vazios");
                         break;
                     }
-                        System.out.println("Escolha seu personagem: ");
-                        batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
-                        batalha.sortearCenario();
-                        batalha.inciarBatalha();
-                        break;
+                    System.out.println("Escolha seu personagem: ");
+                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
+                    batalha.sortearCenario();
+                    batalha.inciarBatalha();
+                    break;
 
             }
         }

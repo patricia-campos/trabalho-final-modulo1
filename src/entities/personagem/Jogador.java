@@ -35,6 +35,7 @@ public class Jogador {
         this.personagem.add(personagem);
     }
 
+
     @Override
     public String toString() {
         return  "========================="

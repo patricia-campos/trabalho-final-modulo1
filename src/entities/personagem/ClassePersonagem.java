@@ -7,29 +7,33 @@ public class ClassePersonagem implements Impressao {
     private int vidaJogador;
     private int defesaJogador;
     private int ataqueJogador;
+    private String tipoNome;
 
 
     public ClassePersonagem() {
     }
 
-    public ClassePersonagem(int tipo, int vidaJogador, int defesaJogador, int ataqueJogador) {
+    public ClassePersonagem(int tipo, int vidaJogador, int defesaJogador, int ataqueJogador, String tipoNome) {
         this.tipo = tipo;
         this.vidaJogador = vidaJogador;
         this.defesaJogador = defesaJogador;
         this.ataqueJogador = ataqueJogador;
+        this.tipoNome = tipoNome;
+
     }
 
     @Override
     public String toString() {
         return  ""
                 + "\n"+
-                "| Tipo do Personagem: " + tipo
+                "| Nome da classe: " + tipoNome +
+                "\n| Tipo da classe: " + tipo
                 + "\n"+
-                "| Vida do Personagem: " + vidaJogador
+                "| Vida da classe: " + vidaJogador
                 + "\n"+
-                "| Defesa do Personagem: " + defesaJogador
+                "| Defesa da classe: " + defesaJogador
                 + "\n"+
-                "| Ataque do Personagem: " + ataqueJogador +
+                "| Ataque da classe: " + ataqueJogador +
                 "" ;
     }
 
@@ -63,6 +67,14 @@ public class ClassePersonagem implements Impressao {
 
     public void setAtaqueJogador(int ataqueJogador) {
         this.ataqueJogador = ataqueJogador;
+    }
+
+    public String getTipoNome() {
+        return tipoNome;
+    }
+
+    public void setTipoNome(String tipoNome) {
+        this.tipoNome = tipoNome;
     }
 
     @Override

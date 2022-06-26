@@ -10,6 +10,7 @@ import entities.personagem.Personagem;
 import interfaces.Ataca;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Batalha implements Ataca {
 
@@ -21,6 +22,7 @@ public class Batalha implements Ataca {
     private BossReinoLuz bossLuz = new BossReinoLuz("Boss Luz",this.cenario);
     private BossReinoSombrio bossSombrio = new BossReinoSombrio("Boss Sombrio",this.cenario);
     private int roundAtual = 0;
+    Scanner opcao = new Scanner(System.in);
 
     public Cenario getCenario() {
         return cenario;
@@ -77,34 +79,38 @@ public class Batalha implements Ataca {
     }
 
     public void inciarBatalha(){
-
+        int sc = opcao.nextInt();
+        if (sc == 1) {
         if(this.boss == bossLuz){
             System.out.println("Boss da Luz está chegando");
         }else{
             System.out.println("Boss da Sombras está chegando");
+        }} else {
+            System.out.println("Você n começou a batalha");
         }
         while (0 < this.boss.getVida() || 0 < this.personagem.getClassePersonagem().getVidaJogador()) {
             roundAtual++;
             if (this.boss == bossLuz) {
-                System.out.println("Round "+roundAtual);
-                System.out.println("A vida inicial do boss e de: " +bossLuz.getVida());
+                System.out.println("Round " + roundAtual);
+                System.out.println("A vida inicial do boss e de: " + bossLuz.getVida());
                 bossLuz.recuperarVida();
                 reinoLuz.ajudaSoldados(this);
                 this.atacar();
-                if(this.boss.getVida() <= 0){
-                    System.out.println("Vida do boss "+this.boss.getVida());
+                if (this.boss.getVida() <= 0) {
+                    System.out.println("Vida do boss " + this.boss.getVida());
                     System.out.println("Vitoria");
                     break;
                 }
                 this.ataqueBoss();
-                if(this.getPersonagem().getClassePersonagem().getVidaJogador() <= 0){
-                    System.out.println("Vida do jogador " +this.personagem.getClassePersonagem().getVidaJogador());
+                if (this.getPersonagem().getClassePersonagem().getVidaJogador() <= 0) {
+                    System.out.println("Vida do jogador " + this.personagem.getClassePersonagem().getVidaJogador());
                     System.out.println("Derrota pois nao tirou a vida toda do boss");
                 }
                 reinoLuz.bonusHorario(this);
                 cenario.buffDebuff(this);
-                System.out.println("Vida do Personagem: "+this.personagem.getClassePersonagem().getVidaJogador());
+                System.out.println("Vida do Personagem: " + this.personagem.getClassePersonagem().getVidaJogador());
                 System.out.println("Vida atual do boss: " + this.boss.getVida());
+
             } else if (this.boss == bossSombrio) {
                 System.out.println(bossSombrio.getVida());
 
@@ -121,7 +127,7 @@ public class Batalha implements Ataca {
                     System.out.println("Derrota pois nao tirou a vida toda do boss");
                 }
                 cenario.buffDebuff(this);
-                System.out.println("Vida do Personagem: "+this.personagem.getClassePersonagem().getVidaJogador());
+                System.out.println("Vida do Personagem: " + this.personagem.getClassePersonagem().getVidaJogador());
                 System.out.println("Vida atual do boss: " + this.boss.getVida());
             }
         }

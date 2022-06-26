@@ -104,8 +104,11 @@ public class JogadorManipulacao {
     }
 
     public void listarPessoas() {
+        if (listaDeJogadores.size() == 0) {
+            System.out.println("Lista vazia");
+        }
         for (int i = 0; i < listaDeJogadores.size(); i++) {
-            System.out.println("ID JOGADOR=" + i + " | " + listaDeJogadores.get(i));
+            System.out.println("ID JOGADOR=" + i + "\n" + listaDeJogadores.get(i));
         }
     }
 

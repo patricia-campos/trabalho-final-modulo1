@@ -33,8 +33,7 @@ public class Personagem {
     @Override
     public String toString() {
         return  "========================="
-                + "\n"+
-                "| Classe do Personagem: " + getClassePersonagem()
+                +  getClassePersonagem()
                 + "\n"+
                 "=========================" ;
     }

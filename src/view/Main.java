@@ -143,6 +143,7 @@ public class Main {
                     System.out.println("Escolha seu jogador");
                     Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(sc.nextInt());
                     System.out.println("Escolha seu personagem: ");
+                    jogadorManipulacao.listarPersonagens();
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo,sc.nextInt()));
                     while (comecar != 3) {
                         System.out.println("Digite 1 para começar a batalha: ");

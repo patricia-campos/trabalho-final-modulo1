@@ -16,7 +16,7 @@ public class BossReinoSombrio extends Boss{
     public BossReinoSombrio(String nome, Cenario reino) {
         super(nome, reino);
         this.setVida(300);
-        this.setAtaque(10);
+        this.setAtaque(35);
         this.setDefesa(10);
     }
 

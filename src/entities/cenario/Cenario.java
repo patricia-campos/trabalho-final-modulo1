@@ -13,7 +13,7 @@ public class Cenario implements Impressao {
     public void buffDebuff(Batalha batalha){
 
         Random random = new Random();
-        int sortear = random.nextInt(5);
+        int sortear = random.nextInt(3);
 
         if(batalha.getCenario() == batalha.getReinoLuz()){
             batalha.getPersonagem().getClassePersonagem().setAtaqueClasse(batalha.getPersonagem().getClassePersonagem().getAtaqueClasse() + sortear);

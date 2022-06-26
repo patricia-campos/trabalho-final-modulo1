@@ -2,10 +2,8 @@ package view;
 
 import controller.Batalha;
 import controller.JogadorManipulacao;
-import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
-import validadores.Validadores;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -33,7 +31,6 @@ public class Main {
 
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
-        Validadores validadores = new Validadores();
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
         Jogador jogador;
 

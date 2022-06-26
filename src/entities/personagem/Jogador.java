@@ -8,6 +8,8 @@ public class Jogador {
     private String nomeJogador;
     private List<Personagem> personagem = new ArrayList<>();
 
+
+
     public String getNomeJogador() {
         return nomeJogador;
     }

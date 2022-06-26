@@ -95,6 +95,9 @@ public class Main {
                     batalha.sortearCenario();
                     batalha.inciarBatalha();
                     break;
+                case 6:
+                    System.out.println("Qual o seu jogador? ");
+
             }
         }
     }

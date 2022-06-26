@@ -32,6 +32,10 @@ public class JogadorManipulacao {
         listaPersonagem.add(personagem);
     }
 
+    public Jogador retornarJogador(int index) {
+        return listaDeJogadores.get(index);
+    }
+
     public ClassePersonagem addClasse(int tipo,Personagem personagem){
         if(tipo == 1){
             classePersonagem.setTipo(1);

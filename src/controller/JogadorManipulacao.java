@@ -31,7 +31,11 @@ public class JogadorManipulacao implements Impressao {
     }
 
     public void addPersonagem(Jogador jogador, Personagem personagem) {
-        jogador.setPersonagem(personagem);
+        for(Jogador jogador1 : getListaDeJogadores()){
+            if(jogador.equals(jogador1)){
+                jogador1.setPersonagem(personagem);
+            }
+        }
     }
 
     public Jogador retornarJogador(int index) {
@@ -64,9 +68,9 @@ public class JogadorManipulacao implements Impressao {
         }
     }
 
-    public void listarPersonagens(int index) {
+    public void listarPersonagens(int index, Jogador jogador) {
         if (listaDeJogadores.size() > index) {
-            this.listaDeJogadores.get(index).listarPersonagens();
+            this.listaDeJogadores.get(index).listarPersonagens(jogador);
         }
     }
 

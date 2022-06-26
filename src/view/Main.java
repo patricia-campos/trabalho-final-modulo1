@@ -41,6 +41,7 @@ public class Main {
 
         while (opcao != 9) {
 
+
             System.out.print("\n");
             System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
             System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
@@ -74,10 +75,11 @@ public class Main {
                         break;
                     }
                     Personagem personagemInicial = new Personagem(nome, escolhaClasse);
-                    Jogador jogador = new Jogador(nomeJogador,personagemInicial);
+                    Jogador jogador = new Jogador(nomeJogador, personagemInicial);
                     personagemInicial.setNomePersonagem(nome);
                     jogadorManipulacao.addPersonagem(jogador, personagemInicial);
                     jogadorManipulacao.adicionarJogador(jogador);
+
                 }
                 case 2 -> {
                     System.out.println("Digite 1 para ver jogadores cadastrados");
@@ -100,7 +102,8 @@ public class Main {
                             } else if (jogadorManipulacao.retornarJogador(indexJogador) == null) {
                                 System.out.println("Jogador não encontrado");
                             } else {
-                                jogadorManipulacao.retornarJogador(indexJogador).listarPersonagens();
+                                Jogador jogador = jogadorManipulacao.retornarJogador(indexJogador);
+                                jogador.listarPersonagens(jogador);
                             }
                         }
                     }
@@ -152,6 +155,8 @@ public class Main {
                     }
                     Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
                     jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
+                    System.out.println(jogadorManipulacao.getListaDeJogadores().get(0).getPersonagem().get(0));
+                    System.out.println(jogadorManipulacao.getListaDeJogadores().get(0).getPersonagem().get(1));
                 }
                 case 6 -> {
                     Batalha batalha = new Batalha();
@@ -169,7 +174,7 @@ public class Main {
                     }
                     Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
                     System.out.println("Selecione seu personagem digitando seu ID: ");
-                    jogadorManipulacao.listarPersonagens(localJogador);
+                    jogadorManipulacao.listarPersonagens(localJogador,jogadorDoJogo);
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo, sc.nextInt()));
                     while (comecar != 3) {
 

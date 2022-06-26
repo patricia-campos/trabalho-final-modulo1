@@ -6,7 +6,7 @@ import java.util.List;
 public class Jogador {
 
     private String nomeJogador;
-    private List<Personagem> personagem;
+    private List<Personagem> personagem = new ArrayList<>();
 
     public String getNomeJogador() {
         return nomeJogador;
@@ -20,8 +20,7 @@ public class Jogador {
         return personagem;
     }
 
-    public void setPersonagem(Personagem personagem) {
-        this.personagem = new ArrayList<>();
+    public void setPersonagem( Personagem personagem) {
         this.personagem.add(personagem);
     }
 
@@ -45,9 +44,9 @@ public class Jogador {
         return null;
     }
 
-    public void listarPersonagens() {
-        for (int i = 0; i < personagem.size(); i++) {
-            System.out.println("id=" + i + " | " + personagem.get(i));
+    public void listarPersonagens(Jogador jogador) {
+        for (int i = 0; i < jogador.getPersonagem().size() ; i++) {
+            System.out.println("id=" + i + " | " + jogador.personagem.get(i));
         }
     }
 

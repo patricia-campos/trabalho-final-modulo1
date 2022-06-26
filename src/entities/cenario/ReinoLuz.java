@@ -1,10 +1,8 @@
 package entities.cenario;
 
 import controller.Batalha;
-import exceptions.VerificarNulls;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Random;
 

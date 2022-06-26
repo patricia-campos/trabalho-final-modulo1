@@ -28,7 +28,7 @@ public class ReinoLuz extends Cenario{
         int horaAtual = Integer.parseInt(sdf.format(dataAtual));
         if(horaAtual >= 6 && horaAtual < 18){
             diaOuNoite = "dia";
-            System.out.println("Como está de dia você ganhou um bonus de "+ sortear+" de vida");
+            System.out.println("Como está de dia você ganhou um bonus de "+ sortear +" de vida");
             batalha.getPersonagem().getClassePersonagem().setVidaClasse(batalha.getPersonagem().getClassePersonagem().getVidaClasse() + sortear);
         }else {
             diaOuNoite = "noite";

@@ -196,6 +196,7 @@ public class Main {
                                 }
                                 else {
                                 batalha.inciarBatalha();
+                                batalha.setRoundAtual(i);
                                 i++;
                                 }
                             }

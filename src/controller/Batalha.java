@@ -79,14 +79,10 @@ public class Batalha implements Ataca {
     }
 
     public void inciarBatalha(){
-        int sc = opcao.nextInt();
-        if (sc == 1) {
-        if(this.boss == bossLuz){
+             if(this.boss == bossLuz){
             System.out.println("Boss da Luz está chegando");
-        }else{
+         }   else{
             System.out.println("Boss da Sombras está chegando");
-        }} else {
-            System.out.println("Você n começou a batalha");
         }
         while (0 < this.boss.getVida() || 0 < this.personagem.getClassePersonagem().getVidaJogador()) {
             roundAtual++;

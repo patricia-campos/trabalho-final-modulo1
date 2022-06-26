@@ -13,21 +13,21 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println(".   ║\\.\n" +
-                           "    ║▒\\.\n" +
-                           "    ║▒▒\\\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "    ║░▒║\n" +
-                           "  ▓▓▓▓▓▓▓\n" +
-                           "    ]█▓[\n" +
-                           "    ]█▓[\n" +
-                           "    ]█▓[");
+                "    ║▒\\.\n" +
+                "    ║▒▒\\\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "    ║░▒║\n" +
+                "  ▓▓▓▓▓▓▓\n" +
+                "    ]█▓[\n" +
+                "    ]█▓[\n" +
+                "    ]█▓[");
 
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
@@ -37,6 +37,7 @@ public class Main {
 
         int opcao = 0;
         int opcaoImprimir;
+        int comecar = 0;
 
         while (opcao != 9) {
             System.out.print("\n");
@@ -50,11 +51,11 @@ public class Main {
 
 
             switch (opcao) {
-                case 1 :
+                case 1:
                     System.out.println("Olá jogador! Digite seu nome: ");
                     jogador = new Jogador();
                     String nomeJogador = sc.nextLine();
-                    if(Objects.equals(nomeJogador, "")){
+                    if (Objects.equals(nomeJogador, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
@@ -64,25 +65,25 @@ public class Main {
 
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
-                    if(Objects.equals(nome, "")){
+                    if (Objects.equals(nome, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
 
                     System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-                    int escolhaClasse= sc.nextInt();
+                    jogadorManipulacao.imprimirClasse();
+                    int escolhaClasse = sc.nextInt();
                     sc.nextLine();
-                    if(escolhaClasse > 3 || escolhaClasse <=0){
+                    if (escolhaClasse > 3 || escolhaClasse <= 0) {
                         System.out.println("Tipo inválido.");
                         break;
                     }
 
-                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse,personagem));
+                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
                     jogador.setNomeJogador(nomeJogador);
                     personagem.setNomePersonagem(nome);
                     jogadorManipulacao.addPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
-                    System.out.println(personagem);
                     break;
 
                 case 2:
@@ -95,7 +96,7 @@ public class Main {
                     switch (opcaoImprimir) {
 
                         case 1:
-                            if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                            if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                                 System.out.println("Lista vazia");
                                 break;
                             }
@@ -103,17 +104,18 @@ public class Main {
                             break;
 
                         case 2:
-                            if(jogadorManipulacao.getListaPersonagem().size() == 0){
+                            if (jogadorManipulacao.getListaPersonagem().size() == 0) {
                                 System.out.println("Lista vazia");
                                 break;
                             } else {
                                 jogadorManipulacao.listarPersonagens();
-                                break;}
-
+                                break;
+                            }
                     }
+                    break;
 
                 case 3:
-                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                         System.out.println("Jogadores vazios.");
                         break;
                     }
@@ -127,28 +129,44 @@ public class Main {
                     break;
 
                 case 4:
-                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                         System.out.println("Jogadores vazios");
                         break;
                     }
                     System.out.println("Qual jogador você deseja remover?");
                     jogadorManipulacao.listarPessoas();
-                    int id =sc.nextInt();
+                    int id = sc.nextInt();
                     jogadorManipulacao.removerJogadorPorIndice(id);
                     break;
 
                 case 5:
                     Batalha batalha = new Batalha();
-                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                         System.out.println("Jogadores vazios");
                         break;
                     }
                     System.out.println("Escolha seu personagem: ");
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
-                    batalha.sortearCenario();
-                    batalha.inciarBatalha();
-                    break;
 
+                    while (comecar != 3) {
+                        System.out.println("Digite 1 para começar a batalha: ");
+                        System.out.println("Digite 2 para começar round: " + batalha.getRoundAtual());
+                        System.out.println("Digite 3 para fugir da batalha:");
+
+                        comecar = sc.nextInt();
+                        switch (comecar) {
+                            case 1:
+                                batalha.sortearCenario();
+                                break;
+                            case 2:
+                                batalha.inciarBatalha();
+                                break;
+
+                            case 3:
+                                System.out.println("você fugiu da batalha");
+                                break;
+                        }
+                    }
             }
         }
     }

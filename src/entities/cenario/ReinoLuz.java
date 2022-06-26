@@ -27,10 +27,12 @@ public class ReinoLuz extends Cenario{
         int sortear = random.nextInt(5);
         int horaAtual = Integer.parseInt(sdf.format(dataAtual));
         if(horaAtual >= 6 && horaAtual < 18){
+            diaOuNoite = "dia";
             System.out.println("Como está de dia você ganhou um bonus de "+ sortear+" de vida");
             batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() + sortear);
         }else {
-            System.out.println("Como está de noite o boss ganhou "+ sortear+" de vida");
+            diaOuNoite = "noite";
+            System.out.println("Como está de noite o boss ganhou "+ sortear +" de vida");
             batalha.getBoss().setVida(batalha.getBoss().getVida() + sortear);
         }
     }

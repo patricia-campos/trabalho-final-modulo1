@@ -13,21 +13,21 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println(".   ║\\.\n" +
-                "    ║▒\\.\n" +
-                "    ║▒▒\\\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "    ║░▒║\n" +
-                "  ▓▓▓▓▓▓▓\n" +
-                "    ]█▓[\n" +
-                "    ]█▓[\n" +
-                "    ]█▓[");
+                           "    ║▒\\.\n" +
+                           "    ║▒▒\\\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "    ║░▒║\n" +
+                           "  ▓▓▓▓▓▓▓\n" +
+                           "    ]█▓[\n" +
+                           "    ]█▓[\n" +
+                           "    ]█▓[");
 
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
@@ -36,44 +36,44 @@ public class Main {
         Personagem personagem = new Personagem();
 
         int opcao = 0;
-        int opcaoImprimir = 0;
+        int opcaoImprimir;
 
         while (opcao != 9) {
             System.out.print("\n");
-            System.out.println("Digite 1 para cadastrar um novo jogador");
-            System.out.println("Digite 2 para ver os jogadores cadastrados");
-            System.out.println("Digite 3 para editar um jogador");
-            System.out.println("Digite 4 para excluír um jogador");
-            System.out.println("Digite 5 para iniciar a batalha");
+            System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
+            System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
+            System.out.println("Digite 3 para EDITAR um JOGADOR");
+            System.out.println("Digite 4 para EXCLUIR um JOGADOR");
+            System.out.println("Digite 5 para INICIAR a batalha");
             opcao = sc.nextInt();
             sc.nextLine();
 
 
             switch (opcao) {
                 case 1 :
-                    System.out.println("Olá jogador, digite seu nome: ");
+                    System.out.println("Olá jogador! Digite seu nome: ");
                     jogador = new Jogador();
                     String nomeJogador = sc.nextLine();
                     if(Objects.equals(nomeJogador, "")){
-                        System.out.println("Nome não pode ser vazio");
+                        System.out.println("Nome não pode ser vazio.");
                         break;
                     }
 
-                    System.out.println("Agora você deve criar seu personagem: ");
+                    System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
 
 
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
                     if(Objects.equals(nome, "")){
-                        System.out.println("Nome não pode ser vazio");
+                        System.out.println("Nome não pode ser vazio.");
                         break;
                     }
 
-                    System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
+                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
                     int escolhaClasse= sc.nextInt();
                     sc.nextLine();
                     if(escolhaClasse > 3 || escolhaClasse <=0){
-                        System.out.println("Tipo invalido");
+                        System.out.println("Tipo inválido.");
                         break;
                     }
 
@@ -82,6 +82,7 @@ public class Main {
                     personagem.setNomePersonagem(nome);
                     jogadorManipulacao.addPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
+                    System.out.println(personagem);
                     break;
 
                 case 2:
@@ -113,7 +114,7 @@ public class Main {
 
                 case 3:
                     if(jogadorManipulacao.getListaDeJogadores().size() == 0){
-                        System.out.println("Jogadores vazios");
+                        System.out.println("Jogadores vazios.");
                         break;
                     }
                     System.out.println("Qual jogador você quer alterar o nome?");

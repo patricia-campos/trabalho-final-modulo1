@@ -18,6 +18,7 @@ public class JogadorManipulacao {
     public Personagem retornaPersonagem(int index){
         if(this.listaPersonagem.size() == 0){
             return null;
+
         }
         return listaPersonagem.get(index);
     }

@@ -54,34 +54,6 @@ public class JogadorManipulacao implements Impressao {
         return jogador.retornaPersonagem(index);
     }
 
-    public ClassePersonagem addClasse(int tipo) {
-        if (tipo == 1) {
-            classePersonagem.setTipoNome("Mago");
-            classePersonagem.setTipo(1);
-            classePersonagem.setAtaqueClasse(40);
-            classePersonagem.setVidaClasse(150);
-            classePersonagem.setDefesaClasse(50);
-            return this.classePersonagem;
-
-        } else if (tipo == 2) {
-            classePersonagem.setTipoNome("Elfo");
-            classePersonagem.setTipo(2);
-            classePersonagem.setAtaqueClasse(50);
-            classePersonagem.setVidaClasse(150);
-            classePersonagem.setDefesaClasse(50);
-            return this.classePersonagem;
-        } else if (tipo == 3) {
-            classePersonagem.setTipoNome("Guerreiro");
-            classePersonagem.setTipo(3);
-            classePersonagem.setAtaqueClasse(50);
-            classePersonagem.setVidaClasse(150);
-            classePersonagem.setDefesaClasse(40);
-            return this.classePersonagem;
-        } else {
-            System.out.println("O tipo selecionado é inválido!");
-        }
-        return null;
-    }
 
     public void removerJogadorPorIndice(Integer index) {
         this.listaDeJogadores.remove(index.intValue());
@@ -92,7 +64,7 @@ public class JogadorManipulacao implements Impressao {
         jogadorBusca.setNomeJogador(nome);
     }
 
-    public void listarPessoas() {
+    public void listarJogador() {
         if (listaDeJogadores.size() == 0) {
             System.out.println("Lista vazia");
         }

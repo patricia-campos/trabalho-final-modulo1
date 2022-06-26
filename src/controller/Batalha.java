@@ -18,8 +18,8 @@ public class Batalha implements Ataca {
     private ReinoSombrio reinoSombrio = new ReinoSombrio();
     private Personagem personagem = new Personagem();
     private Boss boss = new Boss();
-    private final BossReinoLuz bossLuz = new BossReinoLuz("Boss da Luz",reinoLuz);
-    private final BossReinoSombrio bossSombrio = new BossReinoSombrio("Boss das Sombras ",reinoSombrio);
+    private final BossReinoLuz bossLuz = new BossReinoLuz();
+    private final BossReinoSombrio bossSombrio = new BossReinoSombrio();
     private int roundAtual = 0;
 
     public ReinoLuz getReinoLuz() {
@@ -263,8 +263,6 @@ public class Batalha implements Ataca {
                 System.out.println(this.imprimiStatusJogador());
                 System.out.println("-------------------------");
                 System.out.println(this.imprimiStatusBoss());
-
-
             }
     }
 

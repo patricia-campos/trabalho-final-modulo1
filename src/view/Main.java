@@ -92,7 +92,7 @@ public class Main {
                                 System.out.println("Lista vazia");
                                 break;
                             }
-                            jogadorManipulacao.listarPessoas();
+                            jogadorManipulacao.listarJogador();
                         }
                         case 2 -> {
                             System.out.println("Qual o seu Jogador");
@@ -113,7 +113,7 @@ public class Main {
                         break;
                     }
                     System.out.println("Qual jogador você quer alterar o nome?");
-                    jogadorManipulacao.listarPessoas();
+                    jogadorManipulacao.listarJogador();
                     int index = sc.nextInt();
                     sc.nextLine();
                     System.out.println("Digite o novo nome do jogador: ");
@@ -126,13 +126,13 @@ public class Main {
                         break;
                     }
                     System.out.println("Qual jogador você deseja remover?");
-                    jogadorManipulacao.listarPessoas();
+                    jogadorManipulacao.listarJogador();
                     int id = sc.nextInt();
                     jogadorManipulacao.removerJogadorPorIndice(id);
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
-                    jogadorManipulacao.listarPessoas();
+                    jogadorManipulacao.listarJogador();
                     int id = sc.nextInt();
                     sc.nextLine();
                     Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
@@ -163,7 +163,7 @@ public class Main {
                     }
 
                     System.out.println("Selecione seu jogador digitando seu ID:");
-                    jogadorManipulacao.listarPessoas();
+                    jogadorManipulacao.listarJogador();
                     int localJogador = sc.nextInt();
                     if (!(jogadorManipulacao.getListaDeJogadores().size() > localJogador)) {
                         System.out.println("Jogador nao existe!! ");

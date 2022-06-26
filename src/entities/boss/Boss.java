@@ -8,17 +8,15 @@ public class Boss {
     private int vida;
     private int ataque;
     private int defesa;
-    private Cenario reino;
 
     public Boss() {
     }
 
-    public Boss(String nome, Cenario reino) {
+    public Boss(String nome) {
         this.nome = nome;
         this.vida = 100;
         this.ataque = 20;
         this.defesa = 15;
-        this.reino = reino;
     }
 
     public String getNome() {
@@ -53,13 +51,6 @@ public class Boss {
         this.defesa = defesa;
     }
 
-    public Cenario getReino() {
-        return reino;
-    }
-
-    public void setReino(Cenario reino) {
-        this.reino = reino;
-    }
 
     @Override
     public String toString() {
@@ -68,7 +59,6 @@ public class Boss {
                 ", vida=" + vida +
                 ", ataque=" + ataque +
                 ", defesa=" + defesa +
-                ", reino=" + reino +
                 '}';
     }
 }

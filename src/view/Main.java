@@ -140,10 +140,11 @@ public class Main {
                         System.out.println("Jogadores vazios");
                         break;
                     }
-                    System.out.println("Escolha seu jogador");
+                    System.out.println("Selecione seu jogador digitando seu ID:");
+                    jogadorManipulacao.listarPessoas();
                     int localJogador= sc.nextInt();
                     Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
-                    System.out.println("Escolha seu personagem: ");
+                    System.out.println("Selecione seu personagem digitando seu ID: ");
                     jogadorManipulacao.listarPersonagens(localJogador);
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo,sc.nextInt()));
                     while (comecar != 3) {

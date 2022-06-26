@@ -2,6 +2,7 @@ package view;
 
 import controller.Batalha;
 import controller.JogadorManipulacao;
+import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
 
@@ -33,7 +34,6 @@ public class Main {
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
         Jogador jogador;
-        Personagem personagem = new Personagem();
 
 
         int opcao = 0;
@@ -78,12 +78,11 @@ public class Main {
                         System.out.println("Tipo inválido.");
                         break;
                     }
-                    personagem = new Personagem();
-                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
+                    Personagem personagemInicial = new Personagem(nome,escolhaClasse);
                     jogador.setNomeJogador(nomeJogador);
-                    personagem.setNomePersonagem(nome);
-                    jogadorManipulacao.addPersonagem(personagem, jogadorManipulacao.getClassePersonagem(), nome);
-                    jogadorManipulacao.adicionarJogador(jogador,personagem,jogadorManipulacao.getClassePersonagem(),nome);
+                    personagemInicial.setNomePersonagem(nome);
+                    jogadorManipulacao.addPersonagem(jogador,personagemInicial);
+                    jogadorManipulacao.adicionarJogador(jogador);
                 }
                 case 2 -> {
                     System.out.println("Digite 1 para ver jogadores cadastrados");
@@ -91,28 +90,24 @@ public class Main {
                     System.out.println("Digite 3 para sair");
                     opcaoImprimir = sc.nextInt();
                     switch (opcaoImprimir) {
-
-                        case 1:
+                        case 1 -> {
                             if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                                 System.out.println("Lista vazia");
                                 break;
                             }
                             jogadorManipulacao.listarPessoas();
-                            break;
-
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Qual o seu Jogador");
                             int indexJogador = sc.nextInt();
                             if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                                 System.out.println("Lista vazia");
-                                break;
-                            } else if(jogadorManipulacao.retornarJogador(indexJogador) == null) {
+                            } else if (jogadorManipulacao.retornarJogador(indexJogador) == null) {
                                 System.out.println("Jogador não encontrado");
-                                break;
-                            } else{
-                                jogadorManipulacao.listarPersonagens(indexJogador);
-                                break;
+                            } else {
+                                jogadorManipulacao.retornarJogador(indexJogador).listarPersonagens();
                             }
+                        }
                     }
                 }
                 case 3 -> {
@@ -160,9 +155,8 @@ public class Main {
                         System.out.println("Tipo inválido.");
                         break;
                     }
-                    personagem = new Personagem();
-                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
-                    jogadorParaAddPersonagem.setPersonagem(personagem, personagem.getClassePersonagem(), nome);
+                    Personagem novoPersonagem = new Personagem(nome,escolhaClasse);
+                    jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
                 }
                 case 6 -> {
                     Batalha batalha = new Batalha();

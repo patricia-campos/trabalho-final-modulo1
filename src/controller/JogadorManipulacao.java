@@ -39,28 +39,25 @@ public class JogadorManipulacao {
         this.listaDeJogadores = new ArrayList<>();
     }
 
-    public void adicionarJogador(Jogador jogador, Personagem personagem,ClassePersonagem classePersonagem,String nome) {
-        jogador.setPersonagem(personagem,classePersonagem,nome);
+    public void adicionarJogador(Jogador jogador) {
         this.listaDeJogadores.add(jogador);
     }
 
-    public void addPersonagem(Personagem personagem, ClassePersonagem classePersonagem,String nomePersonagem){
-        Jogador jogador = new Jogador();
-        jogador.setPersonagem(personagem,classePersonagem,nomePersonagem);
+    public void addPersonagem(Jogador jogador,Personagem personagem){
+        jogador.setPersonagem(personagem);
     }
 
     public Jogador retornarJogador(int index) {
         return listaDeJogadores.get(index);
     }
 
-    public ClassePersonagem addClasse(int tipo,Personagem personagem){
+    public ClassePersonagem addClasse(int tipo){
         if(tipo == 1){
             classePersonagem.setTipoNome("Mago");
             classePersonagem.setTipo(1);
             classePersonagem.setAtaqueClasse(40);
             classePersonagem.setVidaClasse(150);
             classePersonagem.setDefesaClasse(50);
-            personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
 
         }else if(tipo == 2){
@@ -69,7 +66,6 @@ public class JogadorManipulacao {
             classePersonagem.setAtaqueClasse(50);
             classePersonagem.setVidaClasse(150);
             classePersonagem.setDefesaClasse(50);
-            personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
         }else if(tipo == 3){
             classePersonagem.setTipoNome("Guerreiro");
@@ -77,7 +73,6 @@ public class JogadorManipulacao {
             classePersonagem.setAtaqueClasse(50);
             classePersonagem.setVidaClasse(150);
             classePersonagem.setDefesaClasse(40);
-            personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
         } else {
             System.out.println("O tipo selecionado é inválido!");

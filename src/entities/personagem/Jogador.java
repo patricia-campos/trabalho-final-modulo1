@@ -6,7 +6,7 @@ import java.util.List;
 public class Jogador {
 
     private String nomeJogador;
-    private final List<Personagem> personagem = new ArrayList<>();
+    private List<Personagem> personagem;
 
     public String getNomeJogador() {
         return nomeJogador;
@@ -21,12 +21,14 @@ public class Jogador {
     }
 
     public void setPersonagem(Personagem personagem) {
+        this.personagem = new ArrayList<>();
         this.personagem.add(personagem);
     }
 
     public Jogador(String nomeJogador, Personagem personagem) {
         this.nomeJogador = nomeJogador;
-        this.personagem.add(personagem);
+        assert false;
+        this.setPersonagem(personagem);
     }
 
     public Jogador() {

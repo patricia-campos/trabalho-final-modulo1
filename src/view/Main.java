@@ -32,7 +32,6 @@ public class Main {
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
-        Jogador jogador;
 
         boolean vitoria;
         int opcao = 0;
@@ -54,7 +53,6 @@ public class Main {
             switch (opcao) {
                 case 1 -> {
                     System.out.println("Olá jogador! Digite seu nome: ");
-                    jogador = new Jogador();
                     String nomeJogador = sc.nextLine();
                     if (Objects.equals(nomeJogador, "")) {
                         System.out.println("Nome não pode ser vazio.");
@@ -76,7 +74,7 @@ public class Main {
                         break;
                     }
                     Personagem personagemInicial = new Personagem(nome, escolhaClasse);
-                    jogador.setNomeJogador(nomeJogador);
+                    Jogador jogador = new Jogador(nomeJogador,personagemInicial);
                     personagemInicial.setNomePersonagem(nome);
                     jogadorManipulacao.addPersonagem(jogador, personagemInicial);
                     jogadorManipulacao.adicionarJogador(jogador);

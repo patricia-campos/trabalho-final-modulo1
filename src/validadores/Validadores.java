@@ -2,7 +2,7 @@ package validadores;
 
 public class Validadores {
 
-    public boolean verificarCaso (int caso) {
+    public boolean verificarCaso(int caso) {
         String frase = String.valueOf(caso);
 
         for (int i = 0; i < frase.length(); i++) {

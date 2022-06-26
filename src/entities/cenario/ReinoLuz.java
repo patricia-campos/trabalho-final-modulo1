@@ -38,7 +38,7 @@ public class ReinoLuz extends Cenario{
     }
     @Override
     public void imprimir() {
-        System.out.println(this.reinoLuz);
+        System.out.println(this.getReinoLuz());
     }
 
     @Override

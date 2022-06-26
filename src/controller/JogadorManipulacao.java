@@ -5,19 +5,15 @@ import java.util.ArrayList;
 import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
+import interfaces.Impressao;
 
 import java.util.List;
 
 
-public class JogadorManipulacao {
+public class JogadorManipulacao implements Impressao {
 
     private List<Jogador> listaDeJogadores;
     private ClassePersonagem classePersonagem = new ClassePersonagem();
-
-    public Personagem retornaPersonagem(Jogador jogador,int index){
-        return jogador.retornaPersonagem(index);
-
-    }
 
     public List<Jogador> getListaDeJogadores() {
         return listaDeJogadores;
@@ -43,19 +39,23 @@ public class JogadorManipulacao {
         this.listaDeJogadores.add(jogador);
     }
 
-    public void addPersonagem(Jogador jogador,Personagem personagem){
+    public void addPersonagem(Jogador jogador, Personagem personagem) {
         jogador.setPersonagem(personagem);
     }
 
     public Jogador retornarJogador(int index) {
-        if(listaDeJogadores.size() > index){
+        if (listaDeJogadores.size() > index) {
             return listaDeJogadores.get(index);
         }
         return null;
     }
 
-    public ClassePersonagem addClasse(int tipo){
-        if(tipo == 1){
+    public Personagem retornaPersonagem(Jogador jogador, int index) {
+        return jogador.retornaPersonagem(index);
+    }
+
+    public ClassePersonagem addClasse(int tipo) {
+        if (tipo == 1) {
             classePersonagem.setTipoNome("Mago");
             classePersonagem.setTipo(1);
             classePersonagem.setAtaqueClasse(40);
@@ -63,14 +63,14 @@ public class JogadorManipulacao {
             classePersonagem.setDefesaClasse(50);
             return this.classePersonagem;
 
-        }else if(tipo == 2){
+        } else if (tipo == 2) {
             classePersonagem.setTipoNome("Elfo");
             classePersonagem.setTipo(2);
             classePersonagem.setAtaqueClasse(50);
             classePersonagem.setVidaClasse(150);
             classePersonagem.setDefesaClasse(50);
             return this.classePersonagem;
-        }else if(tipo == 3){
+        } else if (tipo == 3) {
             classePersonagem.setTipoNome("Guerreiro");
             classePersonagem.setTipo(3);
             classePersonagem.setAtaqueClasse(50);
@@ -81,15 +81,6 @@ public class JogadorManipulacao {
             System.out.println("O tipo selecionado é inválido!");
         }
         return null;
-    }
-
-    public void imprimirClasse() {
-        ClassePersonagem mago = new ClassePersonagem(1, 150, 40, 50, "Mago");
-        ClassePersonagem elfo = new ClassePersonagem(2, 150, 50, 50 , "Elfo");
-        ClassePersonagem guerreiro = new ClassePersonagem(3, 150, 50, 40, "Guerreiro");
-        System.out.println(mago);
-        System.out.println(elfo);
-        System.out.println(guerreiro);
     }
 
     public void removerJogadorPorIndice(Integer index) {
@@ -111,9 +102,19 @@ public class JogadorManipulacao {
     }
 
     public void listarPersonagens(int index) {
-        if(listaDeJogadores.size() > index){
+        if (listaDeJogadores.size() > index) {
             this.listaDeJogadores.get(index).listarPersonagens();
         }
+    }
+
+    @Override
+    public void imprimir() {
+        ClassePersonagem mago = new ClassePersonagem(1, 150, 40, 50, "Mago");
+        ClassePersonagem elfo = new ClassePersonagem(2, 150, 50, 50, "Elfo");
+        ClassePersonagem guerreiro = new ClassePersonagem(3, 150, 50, 40, "Guerreiro");
+        System.out.println(mago);
+        System.out.println(elfo);
+        System.out.println(guerreiro);
     }
 }
 

@@ -83,8 +83,6 @@ public class JogadorManipulacao {
             classePersonagem.setDefesaJogador(50);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
-        } else {
-            System.out.println("Tipo invalido");
         }
         return null;
     }

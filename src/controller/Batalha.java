@@ -69,7 +69,7 @@ public class Batalha implements Ataca {
             case 2 -> {
                 this.cenario = reinoSombrio;
                 bossSombrio.danoAdicional();
-                this.boss = bossSombrio;
+                setBoss(bossSombrio);
 
             }
             case default -> System.out.println("Cenario Invalido");
@@ -83,10 +83,10 @@ public class Batalha implements Ataca {
         }else{
             System.out.println("Boss da Sombras está chegando");
         }
-        for(int i = 0; 0 != this.boss.getVida() || 0 != this.personagem.getClassePersonagem().getVidaJogador(); i++) {
+        while (0 < this.boss.getVida() || 0 < this.personagem.getClassePersonagem().getVidaJogador()) {
             roundAtual++;
             if (this.boss == bossLuz) {
-                System.out.println("Round " +i);
+                System.out.println("Round "+roundAtual);
                 System.out.println("A vida inicial do boss e de: " +bossLuz.getVida());
                 bossLuz.recuperarVida();
                 reinoLuz.ajudaSoldados(this);
@@ -109,7 +109,7 @@ public class Batalha implements Ataca {
             } else if (this.boss == bossSombrio) {
                 System.out.println(bossSombrio.getVida());
 
-                System.out.println("Round " +i);
+                System.out.println("Round " +roundAtual);
                 bossSombrio.danoAdicional();
                 reinoSombrio.ajudaSombria(this);
                 this.atacar();
@@ -146,7 +146,7 @@ public class Batalha implements Ataca {
             System.out.println("Dano: "+ valorAtq);
             System.out.println("Defesa do boss: " + defesaBoss);
             System.out.println("\n");
-            this.boss.setVida(vidaBoss - valorAtq - defesaBoss);
+            this.boss.setVida(vidaBoss + defesaBoss - valorAtq );
         }
     }
 

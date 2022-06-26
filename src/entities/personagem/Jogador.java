@@ -1,11 +1,14 @@
 package entities.personagem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
 
     private String nomeJogador;
-    private List<Personagem> personagem;
+    private List<Personagem> personagem = new ArrayList<>();
+
+
 
 
 
@@ -17,6 +20,13 @@ public class Jogador {
 
     public Jogador() {
 
+    }
+    public Personagem retornaPersonagem(int index){
+        if(this.personagem.size() == 0){
+            return null;
+
+        }
+        return personagem.get(index);
     }
 
     public String getNomeJogador() {
@@ -31,8 +41,15 @@ public class Jogador {
         return personagem;
     }
 
-    public void setPersonagem(Personagem personagem) {
+    public void setPersonagem(Personagem personagem,ClassePersonagem classePersonagem, String nomePersonagem) {
+        personagem.setClassePersonagem(classePersonagem);
+        personagem.setNomePersonagem(nomePersonagem);
         this.personagem.add(personagem);
+    }
+    public void listarPersonagens() {
+        for (int i = 0; i < personagem.size(); i++) {
+            System.out.println("id=" + i + " | " + personagem.get(i));
+        }
     }
 
 

@@ -78,8 +78,8 @@ public class Main {
                     personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
                     jogador.setNomeJogador(nomeJogador);
                     personagem.setNomePersonagem(nome);
-                    jogadorManipulacao.addPersonagem(personagem);
-                    jogadorManipulacao.adicionarJogador(jogador);
+                    jogadorManipulacao.addPersonagem(personagem, jogadorManipulacao.getClassePersonagem(), nome);
+                    jogadorManipulacao.adicionarJogador(jogador,personagem,jogadorManipulacao.getClassePersonagem(),nome);
                 }
                 case 2 -> {
                     System.out.println("Digite 1 para ver jogadores cadastrados");
@@ -97,11 +97,16 @@ public class Main {
                             break;
 
                         case 2:
-                            if (jogadorManipulacao.getListaPersonagem().size() == 0) {
+                            System.out.println("Qual o seu Jogador");
+                            int indexJogador = sc.nextInt();
+                            if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                                 System.out.println("Lista vazia");
                                 break;
-                            } else {
-                                jogadorManipulacao.listarPersonagens();
+                            } else if(jogadorManipulacao.retornarJogador(indexJogador) == null) {
+                                System.out.println("Jogador não encontrado");
+                                break;
+                            } else{
+                                jogadorManipulacao.listarPersonagens(indexJogador);
                                 break;
                             }
                     }
@@ -135,9 +140,12 @@ public class Main {
                         System.out.println("Jogadores vazios");
                         break;
                     }
+                    System.out.println("Escolha seu jogador");
+                    int localJogador= sc.nextInt();
+                    Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
                     System.out.println("Escolha seu personagem: ");
-                    jogadorManipulacao.listarPersonagens();
-                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
+                    jogadorManipulacao.listarPersonagens(localJogador);
+                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo,sc.nextInt()));
                     while (comecar != 3) {
                         System.out.println("Digite 1 para começar a batalha: ");
                         System.out.println("Digite 2 para começar round: " + i);

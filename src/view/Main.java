@@ -6,6 +6,7 @@ import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -95,9 +96,6 @@ public class Main {
                     batalha.sortearCenario();
                     batalha.inciarBatalha();
                     break;
-                case 6:
-                    System.out.println("Qual o seu jogador? ");
-
             }
         }
     }

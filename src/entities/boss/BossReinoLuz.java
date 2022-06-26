@@ -1,10 +1,8 @@
 package entities.boss;
 
 import entities.cenario.Cenario;
-import exceptions.VerificarNulls;
 
 import java.util.Random;
-import java.util.Vector;
 
 public class BossReinoLuz extends Boss{
 

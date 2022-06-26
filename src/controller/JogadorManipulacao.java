@@ -16,7 +16,34 @@ public class JogadorManipulacao {
     private ClassePersonagem classePersonagem = new ClassePersonagem();
 
     public Personagem retornaPersonagem(int index){
+        if(this.listaPersonagem.size() == 0){
+            return null;
+        }
         return listaPersonagem.get(index);
+    }
+
+    public List<Jogador> getListaDeJogadores() {
+        return listaDeJogadores;
+    }
+
+    public void setListaDeJogadores(List<Jogador> listaDeJogadores) {
+        this.listaDeJogadores = listaDeJogadores;
+    }
+
+    public List<Personagem> getListaPersonagem() {
+        return listaPersonagem;
+    }
+
+    public void setListaPersonagem(List<Personagem> listaPersonagem) {
+        this.listaPersonagem = listaPersonagem;
+    }
+
+    public ClassePersonagem getClassePersonagem() {
+        return classePersonagem;
+    }
+
+    public void setClassePersonagem(ClassePersonagem classePersonagem) {
+        this.classePersonagem = classePersonagem;
     }
 
     public JogadorManipulacao() {

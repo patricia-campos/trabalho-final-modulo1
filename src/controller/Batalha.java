@@ -7,7 +7,6 @@ import entities.cenario.Cenario;
 import entities.cenario.ReinoLuz;
 import entities.cenario.ReinoSombrio;
 import entities.personagem.Personagem;
-import exceptions.VerificarNulls;
 import interfaces.Ataca;
 
 import java.util.Random;

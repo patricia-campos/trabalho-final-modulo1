@@ -1,8 +1,6 @@
 package entities.cenario;
 
 import controller.Batalha;
-import entities.personagem.Personagem;
-import exceptions.VerificarNulls;
 import interfaces.Impressao;
 
 import java.util.Random;

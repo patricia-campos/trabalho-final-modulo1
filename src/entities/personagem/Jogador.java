@@ -11,7 +11,6 @@ public class Jogador {
 
 
 
-
     public Jogador(String nomeJogador, Personagem personagem) {
         this.nomeJogador = nomeJogador;
         assert this.personagem != null;
@@ -24,7 +23,6 @@ public class Jogador {
     public Personagem retornaPersonagem(int index){
         if(this.personagem.size() == 0){
             return null;
-
         }
         return personagem.get(index);
     }

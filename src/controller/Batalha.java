@@ -13,13 +13,13 @@ import java.util.Random;
 
 public class Batalha implements Ataca {
 
-    private Cenario cenario = new Cenario();
+    private Cenario cenario;
     private final ReinoLuz reinoLuz = new ReinoLuz();
     private final ReinoSombrio reinoSombrio = new ReinoSombrio();
     private Personagem personagem = new Personagem();
     private Boss boss = new Boss();
-    private final BossReinoLuz bossLuz = new BossReinoLuz("Boss Luz",this.cenario);
-    private final BossReinoSombrio bossSombrio = new BossReinoSombrio("Boss Sombrio",this.cenario);
+    private final BossReinoLuz bossLuz = new BossReinoLuz("Boss Luz",reinoLuz);
+    private final BossReinoSombrio bossSombrio = new BossReinoSombrio("Boss Sombrio",reinoSombrio);
     private int roundAtual = 0;
 
     public Cenario getCenario() {

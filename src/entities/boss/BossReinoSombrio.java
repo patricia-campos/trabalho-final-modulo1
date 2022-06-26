@@ -20,9 +20,7 @@ public class BossReinoSombrio extends Boss{
         this.setDefesa(10);
     }
 
-    public String danoAdicional() {
-        Batalha batalha = new Batalha();
-
+    public String danoAdicional(Batalha batalha) {
         int sortear = random.nextInt(10);
         danoAdicional = sortear + batalha.getBoss().getAtaque();
         batalha.getBoss().setAtaque(danoAdicional);

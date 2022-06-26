@@ -48,7 +48,10 @@ public class JogadorManipulacao {
     }
 
     public Jogador retornarJogador(int index) {
-        return listaDeJogadores.get(index);
+        if(listaDeJogadores.size() > index){
+            return listaDeJogadores.get(index);
+        }
+        return null;
     }
 
     public ClassePersonagem addClasse(int tipo){
@@ -108,7 +111,9 @@ public class JogadorManipulacao {
     }
 
     public void listarPersonagens(int index) {
-        this.listaDeJogadores.get(index).listarPersonagens();
+        if(listaDeJogadores.size() > index){
+            this.listaDeJogadores.get(index).listarPersonagens();
+        }
     }
 }
 

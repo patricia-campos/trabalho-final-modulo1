@@ -14,13 +14,37 @@ import java.util.Random;
 public class Batalha implements Ataca {
 
     private Cenario cenario;
-    private final ReinoLuz reinoLuz = new ReinoLuz();
-    private final ReinoSombrio reinoSombrio = new ReinoSombrio();
+    private ReinoLuz reinoLuz = new ReinoLuz();
+    private ReinoSombrio reinoSombrio = new ReinoSombrio();
     private Personagem personagem = new Personagem();
     private Boss boss = new Boss();
     private final BossReinoLuz bossLuz = new BossReinoLuz("Boss da Luz",reinoLuz);
     private final BossReinoSombrio bossSombrio = new BossReinoSombrio("Boss das Sombras ",reinoSombrio);
     private int roundAtual = 0;
+
+    public ReinoLuz getReinoLuz() {
+        return reinoLuz;
+    }
+
+    public void setReinoLuz(ReinoLuz reinoLuz) {
+        this.reinoLuz = reinoLuz;
+    }
+
+    public ReinoSombrio getReinoSombrio() {
+        return reinoSombrio;
+    }
+
+    public void setReinoSombrio(ReinoSombrio reinoSombrio) {
+        this.reinoSombrio = reinoSombrio;
+    }
+
+    public BossReinoLuz getBossLuz() {
+        return bossLuz;
+    }
+
+    public BossReinoSombrio getBossSombrio() {
+        return bossSombrio;
+    }
 
     public Cenario getCenario() {
         return cenario;
@@ -160,7 +184,7 @@ public class Batalha implements Ataca {
             } else if (this.boss == bossSombrio) {
                 System.out.println(bossSombrio.getVida());
                 cenario.buffDebuff(this);
-                bossSombrio.danoAdicional();
+                System.out.println(bossSombrio.danoAdicional(this));
                 reinoSombrio.ajudaSombria(this);
                 this.atacar();
                 this.ataqueBoss();
@@ -233,10 +257,10 @@ public class Batalha implements Ataca {
     }
 
     public String imprimiStatusJogador(){
-        String nome = this.getPersonagem().getClassePersonagem().getTipoNome();
-        int vida = this.getPersonagem().getClassePersonagem().getVidaClasse();
-        int ataque = this.getPersonagem().getClassePersonagem().getAtaqueClasse();
-        int defesa = this.getPersonagem().getClassePersonagem().getDefesaClasse();
+        String nome = getPersonagem().getClassePersonagem().getTipoNome();
+        int vida = getPersonagem().getClassePersonagem().getVidaClasse();
+        int ataque = getPersonagem().getClassePersonagem().getAtaqueClasse();
+        int defesa = getPersonagem().getClassePersonagem().getDefesaClasse();
 
         return  "" +
                 "| Personagem: " + nome +
@@ -249,10 +273,10 @@ public class Batalha implements Ataca {
     }
 
     public String imprimiStatusBoss(){
-        String nome = this.getBoss().getNome();
-        int vida = this.getBoss().getVida();
-        int ataque = this.getBoss().getAtaque();
-        int defesa = this.getBoss().getDefesa();
+        String nome = getBoss().getNome();
+        int vida = getBoss().getVida();
+        int ataque = getBoss().getAtaque();
+        int defesa = getBoss().getDefesa();
 
         return  "" +
                 "| Boss: " + nome +

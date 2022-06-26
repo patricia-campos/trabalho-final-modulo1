@@ -164,9 +164,14 @@ public class Main {
                             System.out.println("Jogadores vazios");
                             break;
                         }
+
                         System.out.println("Selecione seu jogador digitando seu ID:");
                         jogadorManipulacao.listarPessoas();
                         int localJogador = sc.nextInt();
+                        if(!(jogadorManipulacao.getListaDeJogadores().size() > localJogador)){
+                            System.out.println("Jogador nao existe!! ");
+                            break;
+                        }
                         Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
                         System.out.println("Selecione seu personagem digitando seu ID: ");
                         jogadorManipulacao.listarPersonagens(localJogador);
@@ -176,7 +181,7 @@ public class Main {
                             System.out.println("Digite 1 para começar a batalha: ");
                             System.out.println("Digite 2 para começar round: " + i);
                             System.out.println("Digite 3 para fugir da batalha:");
-
+                            comecar = 0;
                             comecar = sc.nextInt();
                             switch (comecar) {
                                 case 1 -> batalha.sortearCenario();
@@ -189,14 +194,17 @@ public class Main {
                                         batalha.setBoss(null);
                                         batalha.setCenario(null);
                                         batalha.retornaStatusVitoria(vitoria);
+                                        comecar = 3;
                                     } else if (batalha.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
                                         i = 1;
                                         vitoria = false;
                                         batalha.setBoss(null);
                                         batalha.setCenario(null);
                                         batalha.retornaStatusVitoria(vitoria);
+                                        comecar = 3;
                                     } else {
                                         batalha.inciarBatalha();
+                                        batalha.setRoundAtual(i);
                                         i++;
                                     }
                                 }

@@ -100,7 +100,6 @@ public class Batalha implements Ataca {
                 if(this.getPersonagem().getClassePersonagem().getVidaJogador() <= 0){
                     System.out.println("Vida do jogador " +this.personagem.getClassePersonagem().getVidaJogador());
                     System.out.println("Derrota pois nao tirou a vida toda do boss");
-                    break;
                 }
                 reinoLuz.bonusHorario(this);
                 cenario.buffDebuff(this);
@@ -120,7 +119,6 @@ public class Batalha implements Ataca {
                 this.ataqueBoss();
                 if(this.getPersonagem().getClassePersonagem().getVidaJogador() <= 0){
                     System.out.println("Derrota pois nao tirou a vida toda do boss");
-                    break;
                 }
                 cenario.buffDebuff(this);
                 System.out.println("Vida do Personagem: "+this.personagem.getClassePersonagem().getVidaJogador());

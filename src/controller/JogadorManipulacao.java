@@ -52,7 +52,6 @@ public class JogadorManipulacao {
     }
 
     public void adicionarJogador(Jogador jogador) {
-        System.out.println(this.retornaPersonagem(0));
         this.listaDeJogadores.add(jogador);
     }
 

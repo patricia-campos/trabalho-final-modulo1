@@ -146,7 +146,7 @@ public class Batalha implements Ataca {
 
         }if(this.boss.getVida() <= 0){
 
-            System.out.println("Parabéns! Você venceu e salvou o Reino!\n" +
+/*            System.out.println("Parabéns! Você venceu e salvou o Reino!\n" +
                     "██╗   ██╗ ██████╗  ██████╗███████╗                      \n" +
                     "██║   ██║██╔═══██╗██╔════╝██╔════╝                      \n" +
                     "██║   ██║██║   ██║██║     █████╗                        \n" +
@@ -157,11 +157,10 @@ public class Batalha implements Ataca {
                     "    ██║   ██║██╔════╝████╗  ██║██╔════╝██╔════╝██║   ██║\n" +
                     "    ██║   ██║█████╗  ██╔██╗ ██║██║     █████╗  ██║   ██║\n" +
                     "    ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║     ██╔══╝  ██║   ██║\n" +
-                    "     ╚████╔╝ ███████╗██║ ╚████║╚██████╗███████╗╚██████╔");
+                    "     ╚████╔╝ ███████╗██║ ╚████║╚██████╗███████╗╚██████╔");*/
 
         }else if(this.getPersonagem().getClassePersonagem().getVidaClasse() == 0){
-
-            System.out.println("Você foi derrotado.\n" +
+/*            System.out.println("Você foi derrotado.\n" +
                     " ██▒   █▓ ▒█████   ▄████▄  ▓█████                \n" +
                     "▓██░   █▒▒██▒  ██▒▒██▀ ▀█  ▓█   ▀                \n" +
                     " ▓██  █▒░▒██░  ██▒▒▓█    ▄ ▒███                  \n" +
@@ -180,7 +179,7 @@ public class Batalha implements Ataca {
                     "░▒ ░      ░ ░  ░  ░▒ ░ ▒░ ░ ▒  ▒  ░ ░  ░░░▒░ ░ ░ \n" +
                     "░░          ░     ░░   ░  ░ ░  ░    ░    ░░░ ░ ░ \n" +
                     "            ░  ░   ░        ░       ░  ░   ░     \n" +
-                    "                          ░                     ");
+                    "                          ░                     ");*/
         }
             setRoundAtual(roundAtual++);
 
@@ -230,7 +229,6 @@ public class Batalha implements Ataca {
                 cenario.buffDebuff(this);
                 this.atacar();
                 this.ataqueBoss();
-                //System.out.println(this.imprimiStatusJogador() +" ----------------- "+ this.imprimiStatusBoss()+"\n\n\n");
                 System.out.println(this.imprimiStatusJogador());
                 System.out.println("-------------------------");
                 System.out.println(this.imprimiStatusBoss());
@@ -300,11 +298,11 @@ public class Batalha implements Ataca {
         int valorAtq = atqJogador + valor;
 
         if(valor <= 2) {
-            System.out.println("O Boss desviou do seu ataque\n");
-            System.out.println("\n");
+            System.out.println("\nO Boss desviou do seu ataque\n");
+
         }else {
-            System.out.println("Ataque bem sucedido\n");
-            System.out.println("\n");
+            System.out.println("\nAtaque bem sucedido\n");
+
             this.boss.setVida(vidaBoss + defesaBoss - valorAtq );
         }
     }
@@ -352,7 +350,7 @@ public class Batalha implements Ataca {
         int atqBoss = this.boss.getAtaque();
         int valorAtq = atqBoss + valor;
         if(valor <= 3) {
-            System.out.println("Você desviou do ataque do boss\n");
+            System.out.println("\nVocê desviou do ataque do boss\n");
         }else {
             this.personagem.getClassePersonagem().setVidaClasse(vidaJogador - valorAtq);
         }

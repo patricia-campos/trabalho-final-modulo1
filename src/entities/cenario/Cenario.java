@@ -16,10 +16,10 @@ public class Cenario implements Impressao {
         int sortear = random.nextInt(5);
 
         if(batalha.getCenario() == reinoLuz){
-            batalha.getPersonagem().getClassePersonagem().setAtaqueJogador(batalha.getPersonagem().getClassePersonagem().getAtaqueJogador() + sortear);
+            batalha.getPersonagem().getClassePersonagem().setAtaqueClasse(batalha.getPersonagem().getClassePersonagem().getAtaqueClasse() + sortear);
             batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() - sortear);
         }else if(batalha.getCenario() == reinoSombrio){
-            batalha.getPersonagem().getClassePersonagem().setAtaqueJogador(batalha.getPersonagem().getClassePersonagem().getAtaqueJogador() - sortear);
+            batalha.getPersonagem().getClassePersonagem().setAtaqueClasse(batalha.getPersonagem().getClassePersonagem().getAtaqueClasse() - sortear);
             batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() + sortear);
         }
     }

@@ -2,7 +2,6 @@ package view;
 
 import controller.Batalha;
 import controller.JogadorManipulacao;
-import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
 
@@ -52,7 +51,7 @@ public class Main {
 
 
             switch (opcao) {
-                case 1:
+                case 1 -> {
                     System.out.println("Olá jogador! Digite seu nome: ");
                     jogador = new Jogador();
                     String nomeJogador = sc.nextLine();
@@ -60,17 +59,13 @@ public class Main {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
-
                     System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
-
-
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
                     if (Objects.equals(nome, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
-
                     System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
                     jogadorManipulacao.imprimirClasse();
                     int escolhaClasse = sc.nextInt();
@@ -79,21 +74,17 @@ public class Main {
                         System.out.println("Tipo inválido.");
                         break;
                     }
-
                     personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
                     jogador.setNomeJogador(nomeJogador);
                     personagem.setNomePersonagem(nome);
                     jogadorManipulacao.addPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
-                    break;
-
-                case 2:
-
+                }
+                case 2 -> {
                     System.out.println("Digite 1 para ver jogadores cadastrados");
                     System.out.println("Digite 2 para ver personagens cadastrados");
                     System.out.println("Digite 3 para sair");
                     opcaoImprimir = sc.nextInt();
-
                     switch (opcaoImprimir) {
 
                         case 1:
@@ -113,9 +104,8 @@ public class Main {
                                 break;
                             }
                     }
-                    break;
-
-                case 3:
+                }
+                case 3 -> {
                     if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                         System.out.println("Jogadores vazios.");
                         break;
@@ -127,9 +117,8 @@ public class Main {
                     System.out.println("Digite o novo nome do jogador: ");
                     String novoNome = sc.nextLine();
                     jogadorManipulacao.editarJogador(index, novoNome);
-                    break;
-
-                case 4:
+                }
+                case 4 -> {
                     if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                         System.out.println("Jogadores vazios");
                         break;
@@ -138,9 +127,8 @@ public class Main {
                     jogadorManipulacao.listarPessoas();
                     int id = sc.nextInt();
                     jogadorManipulacao.removerJogadorPorIndice(id);
-                    break;
-
-                case 5:
+                }
+                case 5 -> {
                     Batalha batalha = new Batalha();
                     if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                         System.out.println("Jogadores vazios");
@@ -148,7 +136,6 @@ public class Main {
                     }
                     System.out.println("Escolha seu personagem: ");
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
-
                     while (comecar != 3) {
                         System.out.println("Digite 1 para começar a batalha: ");
                         System.out.println("Digite 2 para começar round: " + batalha.getRoundAtual());
@@ -156,18 +143,12 @@ public class Main {
 
                         comecar = sc.nextInt();
                         switch (comecar) {
-                            case 1:
-                                batalha.sortearCenario();
-                                break;
-                            case 2:
-                                batalha.inciarBatalha();
-                                break;
-
-                            case 3:
-                                System.out.println("você fugiu da batalha");
-                                break;
+                            case 1 -> batalha.sortearCenario();
+                            case 2 -> batalha.inciarBatalha();
+                            case 3 -> System.out.println("você fugiu da batalha");
                         }
                     }
+                }
             }
         }
     }

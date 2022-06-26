@@ -13,7 +13,7 @@ public class ReinoSombrio extends Cenario{
         int sortear = random.nextInt(7) + 1;
         if(batalha.getRoundAtual() == sortear){
             System.out.println("A ajuda sombria te atacou enquanto você estava desatento e você perdeu " + sortear + " de vida");
-            batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() - sortear);
+            batalha.getPersonagem().getClassePersonagem().setVidaClasse(batalha.getPersonagem().getClassePersonagem().getVidaClasse() - sortear);
         }
     }
 
@@ -22,7 +22,7 @@ public class ReinoSombrio extends Cenario{
         int sortear = random.nextInt(7) + 1;
         if(batalha.getRoundAtual() == sortear){
             System.out.println("Você deu um passo e não percebeu que tinha uma armadilha menos " + sortear + " de vida");
-            batalha.getPersonagem().getClassePersonagem().setVidaJogador(batalha.getPersonagem().getClassePersonagem().getVidaJogador() - sortear);
+            batalha.getPersonagem().getClassePersonagem().setVidaClasse(batalha.getPersonagem().getClassePersonagem().getVidaClasse() - sortear);
         }
 
     }

@@ -2,38 +2,36 @@ package entities.personagem;
 
 import interfaces.Impressao;
 
-public class ClassePersonagem implements Impressao {
+    public class ClassePersonagem implements Impressao {
     private int tipo; //1 - Mago / 2 - Elfo / 3 - Guerreira
-    private int vidaJogador;
-    private int defesaJogador;
-    private int ataqueJogador;
+    private int vidaClasse;
+    private int defesaClasse;
+    private int ataqueClasse;
     private String tipoNome;
 
+        public ClassePersonagem() {
+        }
 
-    public ClassePersonagem() {
-    }
+        public ClassePersonagem(int tipo, int vidaClasse, int defesaClasse, int ataqueClasse, String tipoNome) {
+            this.tipo = tipo;
+            this.vidaClasse = vidaClasse;
+            this.defesaClasse = defesaClasse;
+            this.ataqueClasse = ataqueClasse;
+            this.tipoNome = tipoNome;
+        }
 
-    public ClassePersonagem(int tipo, int vidaJogador, int defesaJogador, int ataqueJogador, String tipoNome) {
-        this.tipo = tipo;
-        this.vidaJogador = vidaJogador;
-        this.defesaJogador = defesaJogador;
-        this.ataqueJogador = ataqueJogador;
-        this.tipoNome = tipoNome;
-
-    }
-
-    @Override
+        @Override
     public String toString() {
         return  ""
                 + "\n"+
                 "| Nome da classe: " + tipoNome +
                 "\n| Tipo da classe: " + tipo
                 + "\n"+
-                "| Vida da classe: " + vidaJogador
+                "| Vida da classe: " + vidaClasse
                 + "\n"+
-                "| Defesa da classe: " + defesaJogador
+                "| Defesa da classe: " + defesaClasse
                 + "\n"+
-                "| Ataque da classe: " + ataqueJogador +
+                "| Ataque da classe: " + ataqueClasse +
                 "" ;
     }
 
@@ -45,28 +43,28 @@ public class ClassePersonagem implements Impressao {
         this.tipo = tipo;
     }
 
-    public int getVidaJogador() {
-        return vidaJogador;
+    public int getVidaClasse() {
+        return vidaClasse;
     }
 
-    public void setVidaJogador(int vidaJogador) {
-        this.vidaJogador = vidaJogador;
+    public void setVidaClasse(int vidaClasse) {
+        this.vidaClasse = vidaClasse;
     }
 
-    public int getDefesaJogador() {
-        return defesaJogador;
+    public int getDefesaClasse() {
+        return defesaClasse;
     }
 
-    public void setDefesaJogador(int defesaJogador) {
-        this.defesaJogador = defesaJogador;
+    public void setDefesaClasse(int defesaClasse) {
+        this.defesaClasse = defesaClasse;
     }
 
-    public int getAtaqueJogador() {
-        return ataqueJogador;
+    public int getAtaqueClasse() {
+        return ataqueClasse;
     }
 
-    public void setAtaqueJogador(int ataqueJogador) {
-        this.ataqueJogador = ataqueJogador;
+    public void setAtaqueClasse(int ataqueClasse) {
+        this.ataqueClasse = ataqueClasse;
     }
 
     public String getTipoNome() {

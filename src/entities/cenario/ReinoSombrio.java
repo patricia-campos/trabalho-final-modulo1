@@ -28,7 +28,7 @@ public class ReinoSombrio extends Cenario{
     }
     @Override
     public void imprimir() {
-        System.out.println(this.reinoSombrio);
+        System.out.println(this.getReinoSombrio());
     }
 
     @Override

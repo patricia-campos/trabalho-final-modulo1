@@ -2,7 +2,6 @@ package view;
 
 import controller.Batalha;
 import controller.JogadorManipulacao;
-import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
 
@@ -35,11 +34,11 @@ public class Main {
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
         Jogador jogador;
 
-
+        boolean vitoria;
         int opcao = 0;
         int opcaoImprimir;
         int comecar = 0;
-        int i=1;
+        int i = 1;
 
         while (opcao != 9) {
 
@@ -52,8 +51,6 @@ public class Main {
             System.out.println("Digite 6 para INICIAR a batalha");
             opcao = sc.nextInt();
             sc.nextLine();
-
-
             switch (opcao) {
                 case 1 -> {
                     System.out.println("Olá jogador! Digite seu nome: ");
@@ -71,17 +68,17 @@ public class Main {
                         break;
                     }
                     System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-                    jogadorManipulacao.imprimirClasse();
+                    jogadorManipulacao.imprimir();
                     int escolhaClasse = sc.nextInt();
                     sc.nextLine();
                     if (escolhaClasse > 3 || escolhaClasse <= 0) {
                         System.out.println("Tipo inválido.");
                         break;
                     }
-                    Personagem personagemInicial = new Personagem(nome,escolhaClasse);
+                    Personagem personagemInicial = new Personagem(nome, escolhaClasse);
                     jogador.setNomeJogador(nomeJogador);
                     personagemInicial.setNomePersonagem(nome);
-                    jogadorManipulacao.addPersonagem(jogador,personagemInicial);
+                    jogadorManipulacao.addPersonagem(jogador, personagemInicial);
                     jogadorManipulacao.adicionarJogador(jogador);
                 }
                 case 2 -> {
@@ -133,7 +130,7 @@ public class Main {
                     int id = sc.nextInt();
                     jogadorManipulacao.removerJogadorPorIndice(id);
                 }
-                case 5-> {
+                case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
                     jogadorManipulacao.listarPessoas();
                     int id = sc.nextInt();
@@ -148,14 +145,14 @@ public class Main {
                         break;
                     }
                     System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-                    jogadorManipulacao.imprimirClasse();
+                    jogadorManipulacao.imprimir();
                     int escolhaClasse = sc.nextInt();
                     sc.nextLine();
                     if (escolhaClasse > 3 || escolhaClasse <= 0) {
                         System.out.println("Tipo inválido.");
                         break;
                     }
-                    Personagem novoPersonagem = new Personagem(nome,escolhaClasse);
+                    Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
                     jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
                 }
                 case 6 -> {
@@ -164,28 +161,48 @@ public class Main {
                         System.out.println("Jogadores vazios");
                         break;
                     }
+
                     System.out.println("Selecione seu jogador digitando seu ID:");
                     jogadorManipulacao.listarPessoas();
-                    int localJogador= sc.nextInt();
+                    int localJogador = sc.nextInt();
+                    if (!(jogadorManipulacao.getListaDeJogadores().size() > localJogador)) {
+                        System.out.println("Jogador nao existe!! ");
+                        break;
+                    }
                     Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
                     System.out.println("Selecione seu personagem digitando seu ID: ");
                     jogadorManipulacao.listarPersonagens(localJogador);
-                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo,sc.nextInt()));
+                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo, sc.nextInt()));
                     while (comecar != 3) {
 
                         System.out.println("Digite 1 para começar a batalha: ");
                         System.out.println("Digite 2 para começar round: " + i);
                         System.out.println("Digite 3 para fugir da batalha:");
-
+                        comecar = 0;
                         comecar = sc.nextInt();
                         switch (comecar) {
                             case 1 -> batalha.sortearCenario();
                             case 2 -> {
-                                if(Objects.isNull(batalha.getCenario())){
+                                if (Objects.isNull(batalha.getCenario())) {
                                     System.out.println("Você precisa começar a batalha");
+                                } else if (batalha.getBoss().getVida() <= 0) {
+                                    i = 1;
+                                    vitoria = true;
+                                    batalha.setBoss(null);
+                                    batalha.setCenario(null);
+                                    batalha.retornaStatusVitoria(vitoria);
+                                    comecar = 3;
+                                } else if (batalha.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
+                                    i = 1;
+                                    vitoria = false;
+                                    batalha.setBoss(null);
+                                    batalha.setCenario(null);
+                                    batalha.retornaStatusVitoria(vitoria);
+                                    comecar = 3;
                                 } else {
-                                batalha.inciarBatalha();
-                                i++;
+                                    batalha.inciarRound();
+                                    batalha.setRoundAtual(i);
+                                    i++;
                                 }
                             }
                             case 3 -> System.out.println("você fugiu da batalha");
@@ -196,3 +213,4 @@ public class Main {
         }
     }
 }
+

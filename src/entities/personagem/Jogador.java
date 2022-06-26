@@ -6,26 +6,7 @@ import java.util.List;
 public class Jogador {
 
     private String nomeJogador;
-    private List<Personagem> personagem = new ArrayList<>();
-
-
-
-
-    public Jogador(String nomeJogador, Personagem personagem) {
-        this.nomeJogador = nomeJogador;
-        assert this.personagem != null;
-        this.personagem.add(personagem);
-    }
-
-    public Jogador() {
-
-    }
-    public Personagem retornaPersonagem(int index){
-        if(this.personagem.size() == 0){
-            return null;
-        }
-        return personagem.get(index);
-    }
+    private final List<Personagem> personagem = new ArrayList<>();
 
     public String getNomeJogador() {
         return nomeJogador;
@@ -42,6 +23,26 @@ public class Jogador {
     public void setPersonagem(Personagem personagem) {
         this.personagem.add(personagem);
     }
+
+    public Jogador(String nomeJogador, Personagem personagem) {
+        this.nomeJogador = nomeJogador;
+        this.personagem.add(personagem);
+    }
+
+    public Jogador() {
+
+    }
+
+    public Personagem retornaPersonagem(int index) {
+        if (this.personagem.size() == 0) {
+            return null;
+        }
+        if (this.personagem.size() > index) {
+            return personagem.get(index);
+        }
+        return null;
+    }
+
     public void listarPersonagens() {
         for (int i = 0; i < personagem.size(); i++) {
             System.out.println("id=" + i + " | " + personagem.get(i));
@@ -51,10 +52,10 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return  "========================="
-                + "\n"+
+        return "========================="
+                + "\n" +
                 "| Nome do Jogador: " + nomeJogador
-                + "\n"+
-                "=========================" ;
+                + "\n" +
+                "=========================";
     }
 }

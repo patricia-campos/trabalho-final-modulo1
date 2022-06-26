@@ -7,18 +7,26 @@ import java.util.Random;
 
 public class Cenario implements Impressao {
 
-    ReinoLuz reinoLuz;
-    ReinoSombrio reinoSombrio;
+    private ReinoLuz reinoLuz;
+    private ReinoSombrio reinoSombrio;
 
-    public void buffDebuff(Batalha batalha){
+    public ReinoLuz getReinoLuz() {
+        return reinoLuz;
+    }
+
+    public ReinoSombrio getReinoSombrio() {
+        return reinoSombrio;
+    }
+
+    public void buffDebuff(Batalha batalha) {
 
         Random random = new Random();
-        int sortear = random.nextInt(5);
+        int sortear = random.nextInt(3);
 
-        if(batalha.getCenario() == reinoLuz){
+        if (batalha.getCenario() == batalha.getReinoLuz()) {
             batalha.getPersonagem().getClassePersonagem().setAtaqueClasse(batalha.getPersonagem().getClassePersonagem().getAtaqueClasse() + sortear);
             batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() - sortear);
-        }else if(batalha.getCenario() == reinoSombrio){
+        } else if (batalha.getCenario() == batalha.getReinoSombrio()) {
             batalha.getPersonagem().getClassePersonagem().setAtaqueClasse(batalha.getPersonagem().getClassePersonagem().getAtaqueClasse() - sortear);
             batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() + sortear);
         }

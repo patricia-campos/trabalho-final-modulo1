@@ -41,14 +41,12 @@ public class Jogador {
         return personagem;
     }
 
-    public void setPersonagem(Personagem personagem,ClassePersonagem classePersonagem, String nomePersonagem) {
-        personagem.setClassePersonagem(classePersonagem);
-        personagem.setNomePersonagem(nomePersonagem);
+    public void setPersonagem(Personagem personagem) {
         this.personagem.add(personagem);
     }
     public void listarPersonagens() {
         for (int i = 0; i < personagem.size(); i++) {
-            System.out.println("id=" + i + " | " + personagem.get(i));
+            System.out.println("id=" + i + " | " + personagem.get(i).getClassePersonagem());
         }
     }
 

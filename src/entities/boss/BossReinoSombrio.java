@@ -1,5 +1,6 @@
 package entities.boss;
 
+import controller.Batalha;
 import entities.cenario.Cenario;
 
 import java.util.Random;
@@ -19,9 +20,13 @@ public class BossReinoSombrio extends Boss{
         this.setDefesa(10);
     }
 
-    public void danoAdicional() {
-        danoAdicional = random.nextInt(10) + this.getAtaque();
-        this.setAtaque(danoAdicional);
+    public String danoAdicional() {
+        Batalha batalha = new Batalha();
+
+        int sortear = random.nextInt(10);
+        danoAdicional = sortear + batalha.getBoss().getAtaque();
+        batalha.getBoss().setAtaque(danoAdicional);
+        return "O boss ganhou um adicional "+sortear+" de ataque";
     }
 
 }

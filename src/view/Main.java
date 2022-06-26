@@ -38,6 +38,7 @@ public class Main {
         int opcao = 0;
         int opcaoImprimir;
         int comecar = 0;
+        int i=1;
 
         while (opcao != 9) {
             System.out.print("\n");
@@ -139,13 +140,19 @@ public class Main {
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
                     while (comecar != 3) {
                         System.out.println("Digite 1 para começar a batalha: ");
-                        System.out.println("Digite 2 para começar round: " + batalha.getRoundAtual());
+                        System.out.println("Digite 2 para começar round: " + i);
                         System.out.println("Digite 3 para fugir da batalha:");
 
                         comecar = sc.nextInt();
                         switch (comecar) {
                             case 1 -> batalha.sortearCenario();
-                            case 2 -> batalha.inciarBatalha();
+                            case 2 -> {
+                                if(batalha.getCenario() == null){
+                                    System.out.println("Você precisa começar a batalha");
+                                }
+                                batalha.inciarBatalha();
+                                i++;
+                            }
                             case 3 -> System.out.println("você fugiu da batalha");
                         }
                     }

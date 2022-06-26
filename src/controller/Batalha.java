@@ -63,12 +63,10 @@ public class Batalha implements Ataca {
         switch (sortear) {
             case 1 -> {
                 setCenario(reinoLuz);
-                bossLuz.recuperarVida();
                 setBoss(bossLuz);
             }
             case 2 -> {
                 this.cenario = reinoSombrio;
-                bossSombrio.danoAdicional();
                 setBoss(bossSombrio);
 
             }
@@ -88,35 +86,32 @@ public class Batalha implements Ataca {
         }
             setRoundAtual(roundAtual++);
             if (this.boss == bossLuz) {
-                System.out.println("Round " + roundAtual);
-                bossLuz.recuperarVida();
-                reinoLuz.ajudaSoldados(this);
-                this.atacar();
                 if (this.boss.getVida() <= 0) {
                     System.out.println("Vitoria");
-                }
-                this.ataqueBoss();
-                if (this.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
+                }else if (this.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
                     System.out.println("Derrota pois nao tirou a vida toda do boss");
                 }
+                System.out.println(bossLuz.recuperarVida());
+                reinoLuz.ajudaSoldados(this);
                 reinoLuz.bonusHorario(this);
                 cenario.buffDebuff(this);
+                this.atacar();
+                this.ataqueBoss();
+                System.out.println(this.imprimiStatusJogador() +" ----------------- "+ this.imprimiStatusBoss()+"\n\n\n");
 
             } else if (this.boss == bossSombrio) {
+                if(this.boss.getVida() <= 0){
+                    System.out.println("Vitoria");
+                }else if(this.getPersonagem().getClassePersonagem().getVidaClasse() <= 0){
+                    System.out.println("Derrota pois nao tirou a vida toda do boss");
+                }
                 System.out.println(bossSombrio.getVida());
-
-                System.out.println("Round " +roundAtual);
+                cenario.buffDebuff(this);
                 bossSombrio.danoAdicional();
                 reinoSombrio.ajudaSombria(this);
                 this.atacar();
-                if(this.boss.getVida() <= 0){
-                    System.out.println("Vitoria");
-                }
                 this.ataqueBoss();
-                if(this.getPersonagem().getClassePersonagem().getVidaClasse() <= 0){
-                    System.out.println("Derrota pois nao tirou a vida toda do boss");
-                }
-                cenario.buffDebuff(this);
+                System.out.println(this.imprimiStatusJogador() +" ----------------- "+ this.imprimiStatusBoss()+"\n\n\n");
             }
     }
 
@@ -137,6 +132,22 @@ public class Batalha implements Ataca {
             System.out.println("\n");
             this.boss.setVida(vidaBoss + defesaBoss - valorAtq );
         }
+    }
+
+    public String imprimiStatusJogador(){
+        String nome = this.getPersonagem().getClassePersonagem().getTipoNome();
+        int vida = this.getPersonagem().getClassePersonagem().getVidaClasse();
+        int ataque = this.getPersonagem().getClassePersonagem().getAtaqueClasse();
+        int defesa = this.getPersonagem().getClassePersonagem().getDefesaClasse();
+        return "Personagem: " + nome + " Vida: "+vida+" Ataque: "+ataque + " Defesa "+defesa;
+    }
+
+    public String imprimiStatusBoss(){
+        String nome = this.getBoss().getNome();
+        int vida = this.getBoss().getVida();
+        int ataque = this.getBoss().getAtaque();
+        int defesa = this.getBoss().getDefesa();
+        return "Boss: " + nome + " Vida: "+vida+" Ataque: "+ataque + " Defesa: "+defesa;
     }
 
     @Override

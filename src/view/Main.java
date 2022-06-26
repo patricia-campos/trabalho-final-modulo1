@@ -135,6 +135,7 @@ public class Main {
                         break;
                     }
                     System.out.println("Escolha seu personagem: ");
+                    jogadorManipulacao.listarPersonagens();
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
                     while (comecar != 3) {
                         System.out.println("Digite 1 para começar a batalha: ");

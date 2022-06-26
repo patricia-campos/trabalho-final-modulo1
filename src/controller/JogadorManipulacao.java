@@ -67,26 +67,26 @@ public class JogadorManipulacao {
         if(tipo == 1){
             classePersonagem.setTipoNome("Mago");
             classePersonagem.setTipo(1);
-            classePersonagem.setAtaqueJogador(40);
-            classePersonagem.setVidaJogador(150);
-            classePersonagem.setDefesaJogador(50);
+            classePersonagem.setAtaqueClasse(40);
+            classePersonagem.setVidaClasse(150);
+            classePersonagem.setDefesaClasse(50);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
 
         }else if(tipo == 2){
             classePersonagem.setTipoNome("Elfo");
             classePersonagem.setTipo(2);
-            classePersonagem.setAtaqueJogador(50);
-            classePersonagem.setVidaJogador(150);
-            classePersonagem.setDefesaJogador(50);
+            classePersonagem.setAtaqueClasse(50);
+            classePersonagem.setVidaClasse(150);
+            classePersonagem.setDefesaClasse(50);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
         }else if(tipo == 3){
             classePersonagem.setTipoNome("Guerreiro");
             classePersonagem.setTipo(3);
-            classePersonagem.setAtaqueJogador(50);
-            classePersonagem.setVidaJogador(150);
-            classePersonagem.setDefesaJogador(40);
+            classePersonagem.setAtaqueClasse(50);
+            classePersonagem.setVidaClasse(150);
+            classePersonagem.setDefesaClasse(40);
             personagem.setClassePersonagem(classePersonagem);
             return this.classePersonagem;
         } else {

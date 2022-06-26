@@ -76,6 +76,7 @@ public class Main {
                         break;
                     }
 
+
                     personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse,personagem));
                     jogador.setNomeJogador(nomeJogador);
                     personagem.setNomePersonagem(nome);

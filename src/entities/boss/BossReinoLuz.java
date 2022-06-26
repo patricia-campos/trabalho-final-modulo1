@@ -1,5 +1,6 @@
 package entities.boss;
 
+import controller.Batalha;
 import entities.cenario.Cenario;
 
 import java.util.Random;
@@ -17,11 +18,12 @@ public class BossReinoLuz extends Boss{
         this.setDefesa(10);
     }
 
-    public void recuperarVida() {
+    public String recuperarVida() {
+        Batalha batalha = new Batalha();
 
         int sortear = random.nextInt(10);
-        restaurarVida = sortear + this.getVida();
-        System.out.println("Poder especial restaura " + sortear + " vida do Boss");
-        this.setVida(restaurarVida);
+        restaurarVida = sortear + batalha.getBoss().getVida();
+        batalha.getBoss().setVida(restaurarVida);
+        return "O boss restaurou "+sortear+" de vida";
     }
 }

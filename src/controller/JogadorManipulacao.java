@@ -114,14 +114,20 @@ public class JogadorManipulacao {
     }
 
     public void listarPessoas() {
+        if (listaDeJogadores.size() == 0) {
+            System.out.println("Lista vazia");
+        }
         for (int i = 0; i < listaDeJogadores.size(); i++) {
-            System.out.println("ID JOGADOR=" + i + " | " + listaDeJogadores.get(i));
+            System.out.println("ID JOGADOR=" + i + "\n" + listaDeJogadores.get(i));
         }
     }
 
     public void listarPersonagens() {
+        if (listaPersonagem.size() == 0) {
+            System.out.println("Lista vazia");
+        }
         for (int i = 0; i < listaPersonagem.size(); i++) {
-            System.out.println("id=" + i + " | " + listaPersonagem.get(i));
+            System.out.println("id=" + i + "\n" + listaPersonagem.get(i));
         }
     }
 }

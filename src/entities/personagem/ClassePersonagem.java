@@ -22,8 +22,8 @@ import interfaces.Impressao;
 
         @Override
     public String toString() {
-        return  ""
-                + "\n"+
+        return  "\n"+
+                "" +
                 "| Nome da classe: " + tipoNome +
                 "\n| Tipo da classe: " + tipo
                 + "\n"+

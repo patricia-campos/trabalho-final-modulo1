@@ -21,12 +21,17 @@ public class ClassePersonagem implements Impressao {
 
     @Override
     public String toString() {
-        return "Classe do Personagem:{" +
-                "Tipo: " + tipo + '\'' +
-                "Vida: " + vidaJogador +
-                "Defesa: " + defesaJogador +
-                "Ataque: " + ataqueJogador +
-                '}';
+        return  "=================================="
+                + "\n"+
+                "| Tipo do Personagem: " + tipo
+                + "\n"+
+                "| Vida do Personagem: " + vidaJogador
+                + "\n"+
+                "| Defesa do Personagem: " + defesaJogador
+                + "\n"+
+                "| Ataque do Personagem: " + ataqueJogador
+                + "\n"+
+                "===================================" ;
     }
 
     public int getTipo() {

@@ -37,8 +37,10 @@ public class Jogador {
 
     @Override
     public String toString() {
-        return "Jogador{" +
-                "Nome do Jogador: " + nomeJogador + '\'' +
-                '}';
+        return  "========================="
+                + "\n"+
+                "| Nome do Jogador: " + nomeJogador
+                + "\n"+
+                "=========================" ;
     }
 }

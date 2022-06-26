@@ -35,12 +35,14 @@ public class Main {
         Jogador jogador;
         Personagem personagem = new Personagem();
 
+
         int opcao = 0;
         int opcaoImprimir;
         int comecar = 0;
         int i=1;
 
         while (opcao != 9) {
+
             System.out.print("\n");
             System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
             System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
@@ -75,6 +77,7 @@ public class Main {
                         System.out.println("Tipo inválido.");
                         break;
                     }
+                    personagem = new Personagem();
                     personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
                     jogador.setNomeJogador(nomeJogador);
                     personagem.setNomePersonagem(nome);
@@ -138,8 +141,10 @@ public class Main {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
                     jogadorManipulacao.listarPessoas();
                     int id = sc.nextInt();
+                    sc.nextLine();
+                    Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
 
-                    System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
+                    System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
                     if (Objects.equals(nome, "")) {
@@ -154,7 +159,9 @@ public class Main {
                         System.out.println("Tipo inválido.");
                         break;
                     }
-
+                    personagem = new Personagem();
+                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse, personagem));
+                    jogadorParaAddPersonagem.setPersonagem(personagem, personagem.getClassePersonagem(), nome);
                 }
                 case 6 -> {
                     Batalha batalha = new Batalha();

@@ -57,7 +57,6 @@ public class Main {
                         System.out.println("Nome não pode ser vazio");
                         break;
                     }
-                    jogador.setNomeJogador(nomeJogador);
 
                     System.out.println("Agora você deve criar seu personagem: ");
 
@@ -68,11 +67,18 @@ public class Main {
                         System.out.println("Nome não pode ser vazio");
                         break;
                     }
-                    personagem.setNomePersonagem(nome);
 
                     System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
-                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(sc.nextInt(),personagem));
+                    int escolhaClasse= sc.nextInt();
                     sc.nextLine();
+                    if(escolhaClasse > 3 || escolhaClasse <=0){
+                        System.out.println("Tipo invalido");
+                        break;
+                    }
+
+                    personagem.setClassePersonagem(jogadorManipulacao.addClasse(escolhaClasse,personagem));
+                    jogador.setNomeJogador(nomeJogador);
+                    personagem.setNomePersonagem(nome);
                     jogadorManipulacao.addPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
                     System.out.println(personagem);

@@ -51,7 +51,6 @@ public class JogadorManipulacao {
     }
 
     public void adicionarJogador(Jogador jogador) {
-        System.out.println(this.retornaPersonagem(0));
         this.listaDeJogadores.add(jogador);
     }
 
@@ -105,6 +104,12 @@ public class JogadorManipulacao {
     public void listarPessoas() {
         for (int i = 0; i < listaDeJogadores.size(); i++) {
             System.out.println("id=" + i + " | " + listaDeJogadores.get(i));
+        }
+    }
+
+    public void listarPersonagens() {
+        for (int i = 0; i < listaPersonagem.size(); i++) {
+            System.out.println("id=" + i + " | " + listaPersonagem.get(i));
         }
     }
 }

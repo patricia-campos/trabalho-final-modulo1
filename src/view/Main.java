@@ -176,13 +176,15 @@ public class Main {
                     System.out.println("Selecione seu personagem digitando seu ID: ");
                     jogadorManipulacao.listarPersonagens(localJogador,jogadorDoJogo);
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo, sc.nextInt()));
+
+                    comecar = 0;
                     while (comecar != 3) {
 
                         System.out.println("Digite 1 para começar a batalha: ");
                         System.out.println("Digite 2 para começar round: " + i);
                         System.out.println("Digite 3 para fugir da batalha:");
-                        comecar = 0;
                         comecar = sc.nextInt();
+
                         switch (comecar) {
                             case 1 -> batalha.sortearCenario();
                             case 2 -> {

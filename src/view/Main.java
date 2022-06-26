@@ -6,6 +6,7 @@ import entities.personagem.ClassePersonagem;
 import entities.personagem.Jogador;
 import entities.personagem.Personagem;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -31,13 +32,13 @@ public class Main {
         System.out.println("BEM VINDO AO JOGO xxxx!");
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
-        ClassePersonagem classePersonagemManipulacao = new ClassePersonagem();
         Jogador jogador;
         Personagem personagem = new Personagem();
 
         int opcao = 0;
 
         while (opcao != 9) {
+            System.out.print("\n");
             System.out.println("Digite 1 para cadastrar um novo jogador");
             System.out.println("Digite 2 para ver os jogadores cadastrados");
             System.out.println("Digite 3 para editar um jogador");
@@ -51,13 +52,22 @@ public class Main {
                 case 1 :
                     System.out.println("Olá jogador, digite seu nome: ");
                     jogador = new Jogador();
-                    jogador.setNomeJogador(sc.nextLine());
+                    String nomeJogador = sc.nextLine();
+                    if(Objects.equals(nomeJogador, "")){
+                        System.out.println("Nome não pode ser vazio");
+                        break;
+                    }
+                    jogador.setNomeJogador(nomeJogador);
 
                     System.out.println("Agora você deve criar seu personagem: ");
 
 
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
+                    if(Objects.equals(nome, "")){
+                        System.out.println("Nome não pode ser vazio");
+                        break;
+                    }
                     personagem.setNomePersonagem(nome);
 
                     System.out.println("Escolha sua classe: 1 - Mago / 2 - Elfo / 3 - Guerreira");
@@ -65,13 +75,22 @@ public class Main {
                     sc.nextLine();
                     jogadorManipulacao.addPersonagem(personagem);
                     jogadorManipulacao.adicionarJogador(jogador);
+                    System.out.println(personagem);
                     break;
 
                 case 2:
+                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                        System.out.println("Lista vazia");
+                        break;
+                    }
                     jogadorManipulacao.listarPessoas();
                     break;
 
                 case 3:
+                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                        System.out.println("Jogadores vazios");
+                        break;
+                    }
                     System.out.println("Qual jogador você quer alterar o nome?");
                     jogadorManipulacao.listarPessoas();
                     int index = sc.nextInt();
@@ -82,6 +101,10 @@ public class Main {
                     break;
 
                 case 4:
+                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                        System.out.println("Jogadores vazios");
+                        break;
+                    }
                     System.out.println("Qual jogador você deseja remover?");
                     jogadorManipulacao.listarPessoas();
                     int id =sc.nextInt();
@@ -90,11 +113,16 @@ public class Main {
 
                 case 5:
                     Batalha batalha = new Batalha();
-                    System.out.println("Escolha seu personagem");
-                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(0));
-                    batalha.sortearCenario();
-                    batalha.inciarBatalha();
-                    break;
+                    if(jogadorManipulacao.getListaDeJogadores().size() == 0){
+                        System.out.println("Jogadores vazios");
+                        break;
+                    }
+                        System.out.println("Escolha seu personagem: ");
+                        batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(sc.nextInt()));
+                        batalha.sortearCenario();
+                        batalha.inciarBatalha();
+                        break;
+
             }
         }
     }

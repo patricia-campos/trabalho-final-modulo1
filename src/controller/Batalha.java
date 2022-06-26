@@ -144,9 +144,38 @@ public class Batalha implements Ataca {
                     "(_ \\|`   _,/_  /  \\_            ,--`\n" +
                     " \\( `   <.,../`     `-.._   _,-`");
 
-        }if(this.boss.getVida() <= 0){
+        }
+            setRoundAtual(roundAtual++);
 
-/*            System.out.println("Parabéns! Você venceu e salvou o Reino!\n" +
+            if (this.boss == bossLuz) {
+                System.out.println(bossLuz.recuperarVida());
+                reinoLuz.ajudaSoldados(this);
+                reinoLuz.bonusHorario(this);
+                cenario.buffDebuff(this);
+                this.atacar();
+                this.ataqueBoss();
+                System.out.println(this.imprimiStatusJogador());
+                System.out.println("-------------------------");
+                System.out.println(this.imprimiStatusBoss());
+            } else if (this.boss == bossSombrio) {
+                System.out.println(bossSombrio.getVida());
+                cenario.buffDebuff(this);
+                bossSombrio.danoAdicional();
+                reinoSombrio.ajudaSombria(this);
+                this.atacar();
+                this.ataqueBoss();
+                System.out.println(this.imprimiStatusJogador());
+                System.out.println("-------------------------");
+                System.out.println(this.imprimiStatusBoss());
+
+
+            }
+    }
+
+    public void retornaStatusVitoria(Boolean vitoria) {
+        if (vitoria) {
+
+            System.out.println("Parabéns! Você venceu e salvou o Reino!\n" +
                     "██╗   ██╗ ██████╗  ██████╗███████╗                      \n" +
                     "██║   ██║██╔═══██╗██╔════╝██╔════╝                      \n" +
                     "██║   ██║██║   ██║██║     █████╗                        \n" +
@@ -157,10 +186,10 @@ public class Batalha implements Ataca {
                     "    ██║   ██║██╔════╝████╗  ██║██╔════╝██╔════╝██║   ██║\n" +
                     "    ██║   ██║█████╗  ██╔██╗ ██║██║     █████╗  ██║   ██║\n" +
                     "    ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║     ██╔══╝  ██║   ██║\n" +
-                    "     ╚████╔╝ ███████╗██║ ╚████║╚██████╗███████╗╚██████╔");*/
+                    "     ╚████╔╝ ███████╗██║ ╚████║╚██████╗███████╗╚██████╔");
 
-        }else if(this.getPersonagem().getClassePersonagem().getVidaClasse() == 0){
-/*            System.out.println("Você foi derrotado.\n" +
+        } else {
+            System.out.println("Você foi derrotado.\n" +
                     " ██▒   █▓ ▒█████   ▄████▄  ▓█████                \n" +
                     "▓██░   █▒▒██▒  ██▒▒██▀ ▀█  ▓█   ▀                \n" +
                     " ▓██  █▒░▒██░  ██▒▒▓█    ▄ ▒███                  \n" +
@@ -179,112 +208,8 @@ public class Batalha implements Ataca {
                     "░▒ ░      ░ ░  ░  ░▒ ░ ▒░ ░ ▒  ▒  ░ ░  ░░░▒░ ░ ░ \n" +
                     "░░          ░     ░░   ░  ░ ░  ░    ░    ░░░ ░ ░ \n" +
                     "            ░  ░   ░        ░       ░  ░   ░     \n" +
-                    "                          ░                     ");*/
+                    "                          ░                     ");
         }
-            setRoundAtual(roundAtual++);
-
-            if (this.boss == bossLuz) {
-
-                if (this.boss.getVida() <= 0) {
-
-                    System.out.println("Parabéns! Você venceu e salvou o Reino!\n" +
-                            "██╗   ██╗ ██████╗  ██████╗███████╗                      \n" +
-                            "██║   ██║██╔═══██╗██╔════╝██╔════╝                      \n" +
-                            "██║   ██║██║   ██║██║     █████╗                        \n" +
-                            "╚██╗ ██╔╝██║   ██║██║     ██╔══╝                        \n" +
-                            " ╚████╔╝ ╚██████╔╝╚██████╗███████╗                      \n" +
-                            "  ╚═══╝   ╚═════╝  ╚═════╝╚══════╝                      \n" +
-                            "    ██╗   ██╗███████╗███╗   ██╗ ██████╗███████╗██╗   ██╗\n" +
-                            "    ██║   ██║██╔════╝████╗  ██║██╔════╝██╔════╝██║   ██║\n" +
-                            "    ██║   ██║█████╗  ██╔██╗ ██║██║     █████╗  ██║   ██║\n" +
-                            "    ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║     ██╔══╝  ██║   ██║\n" +
-                            "     ╚████╔╝ ███████╗██║ ╚████║╚██████╗███████╗╚██████╔");
-
-                }else if (this.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
-
-                    System.out.println("Você foi derrotado.\n" +
-                            " ██▒   █▓ ▒█████   ▄████▄  ▓█████                \n" +
-                            "▓██░   █▒▒██▒  ██▒▒██▀ ▀█  ▓█   ▀                \n" +
-                            " ▓██  █▒░▒██░  ██▒▒▓█    ▄ ▒███                  \n" +
-                            "  ▒██ █░░▒██   ██░▒▓▓▄ ▄██▒▒▓█  ▄                \n" +
-                            "   ▒▀█░  ░ ████▓▒░▒ ▓███▀ ░░▒████▒               \n" +
-                            "   ░ ▐░  ░ ▒░▒░▒░ ░ ░▒ ▒  ░░░ ▒░ ░               \n" +
-                            "   ░ ░░    ░ ▒ ▒░   ░  ▒    ░ ░  ░               \n" +
-                            "     ░░  ░ ░ ░ ▒  ░           ░                  \n" +
-                            "      ░      ░ ░  ░ ░         ░  ░               \n" +
-                            " ██▓███  ▓█████  ██▀███  ▓█████▄ ▓█████  █    ██ \n" +
-                            "▓██░  ██▒▓█   ▀ ▓██ ▒ ██▒▒██▀ ██▌▓█   ▀  ██  ▓██▒\n" +
-                            "▓██░ ██▓▒▒███   ▓██ ░▄█ ▒░██   █▌▒███   ▓██  ▒██░\n" +
-                            "▒██▄█▓▒ ▒▒▓█  ▄ ▒██▀▀█▄  ░▓█▄   ▌▒▓█  ▄ ▓▓█  ░██░\n" +
-                            "▒██▒ ░  ░░▒████▒░██▓ ▒██▒░▒████▓ ░▒████▒▒▒█████▓ \n" +
-                            "▒▓▒░ ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░ ▒▒▓  ▒ ░░ ▒░ ░░▒▓▒ ▒ ▒ \n" +
-                            "░▒ ░      ░ ░  ░  ░▒ ░ ▒░ ░ ▒  ▒  ░ ░  ░░░▒░ ░ ░ \n" +
-                            "░░          ░     ░░   ░  ░ ░  ░    ░    ░░░ ░ ░ \n" +
-                            "            ░  ░   ░        ░       ░  ░   ░     \n" +
-                            "                          ░                     ");
-                }
-                System.out.println(bossLuz.recuperarVida());
-                reinoLuz.ajudaSoldados(this);
-                reinoLuz.bonusHorario(this);
-                cenario.buffDebuff(this);
-                this.atacar();
-                this.ataqueBoss();
-                System.out.println(this.imprimiStatusJogador());
-                System.out.println("-------------------------");
-                System.out.println(this.imprimiStatusBoss());
-
-            } else if (this.boss == bossSombrio) {
-
-                if(this.boss.getVida() <= 0){
-
-                    System.out.println("Parabéns! Você venceu e salvou o Reino!\n" +
-                            "██╗   ██╗ ██████╗  ██████╗███████╗                      \n" +
-                            "██║   ██║██╔═══██╗██╔════╝██╔════╝                      \n" +
-                            "██║   ██║██║   ██║██║     █████╗                        \n" +
-                            "╚██╗ ██╔╝██║   ██║██║     ██╔══╝                        \n" +
-                            " ╚████╔╝ ╚██████╔╝╚██████╗███████╗                      \n" +
-                            "  ╚═══╝   ╚═════╝  ╚═════╝╚══════╝                      \n" +
-                            "    ██╗   ██╗███████╗███╗   ██╗ ██████╗███████╗██╗   ██╗\n" +
-                            "    ██║   ██║██╔════╝████╗  ██║██╔════╝██╔════╝██║   ██║\n" +
-                            "    ██║   ██║█████╗  ██╔██╗ ██║██║     █████╗  ██║   ██║\n" +
-                            "    ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║     ██╔══╝  ██║   ██║\n" +
-                            "     ╚████╔╝ ███████╗██║ ╚████║╚██████╗███████╗╚██████╔");
-
-                }else if(this.getPersonagem().getClassePersonagem().getVidaClasse() <= 0){
-
-                    System.out.println("Você foi derrotado.\n" +
-                            " ██▒   █▓ ▒█████   ▄████▄  ▓█████                \n" +
-                            "▓██░   █▒▒██▒  ██▒▒██▀ ▀█  ▓█   ▀                \n" +
-                            " ▓██  █▒░▒██░  ██▒▒▓█    ▄ ▒███                  \n" +
-                            "  ▒██ █░░▒██   ██░▒▓▓▄ ▄██▒▒▓█  ▄                \n" +
-                            "   ▒▀█░  ░ ████▓▒░▒ ▓███▀ ░░▒████▒               \n" +
-                            "   ░ ▐░  ░ ▒░▒░▒░ ░ ░▒ ▒  ░░░ ▒░ ░               \n" +
-                            "   ░ ░░    ░ ▒ ▒░   ░  ▒    ░ ░  ░               \n" +
-                            "     ░░  ░ ░ ░ ▒  ░           ░                  \n" +
-                            "      ░      ░ ░  ░ ░         ░  ░               \n" +
-                            " ██▓███  ▓█████  ██▀███  ▓█████▄ ▓█████  █    ██ \n" +
-                            "▓██░  ██▒▓█   ▀ ▓██ ▒ ██▒▒██▀ ██▌▓█   ▀  ██  ▓██▒\n" +
-                            "▓██░ ██▓▒▒███   ▓██ ░▄█ ▒░██   █▌▒███   ▓██  ▒██░\n" +
-                            "▒██▄█▓▒ ▒▒▓█  ▄ ▒██▀▀█▄  ░▓█▄   ▌▒▓█  ▄ ▓▓█  ░██░\n" +
-                            "▒██▒ ░  ░░▒████▒░██▓ ▒██▒░▒████▓ ░▒████▒▒▒█████▓ \n" +
-                            "▒▓▒░ ░  ░░░ ▒░ ░░ ▒▓ ░▒▓░ ▒▒▓  ▒ ░░ ▒░ ░░▒▓▒ ▒ ▒ \n" +
-                            "░▒ ░      ░ ░  ░  ░▒ ░ ▒░ ░ ▒  ▒  ░ ░  ░░░▒░ ░ ░ \n" +
-                            "░░          ░     ░░   ░  ░ ░  ░    ░    ░░░ ░ ░ \n" +
-                            "            ░  ░   ░        ░       ░  ░   ░     \n" +
-                            "                          ░                     ");
-                }
-                System.out.println(bossSombrio.getVida());
-                cenario.buffDebuff(this);
-                bossSombrio.danoAdicional();
-                reinoSombrio.ajudaSombria(this);
-                this.atacar();
-                this.ataqueBoss();
-                System.out.println(this.imprimiStatusJogador());
-                System.out.println("-------------------------");
-                System.out.println(this.imprimiStatusBoss());
-
-
-            }
     }
 
     @Override

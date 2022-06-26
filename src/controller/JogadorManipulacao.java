@@ -12,8 +12,7 @@ import java.util.List;
 
 public class JogadorManipulacao implements Impressao {
 
-    private List<Jogador> listaDeJogadores;
-    private ClassePersonagem classePersonagem = new ClassePersonagem();
+    private List<Jogador> listaDeJogadores = new ArrayList<>();
 
     public List<Jogador> getListaDeJogadores() {
         return listaDeJogadores;
@@ -21,14 +20,6 @@ public class JogadorManipulacao implements Impressao {
 
     public void setListaDeJogadores(List<Jogador> listaDeJogadores) {
         this.listaDeJogadores = listaDeJogadores;
-    }
-
-    public ClassePersonagem getClassePersonagem() {
-        return classePersonagem;
-    }
-
-    public void setClassePersonagem(ClassePersonagem classePersonagem) {
-        this.classePersonagem = classePersonagem;
     }
 
     public JogadorManipulacao() {

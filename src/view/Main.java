@@ -35,7 +35,7 @@ public class Main {
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
         Jogador jogador;
 
-
+        boolean vitoria;
         int opcao = 0;
         int opcaoImprimir;
         int comecar = 0;
@@ -183,7 +183,18 @@ public class Main {
                             case 2 -> {
                                 if(Objects.isNull(batalha.getCenario())){
                                     System.out.println("Você precisa começar a batalha");
-                                } else {
+                                } else if(batalha.getBoss().getVida() <= 0) {
+                                    i = 1;
+                                    vitoria = true;
+                                    batalha.setBoss(null);
+                                    batalha.setCenario(null);
+                                } else if (batalha.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
+                                    i = 1;
+                                    vitoria = false;
+                                    batalha.setBoss(null);
+                                    batalha.setCenario(null);
+                                }
+                                else {
                                 batalha.inciarBatalha();
                                 i++;
                                 }

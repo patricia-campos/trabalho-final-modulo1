@@ -223,7 +223,7 @@ public class Main {
                         System.out.println("Digite 2 para começar round: " + i);
                         System.out.println("Digite 3 para fugir da batalha:");
                         comecar = sc.nextInt();
-
+                        sc.nextLine();
                         switch (comecar) {
                             case 1 -> {
                                 if (!Objects.isNull(batalha.getCenario())) {

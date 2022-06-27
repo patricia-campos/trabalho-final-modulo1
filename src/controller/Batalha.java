@@ -141,7 +141,7 @@ public class Batalha implements Atacar {
         int defesaPorcento = this.personagem.getClassePersonagem().getDefesaClasse()/100;
         int valorAtq = atqBoss + valor - defesaPorcento;
         if (valor <= 3) {
-            System.out.println("Você desviou do ataque do boss");
+            System.out.println("Você desviou do ataque do boss\n");
         } else {
             System.out.println("O boss causou " + getBoss().getAtaque() + " de dano no jogador\n");
             this.personagem.getClassePersonagem().setVidaClasse(vidaJogador - valorAtq);

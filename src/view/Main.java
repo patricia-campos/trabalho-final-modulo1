@@ -12,24 +12,39 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("""
-                .   ║\\.
-                    ║▒\\.
-                    ║▒▒\\
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                    ║░▒║
-                  ▓▓▓▓▓▓▓
-                    ]█▓[
-                    ]█▓[
-                    ]█▓[""");
+                                
+                                             __                                                     __
+                                            (**)                                                   (**)
+                                            IIII                                                   IIII
+                                            ####                                                   ####
+                                            HHHH           O Reino de Luz e o Reino Sombrio        HHHH
+                                            HHHH          foram prejudicados com o desepertar      HHHH
+                                            ####            de seres poderosos e com sede de       ####
+                                         ___IIII___                     sangue.                 ___IIII___
+                                      .-`_._"**"_._`-.                                       .-`_._"**"_._`-.
+                                    |/``  .`\\/`.  ``\\|          Há um desequilíbrio        |/``  .`\\/`.  ``\\|
+                                           }    {     '             pairando sobre                }    {     '
+                                           ) () (                 todas as criaturas              ) () (
+                                           ( :: )               e só você pode ajudar             ( :: )
+                                           | :: |              a reestabelecer a ordem            | :: |
+                                           | )( |                entre o Reino da Luz             | )( |
+                                           | || |                 e o Reino Sombrio.              | || |
+                                           | || |                                                 | || |
+                                           | || |                   Você está pronto              | || |
+                                           | || |                     para iniciar                | || |
+                                           | || |                     a batalha?                  | || |
+                                           ( () )                                                 ( () )
+                                             \\  /                                                  \\  /
+                                              \\/                                                    \\/
+                    
+                    """);
 
-        System.out.println("BEM VINDO AO JOGO xxxx!");
+        System.out.println("\n" +
+                "██████╗  █████╗ ████████╗████████╗██╗     ███████╗     ██████╗ ███████╗    ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗ ███████╗\n" +
+                "██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝    ██╔═══██╗██╔════╝    ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗██╔════╝\n" +
+                "██████╔╝███████║   ██║      ██║   ██║     █████╗      ██║   ██║█████╗      ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║███████╗\n" +
+                "██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝      ██║   ██║██╔══╝      ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║╚════██║\n" +
+                "██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗    ╚██████╔╝██║         ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝███████║");
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
 

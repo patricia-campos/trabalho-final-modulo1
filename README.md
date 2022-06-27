@@ -9,7 +9,7 @@ de ataques com valores de ataque e defesa
 gerados aleatoriamente pelo programa.
 
 
-## 🚀 Status do Projeto XXXX - Vem Ser
+## 🚀 Status do Projeto Battle of Worlds - Vem Ser
 
 - [x] Módulo 1 - Trabalho Final
 - Conter ao menos 4 classes com atributos

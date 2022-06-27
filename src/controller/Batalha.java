@@ -166,7 +166,34 @@ public class Batalha implements Ataca {
 
     public void inciarRound() {
 
-        if (this.boss == bossLuz) {
+        setRoundAtual(roundAtual++);
+
+        if (getBoss() == getBossLuz()) {
+            getBossLuz().recuperarVida();
+            getReinoLuz().ajudaSoldados(this);
+            getReinoLuz().bonusHorario(this);
+            getCenario().buffDebuff(this);
+            this.atacar();
+            this.ataqueBoss();
+            System.out.println(this.imprimiStatusJogador());
+            System.out.println("-------------------------");
+            System.out.println(this.imprimiStatusBoss());
+        } else if (getBoss() == getBossSombrio()) {
+            getCenario().buffDebuff(this);
+            System.out.println(getBossSombrio().danoAdicional(this));
+            getReinoSombrio().ajudaSombria(this);
+            getReinoSombrio().armadilha(this);
+            this.atacar();
+            this.ataqueBoss();
+            System.out.println(this.imprimiStatusJogador());
+            System.out.println("-------------------------");
+            System.out.println(this.imprimiStatusBoss());
+        }
+    }
+
+    public void retornaBoss(){
+
+        if (this.getBoss() == getBossLuz()) {
 
             System.out.println("""
                     --------------------
@@ -239,30 +266,6 @@ public class Batalha implements Ataca {
                     (_ \\|`   _,/_  /  \\_            ,--`
                      \\( `   <.,../`     `-.._   _,-`""");
 
-        }
-        setRoundAtual(roundAtual++);
-
-        if (getBoss() == getBossLuz()) {
-            System.out.println(getBossLuz().recuperarVida());
-            getReinoLuz().ajudaSoldados(this);
-            getReinoLuz().bonusHorario(this);
-            getCenario().buffDebuff(this);
-            this.atacar();
-            this.ataqueBoss();
-            System.out.println(this.imprimiStatusJogador());
-            System.out.println("-------------------------");
-            System.out.println(this.imprimiStatusBoss());
-        } else if (getBoss() == getBossSombrio()) {
-            System.out.println(getBossSombrio().getVida());
-            getCenario().buffDebuff(this);
-            System.out.println(getBossSombrio().danoAdicional(this));
-            getReinoSombrio().ajudaSombria(this);
-            getReinoSombrio().armadilha(this);
-            this.atacar();
-            this.ataqueBoss();
-            System.out.println(this.imprimiStatusJogador());
-            System.out.println("-------------------------");
-            System.out.println(this.imprimiStatusBoss());
         }
     }
 

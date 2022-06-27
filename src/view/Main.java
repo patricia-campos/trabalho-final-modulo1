@@ -230,6 +230,7 @@ public class Main {
                                     break;
                                 }
                                 batalha.sortearCenario();
+                                batalha.retornaBoss();
                                 System.out.println("Batalha iniciada");
                                 System.out.println("Cenario sorteado\n" + batalha.getCenario());
                             }

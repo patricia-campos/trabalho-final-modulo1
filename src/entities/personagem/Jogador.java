@@ -48,7 +48,7 @@ public class Jogador {
 
     public void listarPersonagens(Jogador jogador) {
         for (int i = 0; i < jogador.getPersonagem().size() ; i++) {
-            System.out.println("id=" + i + " | " + jogador.personagem.get(i));
+            System.out.println("id=" + i + "\n" + jogador.personagem.get(i));
         }
     }
 

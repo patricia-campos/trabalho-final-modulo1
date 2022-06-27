@@ -113,6 +113,7 @@ public class Main {
                         }
                         case 2 -> {
                             System.out.println("Qual o seu Jogador");
+                            jogadorManipulacao.listarJogador();
                             int indexJogador = sc.nextInt();
                             if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
                                 System.out.println("Lista vazia");

@@ -57,7 +57,6 @@ public class Main {
 
         while (opcao != 7) {
 
-
             System.out.print("\n");
             System.out.println("Digite 0 para cadastrar automaticamente");
             System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
@@ -191,14 +190,12 @@ public class Main {
                     jogadorManipulacao.imprimir();
                     int escolhaClasse = sc.nextInt();
                     sc.nextLine();
-                    if (escolhaClasse > 3 || escolhaClasse <= 0) {
+                    if (escolhaClasse > 3 || escolhaClasse < 0) {
                         System.out.println("Tipo inválido.");
                         break;
                     }
                     Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
                     jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
-                    System.out.println(jogadorManipulacao.getListaDeJogadores().get(0).getPersonagem().get(0));
-                    System.out.println(jogadorManipulacao.getListaDeJogadores().get(0).getPersonagem().get(1));
                 }
                 case 6 -> {
                     Batalha batalha = new Batalha();
@@ -219,15 +216,13 @@ public class Main {
                     System.out.println("Selecione seu personagem digitando seu ID: ");
                     jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
                     int indexPersonagem = sc.nextInt();
+                    sc.nextLine();
                     Personagem personagem = jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem);
                     if (!(jogadorDoJogo.getPersonagem().size() > indexPersonagem)) {
                         System.out.println("Personagem nao existe ");
                         break;
                     }
                     batalha.setPersonagem(personagem);
-                    sc.nextLine();
-                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem));
-
                     comecar = 0;
                     while (comecar != 3) {
 

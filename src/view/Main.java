@@ -183,6 +183,7 @@ public class Main {
                     System.out.println("Selecione seu jogador digitando seu ID:");
                     jogadorManipulacao.listarJogador();
                     int localJogador = sc.nextInt();
+                    sc.nextLine();
                     if (!(jogadorManipulacao.getListaDeJogadores().size() > localJogador)) {
                         System.out.println("Jogador nao existe!! ");
                         break;
@@ -197,6 +198,10 @@ public class Main {
                     }
                     jogadorManipulacao.listarPersonagens(localJogador,jogadorDoJogo);
                     batalha.setPersonagem(personagem);
+                    jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
+                    int indexPersonagem = sc.nextInt();
+                    sc.nextLine();
+                    batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem));
 
                     comecar = 0;
                     while (comecar != 3) {

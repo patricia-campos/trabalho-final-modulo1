@@ -32,8 +32,11 @@ public class Boss {
     }
 
     public void setVida(int vida) {
-        this.vida = vida;
-    }
+        if (vida < 0) {
+            this.vida = 0;
+        }else {
+            this.vida = vida;
+    }}
 
     public int getAtaque() {
         return ataque;

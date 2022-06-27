@@ -33,7 +33,11 @@ public class ClassePersonagem implements Impressao {
     }
 
     public void setVidaClasse(int vidaClasse) {
-        this.vidaClasse = vidaClasse;
+        if (vidaClasse < 0) {
+            this.vidaClasse = 0;
+        } else {
+            this.vidaClasse = vidaClasse;
+        }
     }
 
     public int getDefesaClasse() {

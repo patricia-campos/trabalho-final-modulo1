@@ -17,12 +17,12 @@ public class BossReinoLuz extends Boss{
         this.setDefesa(10);
     }
 
-    public String recuperarVida() {
+    public void recuperarVida() {
         Batalha batalha = new Batalha();
 
         int sortear = random.nextInt(10);
         restaurarVida = sortear + batalha.getBoss().getVida();
         batalha.getBoss().setVida(restaurarVida);
-        return "O boss restaurou "+sortear+" de vida";
+        System.out.println("O boss restaurou "+sortear+" de vida");
     }
 }

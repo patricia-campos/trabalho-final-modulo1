@@ -259,7 +259,7 @@ public class Main {
                                 }
                             }
                             case 3 -> {
-                                System.out.println("você fugiu da batalha");
+                                System.out.println("Você fugiu da batalha");
                                 batalha.setBoss(null);
                                 batalha.setCenario(null);
                             }

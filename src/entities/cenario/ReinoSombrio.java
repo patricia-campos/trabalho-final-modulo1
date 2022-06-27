@@ -5,8 +5,6 @@ import controller.Batalha;
 import java.util.Random;
 
 public class ReinoSombrio extends Cenario {
-    private String malCheiro;
-
 
     public void ajudaSombria(Batalha batalha) {
         Random random = new Random();

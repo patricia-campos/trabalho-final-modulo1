@@ -92,7 +92,7 @@ public class Batalha implements Ataca {
             System.out.println("\nO Boss desviou do seu ataque\n");
 
         } else {
-            System.out.println("\nAtaque bem sucedido\n");
+            System.out.println("\nAtaque bem sucedido, você causou " + getPersonagem().getClassePersonagem().getAtaqueClasse() + " de dano no boss");
 
             this.boss.setVida(vidaBoss + defesaBoss - valorAtq);
         }
@@ -142,6 +142,7 @@ public class Batalha implements Ataca {
         if (valor <= 3) {
             System.out.println("\nVocê desviou do ataque do boss\n");
         } else {
+            System.out.println("\nO boss causou " + getBoss().getAtaque() + " de dano\n");
             this.personagem.getClassePersonagem().setVidaClasse(vidaJogador - valorAtq);
         }
     }

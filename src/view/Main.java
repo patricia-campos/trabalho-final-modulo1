@@ -220,7 +220,7 @@ public class Main {
                     while (comecar != 3) {
 
                         System.out.println("Digite 1 para começar a batalha: ");
-                        System.out.println("Digite 2 para começar round: " + i);
+                        System.out.println("Digite 2 para atacar: ");
                         System.out.println("Digite 3 para fugir da batalha:");
                         comecar = sc.nextInt();
                         sc.nextLine();
@@ -236,6 +236,7 @@ public class Main {
                                 System.out.println("Cenario sorteado\n" + batalha.getCenario());
                             }
                             case 2 -> {
+                                System.out.println("\nRound: " + i+"\n");
                                 if (Objects.isNull(batalha.getCenario())) {
                                     System.out.println("Você precisa começar a batalha");
                                 } else if (batalha.getBoss().getVida() <= 0) {

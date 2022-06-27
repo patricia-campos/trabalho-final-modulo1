@@ -89,10 +89,10 @@ public class Batalha implements Atacar {
         int valorAtq = atqJogador + valor;
 
         if (valor <= 2) {
-            System.out.println("\nO Boss desviou do seu ataque\n");
+            System.out.println("O Boss desviou do seu ataque");
 
         } else {
-            System.out.println("\nAtaque bem sucedido, você causou " + getPersonagem().getClassePersonagem().getAtaqueClasse() + " de dano no boss");
+            System.out.println("Ataque bem sucedido, você causou " + getPersonagem().getClassePersonagem().getAtaqueClasse() + " de dano no boss");
 
             this.boss.setVida(vidaBoss + defesaBoss - valorAtq);
         }
@@ -138,11 +138,12 @@ public class Batalha implements Atacar {
         int valor = random.nextInt(10);
         int vidaJogador = this.personagem.getClassePersonagem().getVidaClasse();
         int atqBoss = this.boss.getAtaque();
-        int valorAtq = atqBoss + valor;
+        int defesaPorcento = this.personagem.getClassePersonagem().getDefesaClasse()/100;
+        int valorAtq = atqBoss + valor - defesaPorcento;
         if (valor <= 3) {
             System.out.println("\nVocê desviou do ataque do boss\n");
         } else {
-            System.out.println("\nO boss causou " + getBoss().getAtaque() + " de dano\n");
+            System.out.println("O boss causou " + getBoss().getAtaque() + " de dano no jogador\n");
             this.personagem.getClassePersonagem().setVidaClasse(vidaJogador - valorAtq);
         }
     }

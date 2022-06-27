@@ -236,7 +236,6 @@ public class Main {
                                 System.out.println("Cenario sorteado\n" + batalha.getCenario());
                             }
                             case 2 -> {
-                                System.out.println("\nRound: " + i+"\n");
                                 if (Objects.isNull(batalha.getCenario())) {
                                     System.out.println("Você precisa começar a batalha");
                                 } else if (batalha.getBoss().getVida() <= 0) {
@@ -254,6 +253,7 @@ public class Main {
                                     batalha.retornaStatusVitoria(vitoria);
                                     comecar = 3;
                                 } else {
+                                    System.out.println("\nRound: " + i+"\n");
                                     batalha.inciarRound();
                                     batalha.setRoundAtual(i);
                                     i++;

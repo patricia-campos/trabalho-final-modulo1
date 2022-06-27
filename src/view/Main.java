@@ -12,49 +12,50 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("""
-                                
-                                             __                                                     __
-                                            (**)                                                   (**)
-                                            IIII                                                   IIII
-                                            ####                                                   ####
-                                            HHHH           O Reino de Luz e o Reino Sombrio        HHHH
-                                            HHHH          foram prejudicados com o desepertar      HHHH
-                                            ####            de seres poderosos e com sede de       ####
-                                         ___IIII___                     sangue.                 ___IIII___
-                                      .-`_._"**"_._`-.                                       .-`_._"**"_._`-.
-                                    |/``  .`\\/`.  ``\\|          Há um desequilíbrio        |/``  .`\\/`.  ``\\|
-                                           }    {     '             pairando sobre                }    {     '
-                                           ) () (                 todas as criaturas              ) () (
-                                           ( :: )               e só você pode ajudar             ( :: )
-                                           | :: |              a reestabelecer a ordem            | :: |
-                                           | )( |                entre o Reino da Luz             | )( |
-                                           | || |                 e o Reino Sombrio.              | || |
-                                           | || |                                                 | || |
-                                           | || |                   Você está pronto              | || |
-                                           | || |                     para iniciar                | || |
-                                           | || |                     a batalha?                  | || |
-                                           ( () )                                                 ( () )
-                                             \\  /                                                  \\  /
-                                              \\/                                                    \\/
-                    
-                    """);
+                            
+                                         __                                                     __
+                                        (**)                                                   (**)
+                                        IIII                                                   IIII
+                                        ####                                                   ####
+                                        HHHH           O Reino de Luz e o Reino Sombrio        HHHH
+                                        HHHH          foram prejudicados com o desepertar      HHHH
+                                        ####            de seres poderosos e com sede de       ####
+                                     ___IIII___                     sangue.                 ___IIII___
+                                  .-`_._"**"_._`-.                                       .-`_._"**"_._`-.
+                                |/``  .`\\/`.  ``\\|          Há um desequilíbrio        |/``  .`\\/`.  ``\\|
+                                       }    {     '             pairando sobre                }    {     '
+                                       ) () (                 todas as criaturas              ) () (
+                                       ( :: )               e só você pode ajudar             ( :: )
+                                       | :: |              a reestabelecer a ordem            | :: |
+                                       | )( |                entre o Reino da Luz             | )( |
+                                       | || |                 e o Reino Sombrio.              | || |
+                                       | || |                                                 | || |
+                                       | || |                   Você está pronto              | || |
+                                       | || |                     para iniciar                | || |
+                                       | || |                     a batalha?                  | || |
+                                       ( () )                                                 ( () )
+                                         \\  /                                                  \\  /
+                                          \\/                                                    \\/
+                                    
+                """);
 
-        System.out.println("\n" +
-                "██████╗  █████╗ ████████╗████████╗██╗     ███████╗     ██████╗ ███████╗    ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗ ███████╗\n" +
-                "██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝    ██╔═══██╗██╔════╝    ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗██╔════╝\n" +
-                "██████╔╝███████║   ██║      ██║   ██║     █████╗      ██║   ██║█████╗      ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║███████╗\n" +
-                "██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝      ██║   ██║██╔══╝      ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║╚════██║\n" +
-                "██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗    ╚██████╔╝██║         ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝███████║");
+        System.out.println("""
+
+                ██████╗  █████╗ ████████╗████████╗██╗     ███████╗     ██████╗ ███████╗    ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗ ███████╗
+                ██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝    ██╔═══██╗██╔════╝    ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗██╔════╝
+                ██████╔╝███████║   ██║      ██║   ██║     █████╗      ██║   ██║█████╗      ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║███████╗
+                ██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝      ██║   ██║██╔══╝      ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║╚════██║
+                ██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗    ╚██████╔╝██║         ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝███████║""");
 
         JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
 
         boolean vitoria;
         int opcao = 0;
         int opcaoImprimir;
-        int comecar = 0;
+        int comecar;
         int i = 1;
 
-        while (opcao != 9) {
+        while (opcao != 7) {
 
 
             System.out.print("\n");
@@ -63,7 +64,8 @@ public class Main {
             System.out.println("Digite 3 para EDITAR um JOGADOR");
             System.out.println("Digite 4 para EXCLUIR um JOGADOR");
             System.out.println("Digite 5 para ADICIONAR um PERSONAGEM");
-            System.out.println("Digite 6 para INICIAR a batalha");
+            System.out.println("Digite 6 para INICIAR a BATALHA");
+            System.out.println("Digite 7 para SAIR do JOGO");
             opcao = sc.nextInt();
             sc.nextLine();
             switch (opcao) {
@@ -132,8 +134,16 @@ public class Main {
                     jogadorManipulacao.listarJogador();
                     int index = sc.nextInt();
                     sc.nextLine();
+                    if (!(jogadorManipulacao.getListaDeJogadores().size() > index)) {
+                        System.out.println("Jogador nao existe!! ");
+                        break;
+                    }
                     System.out.println("Digite o novo nome do jogador: ");
                     String novoNome = sc.nextLine();
+                    if (Objects.equals(novoNome, "")) {
+                        System.out.println("Nome não pode ser vazio.");
+                        break;
+                    }
                     jogadorManipulacao.editarJogador(index, novoNome);
                 }
                 case 4 -> {
@@ -144,6 +154,10 @@ public class Main {
                     System.out.println("Qual jogador você deseja remover?");
                     jogadorManipulacao.listarJogador();
                     int id = sc.nextInt();
+                    if (!(jogadorManipulacao.getListaDeJogadores().size() > id)) {
+                        System.out.println("Jogador nao existe!! ");
+                        break;
+                    }
                     jogadorManipulacao.removerJogadorPorIndice(id);
                 }
                 case 5 -> {
@@ -190,16 +204,14 @@ public class Main {
                     }
                     Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
                     System.out.println("Selecione seu personagem digitando seu ID: ");
-                    int idPersonagem = sc.nextInt();
-                    Personagem personagem = jogadorManipulacao.retornaPersonagem(jogadorDoJogo, idPersonagem);
-                    if (!(jogadorDoJogo.getPersonagem().size() > idPersonagem)) {
+                    jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
+                    int indexPersonagem = sc.nextInt();
+                    Personagem personagem = jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem);
+                    if (!(jogadorDoJogo.getPersonagem().size() > indexPersonagem)) {
                         System.out.println("Personagem nao existe ");
                         break;
                     }
-                    jogadorManipulacao.listarPersonagens(localJogador,jogadorDoJogo);
                     batalha.setPersonagem(personagem);
-                    jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
-                    int indexPersonagem = sc.nextInt();
                     sc.nextLine();
                     batalha.setPersonagem(jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem));
 
@@ -212,7 +224,11 @@ public class Main {
                         comecar = sc.nextInt();
 
                         switch (comecar) {
-                            case 1 -> batalha.sortearCenario();
+                            case 1 -> {
+                                batalha.sortearCenario();
+                                System.out.println("Batalha iniciada");
+                                System.out.println("Cenario sorteado\n" + batalha.getCenario());
+                            }
                             case 2 -> {
                                 if (Objects.isNull(batalha.getCenario())) {
                                     System.out.println("Você precisa começar a batalha");
@@ -236,10 +252,15 @@ public class Main {
                                     i++;
                                 }
                             }
-                            case 3 -> System.out.println("você fugiu da batalha");
+                            case 3 -> {
+                                System.out.println("você fugiu da batalha");
+                                batalha.setBoss(null);
+                                batalha.setCenario(null);
+                            }
                         }
                     }
                 }
+                case 7 -> System.out.println("Você saiu do jogo");
             }
         }
     }

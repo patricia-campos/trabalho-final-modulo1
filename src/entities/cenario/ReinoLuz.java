@@ -36,9 +36,18 @@ public class ReinoLuz extends Cenario{
             batalha.getBoss().setVida(batalha.getBoss().getVida() + sortear);
         }
     }
+
+    @Override
+    public void buffDebuff(Batalha batalha){
+        Random random = new Random();
+        int sortear = random.nextInt(2) +1;
+        System.out.println("Reino da luz traz um bonus de "+sortear+" ataque para o jogador e retira o mesmo tanto de ataque do boss");
+        batalha.getPersonagem().getClassePersonagem().setAtaqueClasse(batalha.getPersonagem().getClassePersonagem().getAtaqueClasse() + sortear);
+        batalha.getBoss().setAtaque(batalha.getBoss().getAtaque() - sortear);
+    }
     @Override
     public void imprimir() {
-        System.out.println(this.getReinoLuz());
+        System.out.println(this);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package entities.boss;
 
 import controller.Batalha;
-import entities.cenario.Cenario;
 
 import java.util.Random;
 

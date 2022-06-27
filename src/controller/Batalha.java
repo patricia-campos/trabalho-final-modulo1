@@ -88,47 +88,47 @@ public class Batalha implements Ataca {
         int defesaBoss = this.boss.getDefesa();
         int valorAtq = atqJogador + valor;
 
-        if(valor <= 2) {
+        if (valor <= 2) {
             System.out.println("\nO Boss desviou do seu ataque\n");
 
-        }else {
+        } else {
             System.out.println("\nAtaque bem sucedido\n");
 
-            this.boss.setVida(vidaBoss + defesaBoss - valorAtq );
+            this.boss.setVida(vidaBoss + defesaBoss - valorAtq);
         }
     }
 
-    public String imprimiStatusJogador(){
+    public String imprimiStatusJogador() {
         String nome = getPersonagem().getClassePersonagem().getTipoNome();
         int vida = getPersonagem().getClassePersonagem().getVidaClasse();
         int ataque = getPersonagem().getClassePersonagem().getAtaqueClasse();
         int defesa = getPersonagem().getClassePersonagem().getDefesaClasse();
 
-        return  "" +
+        return "" +
                 "| Personagem: " + nome +
                 "\n| Vida: " + vida
-                + "\n"+
+                + "\n" +
                 "| Ataque: " + ataque
-                + "\n"+
+                + "\n" +
                 "| Defesa: " + defesa +
-                "" ;
+                "";
     }
 
-    public String imprimiStatusBoss(){
+    public String imprimiStatusBoss() {
         String nome = getBoss().getNome();
         int vida = getBoss().getVida();
         int ataque = getBoss().getAtaque();
         int defesa = getBoss().getDefesa();
 
-        return  "" +
+        return "" +
                 "| Boss: " + nome +
                 "\n| Vida: " + vida
-                + "\n"+
+                + "\n" +
                 "| Ataque: " + ataque
-                + "\n"+
+                + "\n" +
                 "| Defesa: " + defesa
-                + "\n"+
-                "" ;
+                + "\n" +
+                "";
     }
 
     @Override
@@ -139,35 +139,36 @@ public class Batalha implements Ataca {
         int vidaJogador = this.personagem.getClassePersonagem().getVidaClasse();
         int atqBoss = this.boss.getAtaque();
         int valorAtq = atqBoss + valor;
-        if(valor <= 3) {
+        if (valor <= 3) {
             System.out.println("\nVocê desviou do ataque do boss\n");
-        }else {
+        } else {
             this.personagem.getClassePersonagem().setVidaClasse(vidaJogador - valorAtq);
         }
     }
 
-    public void sortearCenario(){
-        if(this.personagem == null){
+    public void sortearCenario() {
+        if (this.personagem == null) {
             System.out.println("| Não há personagem disponível para a batalha |");
         }
         Random random = new Random();
         int sortear = random.nextInt(2) + 1;
-        switch (sortear) {
-            case 1 -> {
-                setCenario(reinoLuz);
-                setBoss(bossLuz);
-            }
-            case 2 -> {
-                this.cenario = reinoSombrio;
-                setBoss(bossSombrio);
-            }
-            case default -> System.out.println("| Cenário Inválido |");
+        if (sortear == 1) {
+            setCenario(reinoLuz);
+            setBoss(bossLuz);
+        }
+        if (sortear == 2) {
+            this.cenario = reinoSombrio;
+            setBoss(bossSombrio);
+        }
+        else {
+            System.out.println("| Cenário Inválido |");
         }
     }
 
-    public void inciarRound(){
 
-        if(this.boss == bossLuz){
+    public void inciarRound() {
+
+        if (this.boss == bossLuz) {
 
             System.out.println("""
                     --------------------
@@ -210,7 +211,7 @@ public class Batalha implements Ataca {
                                                   | |_,,,
                                                   \\  \\  /
                                                    '.__)""");
-        }else{
+        } else {
 
             System.out.println("""
                     --------------------
@@ -241,29 +242,30 @@ public class Batalha implements Ataca {
                      \\( `   <.,../`     `-.._   _,-`""");
 
         }
-            setRoundAtual(roundAtual++);
+        setRoundAtual(roundAtual++);
 
-            if (this.boss == bossLuz) {
-                System.out.println(bossLuz.recuperarVida());
-                reinoLuz.ajudaSoldados(this);
-                reinoLuz.bonusHorario(this);
-                cenario.buffDebuff(this);
-                this.atacar();
-                this.ataqueBoss();
-                System.out.println(this.imprimiStatusJogador());
-                System.out.println("-------------------------");
-                System.out.println(this.imprimiStatusBoss());
-            } else if (this.boss == bossSombrio) {
-                System.out.println(bossSombrio.getVida());
-                cenario.buffDebuff(this);
-                System.out.println(bossSombrio.danoAdicional(this));
-                reinoSombrio.ajudaSombria(this);
-                this.atacar();
-                this.ataqueBoss();
-                System.out.println(this.imprimiStatusJogador());
-                System.out.println("-------------------------");
-                System.out.println(this.imprimiStatusBoss());
-            }
+        if (getBoss() == getBossLuz()) {
+            System.out.println(getBossLuz().recuperarVida());
+            getReinoLuz().ajudaSoldados(this);
+            getReinoLuz().bonusHorario(this);
+            getCenario().buffDebuff(this);
+            this.atacar();
+            this.ataqueBoss();
+            System.out.println(this.imprimiStatusJogador());
+            System.out.println("-------------------------");
+            System.out.println(this.imprimiStatusBoss());
+        } else if (getBoss() == getBossSombrio()) {
+            System.out.println(getBossSombrio().getVida());
+            getCenario().buffDebuff(this);
+            System.out.println(getBossSombrio().danoAdicional(this));
+            getReinoSombrio().ajudaSombria(this);
+            getReinoSombrio().armadilha(this);
+            this.atacar();
+            this.ataqueBoss();
+            System.out.println(this.imprimiStatusJogador());
+            System.out.println("-------------------------");
+            System.out.println(this.imprimiStatusBoss());
+        }
     }
 
     public void retornaStatusVitoria(Boolean vitoria) {

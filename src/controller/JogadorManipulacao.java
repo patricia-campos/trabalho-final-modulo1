@@ -18,10 +18,6 @@ public class JogadorManipulacao implements Impressao {
         return listaDeJogadores;
     }
 
-    public void setListaDeJogadores(List<Jogador> listaDeJogadores) {
-        this.listaDeJogadores = listaDeJogadores;
-    }
-
     public JogadorManipulacao() {
         this.listaDeJogadores = new ArrayList<>();
     }

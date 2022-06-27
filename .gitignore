@@ -44,6 +44,7 @@ out/
 *.ipr
 *.iws
 /out
+out\production\trabalho-final-modulo1\view
 
 ##############################
 ## Eclipse

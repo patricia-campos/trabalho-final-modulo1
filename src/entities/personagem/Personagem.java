@@ -1,8 +1,25 @@
 package entities.personagem;
 
 public class Personagem {
+
     private String nomePersonagem;
     private ClassePersonagem classePersonagem = new ClassePersonagem();
+
+    public String getNomePersonagem() {
+        return nomePersonagem;
+    }
+
+    public void setNomePersonagem(String nomePersonagem) {
+        this.nomePersonagem = nomePersonagem;
+    }
+
+    public ClassePersonagem getClassePersonagem() {
+        return classePersonagem;
+    }
+
+    public void setClassePersonagem(ClassePersonagem classePersonagem) {
+        this.classePersonagem = classePersonagem;
+    }
 
     public Personagem() {
     }
@@ -40,22 +57,6 @@ public class Personagem {
             System.out.println("O tipo selecionado é inválido!");
         }
         return null;
-    }
-
-    public String getNomePersonagem() {
-        return nomePersonagem;
-    }
-
-    public void setNomePersonagem(String nomePersonagem) {
-        this.nomePersonagem = nomePersonagem;
-    }
-
-    public ClassePersonagem getClassePersonagem() {
-        return classePersonagem;
-    }
-
-    public void setClassePersonagem(ClassePersonagem classePersonagem) {
-        this.classePersonagem = classePersonagem;
     }
 
 

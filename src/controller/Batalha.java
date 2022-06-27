@@ -7,11 +7,11 @@ import entities.cenario.Cenario;
 import entities.cenario.ReinoLuz;
 import entities.cenario.ReinoSombrio;
 import entities.personagem.Personagem;
-import interfaces.Ataca;
+import interfaces.Atacar;
 
 import java.util.Random;
 
-public class Batalha implements Ataca {
+public class Batalha implements Atacar {
 
     private Cenario cenario;
     private ReinoLuz reinoLuz = new ReinoLuz();
@@ -157,7 +157,7 @@ public class Batalha implements Ataca {
             setCenario(reinoLuz);
             setBoss(bossLuz);
         }else if (sortear == 2) {
-            this.cenario = reinoSombrio;
+            setCenario(reinoSombrio);
             setBoss(bossSombrio);
         } else if(sortear > 2) {
             System.out.println("| Cenário Inválido |");

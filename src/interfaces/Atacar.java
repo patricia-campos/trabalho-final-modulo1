@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface Ataca {
+public interface Atacar {
 
     void atacar();
     void ataqueBoss();

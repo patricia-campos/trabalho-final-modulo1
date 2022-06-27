@@ -285,7 +285,7 @@ public class Batalha implements Ataca {
 
         } else {
             System.out.println("""
-                    Você foi derrotado.
+                    O Reino continua em perigo...
                      ██▒   █▓ ▒█████   ▄████▄  ▓█████               \s
                     ▓██░   █▒▒██▒  ██▒▒██▀ ▀█  ▓█   ▀               \s
                      ▓██  █▒░▒██░  ██▒▒▓█    ▄ ▒███                 \s

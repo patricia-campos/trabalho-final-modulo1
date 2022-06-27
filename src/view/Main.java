@@ -34,8 +34,8 @@ public class Main {
                                        | || |                     para iniciar                | || |
                                        | || |                     a batalha?                  | || |
                                        ( () )                                                 ( () )
-                                         \\  /                                                  \\  /
-                                          \\/                                                    \\/
+                                        \\  /                                                   \\  /
+                                         \\/                                                     \\/
                                     
                 """);
 

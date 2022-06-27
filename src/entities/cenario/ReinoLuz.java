@@ -53,9 +53,8 @@ public class ReinoLuz extends Cenario{
     @Override
     public String toString() {
         return """
-                O Cenario da luz traz um lugar iluminado em mundo aberto
-                Lugar aberto com muitas arvores e vida
-                Um lugar iluminado
+                O Cenário da luz traz um lugar iluminado em mundo aberto
+                Lugar aberto com muitas arvores e vida.
                 """;
     }
 

@@ -175,6 +175,14 @@ public class Main {
                     }
                     Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
                     System.out.println("Selecione seu personagem digitando seu ID: ");
+                    int idPersonagem = sc.nextInt();
+                    Personagem personagem = jogadorManipulacao.retornaPersonagem(jogadorDoJogo, idPersonagem);
+                    if (!(jogadorDoJogo.getPersonagem().size() > idPersonagem)) {
+                        System.out.println("Personagem nao existe ");
+                        break;
+                    }
+                    jogadorManipulacao.listarPersonagens(localJogador,jogadorDoJogo);
+                    batalha.setPersonagem(personagem);
                     jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
                     int indexPersonagem = sc.nextInt();
                     sc.nextLine();

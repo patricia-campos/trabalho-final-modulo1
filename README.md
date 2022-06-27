@@ -1,9 +1,13 @@
-# NOME DO PROJETO
+# TEXT GAME BATTLE OF WORLDS
 
-Descrição do nosso projeto. Falar o que é, o que faz, de onde vem,  etc.
+Nossa equipe escolheu o tema Jogos para 
+elaborar o trabalho 
+final do módulo 1.
+Desenvolvemos um jogo RPG em formato de texto
+onde o usuário pode interagir com um vilão através 
+de ataques com valores de ataque e defesa 
+gerados aleatoriamente pelo programa.
 
-
-<img src="exemplo-image.png" alt="exemplo imagem">
 
 ## 🚀 Status do Projeto XXXX - Vem Ser
 
@@ -15,69 +19,32 @@ Descrição do nosso projeto. Falar o que é, o que faz, de onde vem,  etc.
 - Diagrama de Classes
 - CRUD
 
-- [x] Módulo 2 - Trabalho Final
-
-- [x] Módulo 3 - Trabalho Final
   
 ## ☕ Jogando XXXXX
 
-Para jogar <nome_do_projeto>, siga estas etapas:
+1. Cadastre o Jogador
+2. Cadastre o Personagem
+3. Escolha uma das 3 classes de personagens disponíveis.
+Cada um tem poderes de ataque ou defessa diferentes.
+4. Inicie a batalha
+5. Dê start no round e boa sorte!
 
-```
-<exemplo_de_uso>
-```
-
-Comandos de execução e exemplos que os usuários acharão úteis. Referência de opções.
-
-  
   
 ### Ajustes e melhorias
 
 O projeto ainda está em desenvolvimento e para as próximas atualizações deixamos as seguintes sugestões:
 
-1. XXXXXX
-2. YYYYYY
-3. ZZZZZ
-
+1. Poder manipular  (alterar ou excluir jogador ou
+personagem pelo nome, no momento do projeto
+manipulamos através do id.
 
 
 
 ## 🤝 Colaboradores
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="#">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
-        <sub>
-          <b>Iuri Silva</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
-        <sub>
-          <b>Mark Zuckerberg</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Steve Jobs</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
-
-## 🚀 Agradecimentos
-
-
+Eric Andrade
+Gustavo Teichmann
+Patrícia Campos
 
 
 [⬆ Voltar ao topo](#nome-do-projeto)<br>

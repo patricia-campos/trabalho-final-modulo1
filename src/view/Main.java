@@ -124,6 +124,7 @@ public class Main {
                                 jogador.listarPersonagens(jogador);
                             }
                         }
+                        case default -> System.out.println("Numero incorreto");
                     }
                 }
                 case 3 -> {
@@ -253,7 +254,7 @@ public class Main {
                                     batalha.retornaStatusVitoria(vitoria);
                                     comecar = 3;
                                 } else {
-                                    System.out.println("\nRound: " + i+"\n");
+                                    System.out.println("\nRound: " + i + "\n");
                                     batalha.inciarRound();
                                     batalha.setRoundAtual(i);
                                     i++;
@@ -264,10 +265,12 @@ public class Main {
                                 batalha.setBoss(null);
                                 batalha.setCenario(null);
                             }
+                            case default -> System.out.println("Numero incorreto");
                         }
                     }
                 }
                 case 7 -> System.out.println("Você saiu do jogo");
+                case default -> System.out.println("Numero incorreto");
             }
         }
     }

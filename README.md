@@ -7,6 +7,10 @@ Desenvolvemos um jogo RPG em formato de texto
 onde o usuário pode interagir com um vilão através 
 de ataques com valores de ataque e defesa 
 gerados aleatoriamente pelo programa.
+<br>
+## Diagrama UML
+Acesse nosso diagrama UML através do link: https://miro.com/app/board/uXjVOqHKkdg=/?share_link_id=9087179294
+
 
 
 ## 🚀 Status do Projeto Battle of Worlds - Vem Ser
@@ -20,7 +24,7 @@ gerados aleatoriamente pelo programa.
 - CRUD
 
   
-## ☕ Jogando XXXXX
+## ☕ Jogando Battle of Worlds
 
 1. Cadastre o Jogador
 2. Cadastre o Personagem

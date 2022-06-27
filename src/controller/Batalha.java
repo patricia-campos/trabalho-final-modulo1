@@ -155,12 +155,10 @@ public class Batalha implements Ataca {
         if (sortear == 1) {
             setCenario(reinoLuz);
             setBoss(bossLuz);
-        }
-        if (sortear == 2) {
+        }else if (sortear == 2) {
             this.cenario = reinoSombrio;
             setBoss(bossSombrio);
-        }
-        else {
+        } else if(sortear > 2) {
             System.out.println("| Cenário Inválido |");
         }
     }

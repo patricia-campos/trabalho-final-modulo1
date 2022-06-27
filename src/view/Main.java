@@ -225,6 +225,10 @@ public class Main {
 
                         switch (comecar) {
                             case 1 -> {
+                                if (!Objects.isNull(batalha.getCenario())) {
+                                    System.out.println("Batalha já foi iniciada");
+                                    break;
+                                }
                                 batalha.sortearCenario();
                                 System.out.println("Batalha iniciada");
                                 System.out.println("Cenario sorteado\n" + batalha.getCenario());

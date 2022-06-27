@@ -59,6 +59,7 @@ public class Main {
 
 
             System.out.print("\n");
+            System.out.println("Digite 0 para cadastrar automaticamente");
             System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
             System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
             System.out.println("Digite 3 para EDITAR um JOGADOR");
@@ -69,6 +70,16 @@ public class Main {
             opcao = sc.nextInt();
             sc.nextLine();
             switch (opcao) {
+                case 0 -> {
+                    String nomeJogador = "Gustavo";
+                    String nomePersonagem = "Legolas";
+                    int escolhaClasse = 1;
+                    Personagem personagemInicial = new Personagem(nomePersonagem, escolhaClasse);
+                    Jogador jogador = new Jogador(nomeJogador, personagemInicial);
+                    personagemInicial.setNomePersonagem(nomePersonagem);
+                    jogadorManipulacao.addPersonagem(jogador, personagemInicial);
+                    jogadorManipulacao.adicionarJogador(jogador);
+                }
                 case 1 -> {
                     System.out.println("Olá jogador! Digite seu nome: ");
                     String nomeJogador = sc.nextLine();

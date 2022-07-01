@@ -1,4 +1,6 @@
-package entities.personagem;
+package entities;
+
+import entities.ClassePersonagem;
 
 public class Personagem {
 

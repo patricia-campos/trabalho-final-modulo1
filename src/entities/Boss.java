@@ -1,13 +1,13 @@
-package entities.boss;
-
-import entities.cenario.Cenario;
+package entities;
 
 public class Boss {
 
+    private int idBoss;
     private String nome;
     private int vida;
     private int ataque;
     private int defesa;
+    private int tipo;
 
     public Boss() {
     }

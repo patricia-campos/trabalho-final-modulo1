@@ -1,4 +1,4 @@
-package entities.cenario;
+package entities;
 
 import controller.Batalha;
 import interfaces.Impressao;

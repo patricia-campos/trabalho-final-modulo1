@@ -3,8 +3,8 @@ package view;
 import banco.DbConfiguration;
 import controller.Batalha;
 import controller.JogadorManipulacao;
-import entities.personagem.Jogador;
-import entities.personagem.Personagem;
+import entities.Jogador;
+import entities.Personagem;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -57,6 +57,8 @@ public class Main {
         int i = 1;
 
         while (opcao != 7) {
+            DbConfiguration db = new DbConfiguration();
+            db.getConnection();
 
             System.out.print("\n");
             System.out.println("Digite 0 para cadastrar automaticamente");

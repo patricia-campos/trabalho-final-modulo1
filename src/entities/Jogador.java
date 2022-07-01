@@ -1,4 +1,4 @@
-package entities.personagem;
+package entities;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,9 +2,9 @@ package controller;
 
 import java.util.ArrayList;
 
-import entities.personagem.ClassePersonagem;
-import entities.personagem.Jogador;
-import entities.personagem.Personagem;
+import entities.ClassePersonagem;
+import entities.Jogador;
+import entities.Personagem;
 import interfaces.Impressao;
 
 import java.util.List;

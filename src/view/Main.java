@@ -1,5 +1,6 @@
 package view;
 
+import banco.DbConfiguration;
 import controller.Batalha;
 import controller.JogadorManipulacao;
 import entities.personagem.Jogador;

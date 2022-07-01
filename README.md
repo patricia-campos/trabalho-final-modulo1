@@ -22,6 +22,8 @@ Acesse nosso diagrama UML através do link: https://miro.com/app/board/uXjVOqHKk
 - Pelo menos 2 Collections
 - Diagrama de Classes
 - CRUD
+- [x] Módulo 2 - Diagrama ER
+- [x] Módulo 2 - Script
 
   
 ## ☕ Jogando Battle of Worlds
@@ -46,8 +48,8 @@ manipulamos através do id.
 
 ## 🤝 Colaboradores
 
-Eric Andrade
-Gustavo Teichmann
+Eric Andrade, 
+Gustavo Teichmann, 
 Patrícia Campos
 
 

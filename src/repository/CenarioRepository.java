@@ -120,7 +120,7 @@ public class CenarioRepository implements Repositorio<Integer, Cenario> {
                 Cenario cenario = new Cenario();
                 cenario.setNomeCenario(res.getString("NOME_CENARIO"));
                 cenario.setHorario(res.getDate("HORARIO"));
-//                cenario.setTipoCenario(res.g);
+                cenario.setTipoCenario(res.getString("TIPO_REINO"));
             }
 
 

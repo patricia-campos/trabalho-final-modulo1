@@ -10,7 +10,22 @@ public class Cenario implements Impressao {
     private int idCenario;
     private String nomeCenario;
     private String tipoCenario;
-    private java.sql.Date horario;
+    private Date horario;
+
+    public Cenario() {
+    }
+
+    public Cenario(int idCenario, String nomeCenario, String tipoCenario, Date horario) {
+        this.idCenario = idCenario;
+        this.nomeCenario = nomeCenario;
+        this.tipoCenario = tipoCenario;
+        this.horario = horario;
+    }
+    public Cenario( String nomeCenario, String tipoCenario, Date horario) {
+        this.nomeCenario = nomeCenario;
+        this.tipoCenario = tipoCenario;
+        this.horario = horario;
+    }
 
     public String getTipoCenario() {
         return tipoCenario;

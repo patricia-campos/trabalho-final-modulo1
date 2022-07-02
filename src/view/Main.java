@@ -1,77 +1,85 @@
-//package view;
-//
-//import banco.DbConfiguration;
-//import controller.Batalha;
-//import controller.JogadorManipulacao;
-//import entities.Jogador;
-//import entities.Personagem;
-//
-//import java.util.Objects;
-//import java.util.Scanner;
-//
-//public class Main {
-//    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("""
-//
-//                                         __                                                     __
-//                                        (**)                                                   (**)
-//                                        IIII                                                   IIII
-//                                        ####                                                   ####
-//                                        HHHH           O Reino de Luz e o Reino Sombrio        HHHH
-//                                        HHHH          foram prejudicados com o desepertar      HHHH
-//                                        ####            de seres poderosos e com sede de       ####
-//                                     ___IIII___                     sangue.                 ___IIII___
-//                                  .-`_._"**"_._`-.                                       .-`_._"**"_._`-.
-//                                |/``  .`\\/`.  ``\\|          Há um desequilíbrio        |/``  .`\\/`.  ``\\|
-//                                       }    {     '             pairando sobre                }    {     '
-//                                       ) () (                 todas as criaturas              ) () (
-//                                       ( :: )               e só você pode ajudar             ( :: )
-//                                       | :: |              a reestabelecer a ordem            | :: |
-//                                       | )( |                entre o Reino da Luz             | )( |
-//                                       | || |                 e o Reino Sombrio.              | || |
-//                                       | || |                                                 | || |
-//                                       | || |                   Você está pronto              | || |
-//                                       | || |                     para iniciar                | || |
-//                                       | || |                     a batalha?                  | || |
-//                                       ( () )                                                 ( () )
-//                                        \\  /                                                   \\  /
-//                                         \\/                                                     \\/
-//
-//                """);
-//
-//        System.out.println("""
-//
-//                ██████╗  █████╗ ████████╗████████╗██╗     ███████╗     ██████╗ ███████╗    ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗ ███████╗
-//                ██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝    ██╔═══██╗██╔════╝    ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗██╔════╝
-//                ██████╔╝███████║   ██║      ██║   ██║     █████╗      ██║   ██║█████╗      ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║███████╗
-//                ██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝      ██║   ██║██╔══╝      ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║╚════██║
-//                ██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗    ╚██████╔╝██║         ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝███████║""");
-//
-//        JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
-//
-//        boolean vitoria;
-//        int opcao = 0;
-//        int opcaoImprimir;
-//        int comecar;
-//        int i = 1;
-//
-//        while (opcao != 7) {
-//            DbConfiguration db = new DbConfiguration();
-//
-//            System.out.print("\n");
-//            System.out.println("Digite 0 para cadastrar automaticamente");
-//            System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
-//            System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
-//            System.out.println("Digite 3 para EDITAR um JOGADOR");
-//            System.out.println("Digite 4 para EXCLUIR um JOGADOR");
-//            System.out.println("Digite 5 para ADICIONAR um PERSONAGEM");
-//            System.out.println("Digite 6 para INICIAR a BATALHA");
-//            System.out.println("Digite 7 para SAIR do JOGO");
-//            opcao = sc.nextInt();
-//            sc.nextLine();
-//            switch (opcao) {
-//                case 0 -> {
+package view;
+
+import banco.DbConfiguration;
+import controller.Batalha;
+import controller.JogadorManipulacao;
+import entities.ClassePersonagem;
+import entities.Jogador;
+import entities.Personagem;
+import exceptions.BancoDeDadosException;
+import service.ClassePersonagemService;
+import service.JogadorService;
+import service.PersonagemService;
+
+import java.util.Objects;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) throws BancoDeDadosException {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("""
+
+                                         __                                                     __
+                                        (**)                                                   (**)
+                                        IIII                                                   IIII
+                                        ####                                                   ####
+                                        HHHH           O Reino de Luz e o Reino Sombrio        HHHH
+                                        HHHH          foram prejudicados com o desepertar      HHHH
+                                        ####            de seres poderosos e com sede de       ####
+                                     ___IIII___                     sangue.                 ___IIII___
+                                  .-`_._"**"_._`-.                                       .-`_._"**"_._`-.
+                                |/``  .`\\/`.  ``\\|          Há um desequilíbrio        |/``  .`\\/`.  ``\\|
+                                       }    {     '             pairando sobre                }    {     '
+                                       ) () (                 todas as criaturas              ) () (
+                                       ( :: )               e só você pode ajudar             ( :: )
+                                       | :: |              a reestabelecer a ordem            | :: |
+                                       | )( |                entre o Reino da Luz             | )( |
+                                       | || |                 e o Reino Sombrio.              | || |
+                                       | || |                                                 | || |
+                                       | || |                   Você está pronto              | || |
+                                       | || |                     para iniciar                | || |
+                                       | || |                     a batalha?                  | || |
+                                       ( () )                                                 ( () )
+                                        \\  /                                                   \\  /
+                                         \\/                                                     \\/
+
+                """);
+
+        System.out.println("""
+
+                ██████╗  █████╗ ████████╗████████╗██╗     ███████╗     ██████╗ ███████╗    ██╗    ██╗ ██████╗ ██████╗ ██╗     ██████╗ ███████╗
+                ██╔══██╗██╔══██╗╚══██╔══╝╚══██╔══╝██║     ██╔════╝    ██╔═══██╗██╔════╝    ██║    ██║██╔═══██╗██╔══██╗██║     ██╔══██╗██╔════╝
+                ██████╔╝███████║   ██║      ██║   ██║     █████╗      ██║   ██║█████╗      ██║ █╗ ██║██║   ██║██████╔╝██║     ██║  ██║███████╗
+                ██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝      ██║   ██║██╔══╝      ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║╚════██║
+                ██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗    ╚██████╔╝██║         ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝███████║""");
+
+        JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
+
+        boolean vitoria;
+        int opcao = 0;
+        int opcaoImprimir;
+        int comecar;
+        int i = 1;
+
+        while (opcao != 7) {
+            DbConfiguration db = new DbConfiguration();
+            JogadorService jogadorService = new JogadorService();
+            PersonagemService personagemService = new PersonagemService();
+            ClassePersonagemService classePersonagemService = new ClassePersonagemService();
+
+            System.out.print("\n");
+            System.out.println("Digite 0 para cadastrar automaticamente");
+            System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
+            System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
+            System.out.println("Digite 3 para EDITAR um JOGADOR");
+            System.out.println("Digite 4 para EXCLUIR um JOGADOR");
+            System.out.println("Digite 5 para ADICIONAR um PERSONAGEM");
+            System.out.println("Digite 6 para INICIAR a BATALHA");
+            System.out.println("Digite 7 para SAIR do JOGO");
+            opcao = sc.nextInt();
+            sc.nextLine();
+            switch (opcao) {
+                case 0 -> {
 //                    String nomeJogador = "Gustavo";
 //                    String nomePersonagem = "Legolas";
 //                    Personagem personagemInicial = new Personagem(nomePersonagem, escolhaClasse);
@@ -79,125 +87,150 @@
 //                    personagemInicial.setNomePersonagem(nomePersonagem);
 //                    jogadorManipulacao.addPersonagem(jogador, personagemInicial);
 //                    jogadorManipulacao.adicionarJogador(jogador);
-//                }
-//                case 1 -> {
-//                    System.out.println("Olá jogador! Digite seu nome: ");
-//                    String nomeJogador = sc.nextLine();
-//                    if (Objects.equals(nomeJogador, "")) {
-//                        System.out.println("Nome não pode ser vazio.");
-//                        break;
-//                    }
-//                    System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
-//                    System.out.println("Digite o nome do personagem: ");
-//                    String nome = sc.nextLine();
-//                    if (Objects.equals(nome, "")) {
-//                        System.out.println("Nome não pode ser vazio.");
-//                        break;
-//                    }
-//                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-//                    jogadorManipulacao.imprimir();
-//                    int escolhaClasse = sc.nextInt();
-//                    sc.nextLine();
-//                    if (escolhaClasse > 3 || escolhaClasse <= 0) {
-//                        System.out.println("Tipo inválido.");
-//                        break;
-//                    }
-//                    Personagem personagemInicial = new Personagem(nome, escolhaClasse);
-//                    Jogador jogador = new Jogador(nomeJogador, personagemInicial);
-//                    personagemInicial.setNomePersonagem(nome);
-//                    jogadorManipulacao.addPersonagem(jogador, personagemInicial);
-//                    jogadorManipulacao.adicionarJogador(jogador);
-//
-//                }
-//                case 2 -> {
-//                    System.out.println("Digite 1 para ver jogadores cadastrados");
-//                    System.out.println("Digite 2 para ver personagens cadastrados");
-//                    System.out.println("Digite 3 para sair");
-//                    opcaoImprimir = sc.nextInt();
-//                    switch (opcaoImprimir) {
-//                        case 1 -> {
-//                            if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
-//                                System.out.println("Lista vazia");
-//                                break;
-//                            }
-//                            jogadorManipulacao.listarJogador();
-//                        }
-//                        case 2 -> {
-//                            System.out.println("Qual o seu Jogador");
-//                            jogadorManipulacao.listarJogador();
-//                            int indexJogador = sc.nextInt();
-//                            if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
-//                                System.out.println("Lista vazia");
-//                            } else if (jogadorManipulacao.retornarJogador(indexJogador) == null) {
-//                                System.out.println("Jogador não encontrado");
-//                            } else {
-//                                Jogador jogador = jogadorManipulacao.retornarJogador(indexJogador);
-//                                jogador.listarPersonagens(jogador);
-//                            }
-//                        }
-//                        case default -> System.out.println("Numero incorreto");
-//                    }
-//                }
-//                case 3 -> {
-//                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
-//                        System.out.println("Jogadores vazios.");
-//                        break;
-//                    }
-//                    System.out.println("Qual jogador você quer alterar o nome?");
-//                    jogadorManipulacao.listarJogador();
-//                    int index = sc.nextInt();
-//                    sc.nextLine();
-//                    if (!(jogadorManipulacao.getListaDeJogadores().size() > index)) {
-//                        System.out.println("Jogador nao existe!! ");
-//                        break;
-//                    }
-//                    System.out.println("Digite o novo nome do jogador: ");
-//                    String novoNome = sc.nextLine();
-//                    if (Objects.equals(novoNome, "")) {
-//                        System.out.println("Nome não pode ser vazio.");
-//                        break;
-//                    }
-//                    jogadorManipulacao.editarJogador(index, novoNome);
-//                }
-//                case 4 -> {
-//                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
-//                        System.out.println("Jogadores vazios");
-//                        break;
-//                    }
-//                    System.out.println("Qual jogador você deseja remover?");
-//                    jogadorManipulacao.listarJogador();
-//                    int id = sc.nextInt();
-//                    if (!(jogadorManipulacao.getListaDeJogadores().size() > id)) {
-//                        System.out.println("Jogador nao existe!! ");
-//                        break;
-//                    }
-//                    jogadorManipulacao.removerJogadorPorIndice(id);
-//                }
-//                case 5 -> {
-//                    System.out.println("Em qual jogador você deseja adicionar um personagem?");
-//                    jogadorManipulacao.listarJogador();
-//                    int id = sc.nextInt();
-//                    sc.nextLine();
-//                    Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
-//
-//                    System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
-//                    System.out.println("Digite o nome do personagem: ");
-//                    String nome = sc.nextLine();
-//                    if (Objects.equals(nome, "")) {
-//                        System.out.println("Nome não pode ser vazio.");
-//                        break;
-//                    }
-//                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-//                    jogadorManipulacao.imprimir();
-//                    int escolhaClasse = sc.nextInt();
-//                    sc.nextLine();
-//                    if (escolhaClasse > 3 || escolhaClasse < 0) {
-//                        System.out.println("Tipo inválido.");
-//                        break;
-//                    }
+                }
+                case 1 -> {
+                    System.out.println("Olá jogador! Digite seu nome: ");
+                    String nomeJogador = sc.nextLine();
+                    if (Objects.equals(nomeJogador, "")) {
+                        System.out.println("Nome não pode ser vazio.");
+                        break;
+                    }
+
+                    System.out.println(nomeJogador + " digite sua senha: ");
+                    String senhaJogador = sc.nextLine();
+
+                    Jogador jogador = new Jogador(nomeJogador, senhaJogador);
+                    jogadorService.adicionar(jogador);
+
+                    System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
+
+                    System.out.println("Digite o nome do personagem: ");
+                    String nomePersonagem = sc.nextLine();
+                    if (Objects.equals(nomePersonagem, "")) {
+                        System.out.println("Nome não pode ser vazio.");
+                        break;
+                    }
+
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador),personagem);
+
+                    System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
+                    String classeNome = sc.nextLine();
+                    int vida = 150;
+                    int defesa = 40;
+                    int ataque = 50;
+                    if (classeNome == "Mago") {
+                         vida = 150;
+                         defesa = 40;
+                         ataque = 50;
+                    } else if (classeNome == "Elfo") {
+                        vida = 150;
+                        defesa = 50;
+                        ataque = 50;
+                    } else if (classeNome == "Guerreiro") {
+                        vida = 150;
+                        defesa = 50;
+                        ataque = 40;
+                    }
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome, vida, defesa, ataque);
+                    classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
+                }
+                case 2 -> {
+                    System.out.println("Digite 1 para ver jogadores cadastrados");
+                    System.out.println("Digite 2 para ver personagens cadastrados");
+                    System.out.println("Digite 3 para ver classes cadastradas");
+                    opcaoImprimir = sc.nextInt();
+                    switch (opcaoImprimir) {
+                        case 1 -> {
+                            jogadorService.listarTodos();
+                            break;
+                        }
+                        case 2 -> {
+                            personagemService.listar();
+                            break;
+                        }
+                        case 3 -> {
+                            classePersonagemService.listarTodos();
+                            break;
+                        }
+                        case default -> System.out.println("Numero incorreto");
+                    }
+                }
+                case 3 -> {
+                        opcao = sc.nextInt();
+                        switch (opcao) {
+                            case 1 -> {
+                                System.out.println("Qual jogador deseja alterar o nome? ");
+                                jogadorService.listarTodos();
+
+                                String nome = sc.nextLine();
+
+                                System.out.println("Digite o novo nome do Jogador: ");
+                                String novoNome = sc.nextLine();
+
+                                Jogador jogador1 = jogadorService.retornaJogador(nome);
+                                jogadorService.editar(jogador1, novoNome);
+                            }
+                            case 2 -> {
+                                System.out.println("Qual personagem deseja alterar o nome? ");
+                                personagemService.listar();
+
+                                int index = sc.nextInt();
+                                sc.nextLine();
+
+                                Personagem personagem = new Personagem();
+
+                                System.out.println("Digite o novo nome do Personagem: ");
+                                String novoNome = sc.nextLine();
+//                                personagemService.editar();
+                            }
+                            case 3 -> {
+                                System.out.println("Qual personage deseja alterar a classe? ");
+                            }
+                            default -> {
+                                System.out.println("opcão inválida");
+                            }
+                        }
+                }
+                case 4 -> {
+                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
+                        System.out.println("Jogadores vazios");
+                        break;
+                    }
+                    System.out.println("Qual jogador você deseja remover?");
+                    jogadorManipulacao.listarJogador();
+                    int id = sc.nextInt();
+                    if (!(jogadorManipulacao.getListaDeJogadores().size() > id)) {
+                        System.out.println("Jogador nao existe!! ");
+                        break;
+                    }
+                    jogadorManipulacao.removerJogadorPorIndice(id);
+                }
+                case 5 -> {
+                    System.out.println("Em qual jogador você deseja adicionar um personagem?");
+                    jogadorManipulacao.listarJogador();
+                    int id = sc.nextInt();
+                    sc.nextLine();
+                    Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
+
+                    System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
+                    System.out.println("Digite o nome do personagem: ");
+                    String nome = sc.nextLine();
+                    if (Objects.equals(nome, "")) {
+                        System.out.println("Nome não pode ser vazio.");
+                        break;
+                    }
+                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
+                    jogadorManipulacao.imprimir();
+                    int escolhaClasse = sc.nextInt();
+                    sc.nextLine();
+                    if (escolhaClasse > 3 || escolhaClasse < 0) {
+                        System.out.println("Tipo inválido.");
+                        break;
+                    }
 //                    Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
 //                    jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
-//                }
+                }
 //                case 6 -> {
 //                    Batalha batalha = new Batalha();
 //                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
@@ -276,10 +309,10 @@
 //                        }
 //                    }
 //                }
-//                case 7 -> System.out.println("Você saiu do jogo");
-//                case default -> System.out.println("Numero incorreto");
-//            }
-//        }
-//    }
-//}
-//
+                case 7 -> System.out.println("Você saiu do jogo");
+                case default -> System.out.println("Numero incorreto");
+            }
+        }
+    }
+}
+

@@ -24,6 +24,7 @@ public class BossRepository implements Repositorio<Integer,Boss>{
         }
 
         return null;
+
     }
 
     @Override

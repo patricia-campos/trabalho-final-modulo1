@@ -18,9 +18,17 @@ public class Boss {
         this.defesa = 15;
     }
 
+    public Boss(int id, String nome) {
+        this.setNome(nome);
+        this.setIdBoss(idBoss);
+    }
+
     public void setIdBoss(Integer idBoss) {
         this.idBoss = idBoss;
     }
+
+    public int getIdBoss() { return idBoss; }
+
     public String getNome() {
         return nome;
     }

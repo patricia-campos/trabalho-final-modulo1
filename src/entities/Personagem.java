@@ -1,7 +1,5 @@
 package entities;
 
-import entities.ClassePersonagem;
-
 public class Personagem {
 
     private int id;

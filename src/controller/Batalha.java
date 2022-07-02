@@ -3,8 +3,12 @@ package controller;
 import entities.Boss;
 import entities.Cenario;
 import entities.Personagem;
+import exceptions.BancoDeDadosException;
 import interfaces.Atacar;
+import service.BossService;
+import service.CenarioService;
 
+import java.util.Date;
 import java.util.Random;
 
 public class Batalha implements Atacar {
@@ -116,15 +120,25 @@ public class Batalha implements Atacar {
         }
     }
 
-    public void sortearCenario() {
+    public void sortearCenario() throws BancoDeDadosException {
+
         if (this.personagem == null) {
             System.out.println("| Não há personagem disponível para a batalha |");
         }
+        BossService bossService = new BossService();
+        CenarioService cenarioService = new CenarioService();
         Random random = new Random();
+
         int sortear = random.nextInt(2) + 1;
         if (sortear == 1) {
+            Boss boss = new Boss("Boss Da Luz");
+            Cenario cenario = new Cenario("Cenario da luz","1",new Date());
+            bossService.adicionar(boss);
+            cenarioService.adicionarCenario(cenario);
         }else if (sortear == 2) {
         } else if(sortear > 2) {
+            Boss boss = new Boss("Boss Da Sombras");
+            Cenario cenario = new Cenario("Cenario da sombras","2",new Date());
             System.out.println("| Cenário Inválido |");
         }
     }

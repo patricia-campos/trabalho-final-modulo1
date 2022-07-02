@@ -3,6 +3,10 @@ package controller;
 import entities.Boss;
 import entities.Cenario;
 import entities.Personagem;
+import entities.boss.BossReinoLuz;
+import entities.boss.BossReinoSombrio;
+import entities.cenario.ReinoLuz;
+import entities.cenario.ReinoSombrio;
 import interfaces.Atacar;
 
 import java.util.Random;

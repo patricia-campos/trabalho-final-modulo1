@@ -7,14 +7,14 @@ import java.sql.SQLException;
 public class DbConfiguration {
 
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         Connection connection = null;
         String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
         String username = "BATALHA";
         String password = "oracle";
         try {
             Class.forName("oracle.jdbc.OracleDriver");
-            connection= DriverManager.getConnection(dbUrl,username,password);
+            connection = DriverManager.getConnection(dbUrl,username,password);
             System.out.println("Conectado com Sucesso");
         }catch (ClassNotFoundException cx){
             System.out.println("Driver nao localizado");

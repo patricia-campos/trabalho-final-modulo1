@@ -1,39 +1,11 @@
-package entities;
+package entities.personagem;
 
 import interfaces.Impressao;
 
 public class ClassePersonagem implements Impressao {
-    private int idClassePersonagem;
-    private int idPersonagem;
     private int tipo; //1 - Mago / 2 - Elfo / 3 - Guerreira
-    private String nomeClassePersonagem;
     private int vidaClasse;
     private int defesaClasse;
-
-    public int getIdPersonagem() {
-        return idPersonagem;
-    }
-
-    public void setIdPersonagem(int idPersonagem) {
-        this.idPersonagem = idPersonagem;
-    }
-
-    public int getIdClassePersonagem() {
-        return idClassePersonagem;
-    }
-
-    public void setIdClassePersonagem(int idClassePersonagem) {
-        this.idClassePersonagem = idClassePersonagem;
-    }
-
-    public String getNomeClassePersonagem() {
-        return nomeClassePersonagem;
-    }
-
-    public void setNomeClassePersonagem(String nomeClassePersonagem) {
-        this.nomeClassePersonagem = nomeClassePersonagem;
-    }
-
     private int ataqueClasse;
     private String tipoNome;
 

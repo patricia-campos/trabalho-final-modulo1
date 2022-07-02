@@ -8,11 +8,18 @@ import service.ClassePersonagemService;
 import service.JogadorService;
 import service.PersonagemService;
 
+import java.util.Scanner;
+
 public class Main2 {
 
     public static void main(String[] args) throws BancoDeDadosException {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Nome do jogador");
+        String nomeJogador = sc.nextLine();
+
         JogadorService jogadorService = new JogadorService();
-        Jogador jogador = new Jogador("Joãozito", "Senha123");
+        Jogador jogador = new Jogador(nomeJogador, "Senha123");
         jogadorService.adicionar(jogador);
         jogadorService.listarTodos();
         jogadorService.editar(jogadorService.retornaJogador("Luanito"),"Luiz");

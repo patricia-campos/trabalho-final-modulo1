@@ -4,13 +4,20 @@ import entities.Boss;
 import exceptions.BancoDeDadosException;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 public class BossRepository implements Repositorio<Integer,Boss>{
 
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
+        String sql = "SELECT SEQ_BOSS.nextval mysequence from DUAL";
+
+        Statement stmt = connection.createStatement();
+        ResultSet res = stmt.executeQuery(sql);
+
 
         return null;
     }

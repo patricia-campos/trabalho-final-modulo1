@@ -58,7 +58,7 @@ public class Main {
 
         while (opcao != 7) {
             DbConfiguration db = new DbConfiguration();
-            db.getConnection();
+            db.abrirConexao();
 
             System.out.print("\n");
             System.out.println("Digite 0 para cadastrar automaticamente");

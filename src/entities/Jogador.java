@@ -37,7 +37,11 @@ public class Jogador {
         this.setNomeJogador(nomeJogador);
         this.setSenha(senha);
     }
-
+    public Jogador(int id, String nomeJogador, String senha) {
+        this.setNomeJogador(nomeJogador);
+        this.setSenha(senha);
+        this.setId(id);
+    }
     public Jogador() {
 
     }

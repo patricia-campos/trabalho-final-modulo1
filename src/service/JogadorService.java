@@ -1,11 +1,12 @@
 package service;
 
 import entities.Jogador;
-import entities.Personagem;
 import exceptions.BancoDeDadosException;
 import repository.JogadorRepository;
 
-import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class JogadorService {
     JogadorRepository jogadorRepository = new JogadorRepository();
@@ -24,8 +25,15 @@ public class JogadorService {
         jogadorRepository.remover(jogador.getId());
     }
 
-    public void editar(Jogador jogador) throws BancoDeDadosException {
+    public void editar(Jogador jogador,String nome) throws BancoDeDadosException {
+        jogador.setNomeJogador(nome);
         jogadorRepository.editar(jogador.getId(),jogador);
     }
 
+    public Jogador retornaJogador(String nome) throws BancoDeDadosException {
+        return jogadorRepository.listar().stream().filter(a -> Objects.equals(a.getNomeJogador(), nome)).map(a -> {
+            return new Jogador(a.getId(),a.getNomeJogador(),a.getSenha());
+        }).findFirst().get();
+
+    }
 }

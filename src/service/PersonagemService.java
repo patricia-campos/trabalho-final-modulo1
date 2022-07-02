@@ -5,6 +5,8 @@ import entities.Personagem;
 import exceptions.BancoDeDadosException;
 import repository.PersonagemRepository;
 
+import java.util.Objects;
+
 public class PersonagemService {
 
     PersonagemRepository personagemRepository = new PersonagemRepository();
@@ -13,7 +15,8 @@ public class PersonagemService {
         personagemRepository.adicionar(personagem, jogador.getId());
     }
 
-    public void editar(Personagem personagem) throws BancoDeDadosException {
+    public void editar(Personagem personagem,String nome) throws BancoDeDadosException {
+        personagem.setNomePersonagem(nome);
         personagemRepository.editar(personagem.getId(),personagem);
     }
 
@@ -23,5 +26,12 @@ public class PersonagemService {
 
     public void remover(Personagem personagem) throws BancoDeDadosException {
         personagemRepository.remover(personagem.getId());
+    }
+
+    public Personagem retornaPersonagem(String nome) throws BancoDeDadosException {
+        return personagemRepository.listar().stream().filter(a -> Objects.equals(a.getNomePersonagem(), nome)).map(a -> {
+            return new Personagem(a.getId(),a.getNomePersonagem());
+        }).findFirst().get();
+
     }
 }

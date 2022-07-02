@@ -14,8 +14,7 @@ public class Main2 {
         Jogador jogador = new Jogador("Joãozito", "Senha123");
         jogadorService.adicionar(jogador);
         jogadorService.listarTodos();
-        Jogador jogadorEditado = new Jogador("Luanzito","Senha123");
-        jogadorService.editar(jogadorEditado);
+        jogadorService.editar(jogadorService.retornaJogador("Joãozito"),"Luiz");
         jogadorService.listarTodos();
 
 //        jogadorService.remover(jogador);

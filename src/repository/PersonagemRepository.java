@@ -68,7 +68,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
 
             return res > 0;
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {
@@ -102,7 +102,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
 
             return res > 0;
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {
@@ -133,7 +133,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
                 personagemList.add(personagem);
             }
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {

@@ -35,7 +35,7 @@ public class Personagem {
     public Personagem() {
     }
 
-    public Personagem(String nomePersonagem) {
+    public Personagem(int id,String nomePersonagem) {
         this.nomePersonagem = nomePersonagem;
     }
 

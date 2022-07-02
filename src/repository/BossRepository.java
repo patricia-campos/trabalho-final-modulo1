@@ -14,135 +14,22 @@ public class BossRepository implements Repositorio<Integer,Boss>{
 
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
-        String sql = "SELECT SEQ_BOSS.nextval proximoIdBoss from DUAL";
-
-        Statement stmt = connection.createStatement();
-        ResultSet res = stmt.executeQuery(sql);
-
-        if (res.next()) {
-            return res.getInt("proximoIdBoss");
-        }
-
         return null;
-
     }
 
     @Override
     public Boss adicionar(Boss object) throws BancoDeDadosException {
-
-        Connection con = null;
-
-        try {
-            con = DbConfiguration.getConnection();
-
-            Integer proximoId = getProximoId(con);
-
-            object.setIdBoss(proximoId);
-
-            String sql = "INSERT INTO BOSS \n" +
-                         "(ID_BOSS, NOME_BOSS, VIDA_BOSS, DEFESA_BOSS, ATAQUE_BOSS\n" +
-                         "VALUES(?, ?, ?, ?, ?)\n";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, proximoId);
-            stmt.setString(2, object.getNome());
-            stmt.setInt(3, object.getVida());
-            stmt.setInt(4, object.getDefesa());
-            stmt.setInt(5, object.getAtaque());
-
-            stmt.executeUpdate();
-            System.out.println("Boss adicionado com sucesso!");
-
-            return object;
-
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        return null;
     }
 
     @Override
     public boolean remover(Integer idBoss) throws BancoDeDadosException {
-
-        Connection con = null;
-
-        try {
-            con = DbConfiguration.getConnection();
-
-            String sql = "DELETE FROM BOSS WHERE ID_BOSS = ?";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            stmt.setInt(1, idBoss);
-
-            int res = stmt.executeUpdate();
-
-            System.out.println("Boss removido com sucesso!");
-
-            return res > 0;
-
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        return false;
     }
 
     @Override
     public boolean editar(Integer id, Boss boss) throws BancoDeDadosException {
-
-        Connection con = null;
-
-        try {
-            con = DbConfiguration.getConnection();
-
-            StringBuilder sql = new StringBuilder();
-            sql.append("UPDATE BOSS SET ");
-            sql.append("NOME_BOSS = ?,");
-            sql.append("VIDA_BOSS = ?,");
-            sql.append("DEFESA_BOSS = ? ");
-            sql.append("ATAQUE_BOSS = ? ");
-
-            PreparedStatement stmt = con.prepareStatement(sql.toString());
-
-            stmt.setString(1, boss.getNome());
-            stmt.setInt(2, boss.getVida());
-            stmt.setInt(3, boss.getDefesa());
-            stmt.setInt(4, boss.getAtaque());
-
-            int res = stmt.executeUpdate();
-            System.out.println("Boss editado com sucesso!");
-
-            return res > 0;
-
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-
-        } finally {
-
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        return false;
     }
 
     @Override

@@ -10,6 +10,7 @@ public class Cenario implements Impressao {
     private int idCenario;
     private String nomeCenario;
     private TipoCenario tipoCenario;
+    private java.sql.Date horario;
 
     public TipoCenario getTipoCenario() {
         return tipoCenario;
@@ -18,8 +19,6 @@ public class Cenario implements Impressao {
     public void setTipoCenario(TipoCenario tipoCenario) {
         this.tipoCenario = tipoCenario;
     }
-
-    private Date horario;
 
     public int getIdCenario() {
         return idCenario;
@@ -42,7 +41,7 @@ public class Cenario implements Impressao {
     }
 
     public void setHorario(Date horario) {
-        this.horario = horario;
+        this.horario = (java.sql.Date) horario;
     }
 
     @Override

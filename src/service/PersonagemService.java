@@ -32,6 +32,5 @@ public class PersonagemService {
         return personagemRepository.listar().stream().filter(a -> Objects.equals(a.getNomePersonagem(), nome)).map(a -> {
             return new Personagem(a.getId(),a.getNomePersonagem());
         }).findFirst().get();
-
     }
 }

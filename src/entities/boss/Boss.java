@@ -1,7 +1,5 @@
 package entities.boss;
 
-import entities.cenario.Cenario;
-
 public class Boss {
 
     private String nome;

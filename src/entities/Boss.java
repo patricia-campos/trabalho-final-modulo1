@@ -67,7 +67,7 @@ public class Boss {
     @Override
     public String toString() {
         return "Boss{" +
-                "nome='" + nome + '\'' +
+                "  nome='" + nome + '\'' +
                 ", vida=" + vida +
                 ", ataque=" + ataque +
                 ", defesa=" + defesa +

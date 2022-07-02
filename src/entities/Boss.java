@@ -56,9 +56,6 @@ public class Boss {
         this.defesa = defesa;
     }
 
-    public void
-
-
     @Override
     public String toString() {
         return "Boss{" +

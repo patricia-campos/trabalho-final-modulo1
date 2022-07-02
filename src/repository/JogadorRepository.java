@@ -2,9 +2,7 @@ package repository;
 
 import banco.DbConfiguration;
 import entities.Jogador;
-import entities.Personagem;
 import exceptions.BancoDeDadosException;
-import oracle.jdbc.OracleBfile;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +12,7 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
     Connection con = null;
 
     @Override
-    public Integer getProximoId(Connection connection) throws SQLException {
+    public Integer getProximoId(Connection connection) {
         return null;
     }
 
@@ -23,9 +21,10 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
         try {
             con = DbConfiguration.getConnection();
 
-            String sql = "INSERT INTO JOGADOR\n" +
-                    "(ID_JOGADOR, NOME_JOGADOR, SENHA)\n" +
-                    "VALUES(SEQ_JOGADOR.nextval, ?, ?)\n";
+            String sql = """
+                    INSERT INTO JOGADOR
+                    (ID_JOGADOR, NOME_JOGADOR, SENHA)
+                    VALUES(SEQ_JOGADOR.nextval, ?, ?)""";
 
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, object.getNomeJogador());
@@ -34,11 +33,10 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
 
             stmt.executeUpdate();
             System.out.println("Jogador adicionado com sucesso");
-            object.setId(this.retornarId(object.getNomeJogador()));
 
             return object;
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {
@@ -65,7 +63,7 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
 
             return res > 0;
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {
@@ -100,7 +98,7 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
 
             return res > 0;
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {
@@ -128,10 +126,11 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
                 Jogador jogador = new Jogador();
                 jogador.setNomeJogador(res.getString("NOME_JOGADOR"));
                 jogador.setSenha(res.getString("SENHA"));
+                jogador.setId(res.getInt("ID_JOGADOR"));
                 jogadorList.add(jogador);
             }
         } catch (SQLException e) {
-            throw new BancoDeDadosException();
+            throw new BancoDeDadosException(e.getCause());
         } finally {
             try {
                 if (con != null) {
@@ -144,31 +143,5 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
         return jogadorList;
     }
 
-    public Integer retornarId(String nome) throws BancoDeDadosException {
-        int result;
-        try {
-            con = DbConfiguration.getConnection();
-            Statement stmt = con.createStatement();
 
-            String sql = "SELECT * FROM JOGADOR WHERE NOME_JOGADOR = '"+nome+"'";
-
-            // Executa-se a consulta
-            ResultSet res = stmt.executeQuery(sql);
-            while (res.next()) {
-                result = res.getInt("id_jogador");
-                return result;
-            }
-        } catch (SQLException e) {
-            throw new BancoDeDadosException();
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    return  null;
-    }
 }

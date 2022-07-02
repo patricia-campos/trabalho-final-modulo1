@@ -9,17 +9,31 @@ public class Cenario implements Impressao {
 
     private int idCenario;
     private String nomeCenario;
-    private TipoCenario tipoCenario;
+    private String tipoCenario;
+    private Date horario;
 
-    public TipoCenario getTipoCenario() {
+    public Cenario() {
+    }
+
+    public Cenario(int idCenario, String nomeCenario, String tipoCenario, Date horario) {
+        this.idCenario = idCenario;
+        this.nomeCenario = nomeCenario;
+        this.tipoCenario = tipoCenario;
+        this.horario = horario;
+    }
+    public Cenario( String nomeCenario, String tipoCenario, Date horario) {
+        this.nomeCenario = nomeCenario;
+        this.tipoCenario = tipoCenario;
+        this.horario = horario;
+    }
+
+    public String getTipoCenario() {
         return tipoCenario;
     }
 
-    public void setTipoCenario(TipoCenario tipoCenario) {
+    public void setTipoCenario(String tipoCenario) {
         this.tipoCenario = tipoCenario;
     }
-
-    private Date horario;
 
     public int getIdCenario() {
         return idCenario;
@@ -42,7 +56,7 @@ public class Cenario implements Impressao {
     }
 
     public void setHorario(Date horario) {
-        this.horario = horario;
+        this.horario = (java.sql.Date) horario;
     }
 
     @Override

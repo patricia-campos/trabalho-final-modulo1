@@ -4,18 +4,25 @@ import interfaces.Impressao;
 
 public class ClassePersonagem implements Impressao {
     private int idClassePersonagem;
-    private int idPersonagem;
-    private int tipo; //1 - Mago / 2 - Elfo / 3 - Guerreira
     private String nomeClassePersonagem;
     private int vidaClasse;
     private int defesaClasse;
+    private int ataqueClasse;
 
-    public int getIdPersonagem() {
-        return idPersonagem;
+    public ClassePersonagem(String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse) {
+
+        this.nomeClassePersonagem = nomeClassePersonagem;
+        this.vidaClasse = vidaClasse;
+        this.defesaClasse = defesaClasse;
+        this.ataqueClasse = ataqueClasse;
     }
 
-    public void setIdPersonagem(int idPersonagem) {
-        this.idPersonagem = idPersonagem;
+    public ClassePersonagem(int id, String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse) {
+        this.idClassePersonagem = id;
+        this.nomeClassePersonagem = nomeClassePersonagem;
+        this.vidaClasse = vidaClasse;
+        this.defesaClasse = defesaClasse;
+        this.ataqueClasse = ataqueClasse;
     }
 
     public int getIdClassePersonagem() {
@@ -34,26 +41,7 @@ public class ClassePersonagem implements Impressao {
         this.nomeClassePersonagem = nomeClassePersonagem;
     }
 
-    private int ataqueClasse;
-    private String tipoNome;
-
     public ClassePersonagem() {
-    }
-
-    public ClassePersonagem(int tipo, int vidaClasse, int defesaClasse, int ataqueClasse, String tipoNome) {
-        this.tipo = tipo;
-        this.vidaClasse = vidaClasse;
-        this.defesaClasse = defesaClasse;
-        this.ataqueClasse = ataqueClasse;
-        this.tipoNome = tipoNome;
-    }
-
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
     }
 
     public int getVidaClasse() {
@@ -84,21 +72,13 @@ public class ClassePersonagem implements Impressao {
         this.ataqueClasse = ataqueClasse;
     }
 
-    public String getTipoNome() {
-        return tipoNome;
-    }
-
-    public void setTipoNome(String tipoNome) {
-        this.tipoNome = tipoNome;
-    }
 
     @Override
     public String toString() {
         return "\n" +
                 "" +
-                "| Nome da classe: " + tipoNome +
-                "\n| Tipo da classe: " + tipo
-                + "\n" +
+                "| Nome da classe: " + nomeClassePersonagem +
+                "\n" +
                 "| Vida da classe: " + vidaClasse
                 + "\n" +
                 "| Defesa da classe: " + defesaClasse

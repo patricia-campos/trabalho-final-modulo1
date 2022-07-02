@@ -3,10 +3,6 @@ package controller;
 import entities.Boss;
 import entities.Cenario;
 import entities.Personagem;
-import entities.boss.BossReinoLuz;
-import entities.boss.BossReinoSombrio;
-import entities.cenario.ReinoLuz;
-import entities.cenario.ReinoSombrio;
 import interfaces.Atacar;
 
 import java.util.Random;
@@ -17,12 +13,6 @@ public class Batalha implements Atacar {
     private Personagem personagem = new Personagem();
     private Boss boss = new Boss();
     private int roundAtual = 0;
-
-
-
-
-
-
 
     public Cenario getCenario() {
         return cenario;
@@ -77,7 +67,7 @@ public class Batalha implements Atacar {
     }
 
     public String imprimiStatusJogador() {
-        String nome = getPersonagem().getClassePersonagem().getTipoNome();
+        String nome = getPersonagem().getClassePersonagem().getNomeClassePersonagem();
         int vida = getPersonagem().getClassePersonagem().getVidaClasse();
         int ataque = getPersonagem().getClassePersonagem().getAtaqueClasse();
         int defesa = getPersonagem().getClassePersonagem().getDefesaClasse();

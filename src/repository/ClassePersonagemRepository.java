@@ -84,12 +84,12 @@ public class ClassePersonagemRepository implements Repositorio<Integer, ClassePe
 
             PreparedStatement stmt = con.prepareStatement(sql.toString());
 
-            stmt.setInt(1, object.getIdPersonagem());
+            stmt.setInt(1, id);
             stmt.setString(2, object.getNomeClassePersonagem());
             stmt.setInt(3, object.getVidaClasse());
             stmt.setInt(4, object.getDefesaClasse());
             stmt.setInt(5, object.getAtaqueClasse());
-            stmt.setInt(6, id);
+            stmt.setInt(6, object.getIdClassePersonagem());
 
             int res = stmt.executeUpdate();
             System.out.println("Editado com sucesso");
@@ -121,7 +121,6 @@ public class ClassePersonagemRepository implements Repositorio<Integer, ClassePe
             while (res.next()) {
                 ClassePersonagem classePersonagem = new ClassePersonagem();
                 classePersonagem.setIdClassePersonagem(res.getInt("ID_CLASSE_PERSONAGEM"));
-                classePersonagem.setIdPersonagem(res.getInt("ID_PERSONAGEM"));
                 classePersonagem.setNomeClassePersonagem(res.getString("NOME_CLASSE_PERSONAGEM"));
                 classePersonagem.setVidaClasse(res.getInt("VIDA_PERSONAGEM"));
                 classePersonagem.setDefesaClasse(res.getInt("DEFESA_PERSONAGEM"));

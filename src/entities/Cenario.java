@@ -3,7 +3,56 @@ package entities;
 import controller.Batalha;
 import interfaces.Impressao;
 
+import java.util.Date;
+
 public class Cenario implements Impressao {
+
+    private int idCenario;
+    private String nomeCenario;
+    private TipoCenario tipoCenario;
+
+    public TipoCenario getTipoCenario() {
+        return tipoCenario;
+    }
+
+    public void setTipoCenario(TipoCenario tipoCenario) {
+        this.tipoCenario = tipoCenario;
+    }
+
+    private Date horario;
+
+    public int getIdCenario() {
+        return idCenario;
+    }
+
+    public void setIdCenario(int idCenario) {
+        this.idCenario = idCenario;
+    }
+
+    public String getNomeCenario() {
+        return nomeCenario;
+    }
+
+    public void setNomeCenario(String nomeCenario) {
+        this.nomeCenario = nomeCenario;
+    }
+
+    public Date getHorario() {
+        return horario;
+    }
+
+    public void setHorario(Date horario) {
+        this.horario = horario;
+    }
+
+    @Override
+    public String toString() {
+        return "Cenario{" +
+                "idCenario=" + idCenario +
+                ", nomeCenario='" + nomeCenario + '\'' +
+                ", horario=" + horario +
+                '}';
+    }
 
     public void buffDebuff(Batalha batalha) {
 

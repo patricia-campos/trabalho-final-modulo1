@@ -13,9 +13,9 @@ public class Boss {
 
     public Boss(String nome) {
         this.nome = nome;
-        this.vida = 100;
-        this.ataque = 20;
-        this.defesa = 15;
+        this.vida = 300;
+        this.ataque = 30;
+        this.defesa = 25;
     }
 
     public Boss(int id, String nome) {

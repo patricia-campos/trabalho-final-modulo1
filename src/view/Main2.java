@@ -1,5 +1,6 @@
 package view;
 
+import entities.ClassePersonagem;
 import entities.Jogador;
 import entities.Personagem;
 import exceptions.BancoDeDadosException;

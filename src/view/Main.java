@@ -112,7 +112,7 @@ public class Main {
                     }
 
                     Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador),personagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine();
@@ -157,35 +157,30 @@ public class Main {
                     }
                 }
                 case 3 -> {
+                    System.out.println("Digite 1 para alterar nome do Jogador");
+                    System.out.println("Digite 2 alterar nome do Personagem");
+                    System.out.println("Digite 3 para ver classes cadastradas");
                     opcao = sc.nextInt();
+                    sc.nextLine();
                     switch (opcao) {
                         case 1 -> {
                             System.out.println("Qual jogador deseja alterar o nome? ");
                             jogadorService.listarTodos();
-
                             String nome = sc.nextLine();
-
+                            Jogador jogador1 = jogadorService.retornaJogador(nome);
                             System.out.println("Digite o novo nome do Jogador: ");
                             String novoNome = sc.nextLine();
-
-                            Jogador jogador1 = jogadorService.retornaJogador(nome);
                             jogadorService.editar(jogador1, novoNome);
+
                         }
                         case 2 -> {
                             System.out.println("Qual personagem deseja alterar o nome? ");
                             personagemService.listar();
-
-                            int index = sc.nextInt();
-                            sc.nextLine();
-
-                            Personagem personagem = new Personagem();
-
+                            String nome = sc.nextLine();
+                            Personagem personagem = personagemService.retornaPersonagem(nome);
                             System.out.println("Digite o novo nome do Personagem: ");
                             String novoNome = sc.nextLine();
-//                                personagemService.editar();
-                        }
-                        case 3 -> {
-                            System.out.println("Qual personage deseja alterar a classe? ");
+                            personagemService.editar(personagem, novoNome);
                         }
                         default -> {
                             System.out.println("opcão inválida");
@@ -193,18 +188,22 @@ public class Main {
                     }
                 }
                 case 4 -> {
-                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
-                        System.out.println("Jogadores vazios");
-                        break;
+                    System.out.println("Digite 1 para remover Jogador");
+                    System.out.println("Digite 2 para remover Personagem");
+                    System.out.println("Digite 3 para ver classes cadastradas");
+                    opcao = sc.nextInt();
+                    sc.nextLine();
+                    switch (opcao) {
+                        case 1 -> {
+                            System.out.println("Qual jogador deseja remover? ");
+                            jogadorService.listarTodos();
+                            String nome = sc.nextLine();
+                            jogadorService.remover(jogadorService.retornaJogador(nome));
+                        }
+                        case 2 -> {
+
+                        }
                     }
-                    System.out.println("Qual jogador você deseja remover?");
-                    jogadorManipulacao.listarJogador();
-                    int id = sc.nextInt();
-                    if (!(jogadorManipulacao.getListaDeJogadores().size() > id)) {
-                        System.out.println("Jogador nao existe!! ");
-                        break;
-                    }
-                    jogadorManipulacao.removerJogadorPorIndice(id);
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");

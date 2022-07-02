@@ -63,6 +63,7 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
 
             return res > 0;
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new BancoDeDadosException(e.getCause());
         } finally {
             try {

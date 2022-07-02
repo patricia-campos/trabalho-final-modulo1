@@ -68,13 +68,18 @@ public class JogadorManipulacao implements Impressao {
 
     @Override
     public void imprimir() {
-        ClassePersonagem mago = new ClassePersonagem(1, 150, 40, 50, "Mago");
-        ClassePersonagem elfo = new ClassePersonagem(2, 150, 50, 50, "Elfo");
-        ClassePersonagem guerreiro = new ClassePersonagem(3, 150, 50, 40, "Guerreiro");
-        System.out.println(mago);
-        System.out.println(elfo);
-        System.out.println(guerreiro);
+
     }
+
+//    @Override
+//    public void imprimir() {
+//        ClassePersonagem mago = new ClassePersonagem(1, 150, 40, 50, "Mago");
+//        ClassePersonagem elfo = new ClassePersonagem(2, 150, 50, 50, "Elfo");
+//        ClassePersonagem guerreiro = new ClassePersonagem(3, 150, 50, 40, "Guerreiro");
+//        System.out.println(mago);
+//        System.out.println(elfo);
+//        System.out.println(guerreiro);
+//    }
 }
 
 

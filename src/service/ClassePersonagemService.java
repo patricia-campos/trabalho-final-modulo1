@@ -11,8 +11,8 @@ public class ClassePersonagemService {
 
     ClassePersonagemRepository classePersonagemRepository = new ClassePersonagemRepository();
 
-    public void adicionarClassePersonagem(Personagem personagem,ClassePersonagem classePersonagem) throws BancoDeDadosException {
-        classePersonagemRepository.adicionar(classePersonagem, personagem.getId() );
+    public void adicionarClassePersonagem(Personagem personagem, ClassePersonagem classePersonagem) throws BancoDeDadosException {
+        classePersonagemRepository.adicionar(classePersonagem, personagem.getId());
     }
 
     public void listarTodos() throws BancoDeDadosException {

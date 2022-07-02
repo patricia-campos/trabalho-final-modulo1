@@ -67,7 +67,7 @@ public class Batalha implements Atacar {
     }
 
     public String imprimiStatusJogador() {
-        String nome = getPersonagem().getClassePersonagem().getTipoNome();
+        String nome = getPersonagem().getClassePersonagem().getNomeClassePersonagem();
         int vida = getPersonagem().getClassePersonagem().getVidaClasse();
         int ataque = getPersonagem().getClassePersonagem().getAtaqueClasse();
         int defesa = getPersonagem().getClassePersonagem().getDefesaClasse();

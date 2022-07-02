@@ -10,10 +10,14 @@ public class JogadorService {
     JogadorRepository jogadorRepository = new JogadorRepository();
 
     public void adicionar(Jogador jogador) throws BancoDeDadosException {
-        if (this.verificaNomeJogador(jogador)) {
-            jogadorRepository.adicionar(jogador);
+        if (jogador == null) {
+            System.out.println("Jogador não encontrado");
         } else {
-            System.out.println("Jogador ja cadastrado");
+            if (this.verificaNomeJogador(jogador)) {
+                jogadorRepository.adicionar(jogador);
+            } else {
+                System.out.println("Jogador ja cadastrado");
+            }
         }
     }
 
@@ -24,15 +28,23 @@ public class JogadorService {
     }
 
     public void remover(Jogador jogador) throws BancoDeDadosException {
-        jogadorRepository.remover(jogador.getId());
+        if (jogador == null) {
+            System.out.println("Jogador não encontrado");
+        } else {
+            jogadorRepository.remover(jogador.getId());
+        }
     }
 
     public void editar(Jogador jogador, String nome) throws BancoDeDadosException {
-        jogador.setNomeJogador(nome);
-        if (this.verificaNomeJogador(jogador)) {
-            jogadorRepository.editar(jogador.getId(), jogador);
+        if (jogador == null) {
+            System.out.println("Jogador não encontrado");
         } else {
-            System.out.println("Não possivel editar nome ja existente");
+            jogador.setNomeJogador(nome);
+            if (this.verificaNomeJogador(jogador)) {
+                jogadorRepository.editar(jogador.getId(), jogador);
+            } else {
+                System.out.println("Não possivel editar nome ja existente");
+            }
         }
     }
 
@@ -42,14 +54,19 @@ public class JogadorService {
         }).findFirst().orElse(null);
     }
 
-    //Verifica se existe um jogador com o nome na minha base de dados, caso exista ele traz o objeto com valor e retona false nao podendo alterar.
+    //Verifica se existe um jogador com o nome na minha base de dados, caso exista ele traz o objeto com valor e retorna false nao podendo alterar.
     public boolean verificaNomeJogador(Jogador jogador) throws BancoDeDadosException {
-        Jogador jogador1 = this.retornaJogador(jogador.getNomeJogador());
-        if (jogador1 == null) {
-            return true;
+        if (jogador == null) {
+            System.out.println("Jogador não encontrado");
         } else {
-            return false;
+            Jogador jogador1 = this.retornaJogador(jogador.getNomeJogador());
+            if (jogador1 == null) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        return false;
     }
 
 }

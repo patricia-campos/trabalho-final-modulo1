@@ -17,6 +17,14 @@ public class ClassePersonagem implements Impressao {
         this.ataqueClasse = ataqueClasse;
     }
 
+    public ClassePersonagem(int id, String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse) {
+        this.idClassePersonagem = id;
+        this.nomeClassePersonagem = nomeClassePersonagem;
+        this.vidaClasse = vidaClasse;
+        this.defesaClasse = defesaClasse;
+        this.ataqueClasse = ataqueClasse;
+    }
+
     public int getIdClassePersonagem() {
         return idClassePersonagem;
     }
@@ -65,13 +73,12 @@ public class ClassePersonagem implements Impressao {
     }
 
 
-
     @Override
     public String toString() {
         return "\n" +
                 "" +
                 "| Nome da classe: " + nomeClassePersonagem +
-                 "\n" +
+                "\n" +
                 "| Vida da classe: " + vidaClasse
                 + "\n" +
                 "| Defesa da classe: " + defesaClasse

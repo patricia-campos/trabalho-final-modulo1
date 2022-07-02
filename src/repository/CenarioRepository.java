@@ -30,11 +30,10 @@ public class CenarioRepository implements Repositorio<Integer, Cenario> {
             con = DbConfiguration.getConnection();
 
             String sql = "INSERT INTO CENARIO (ID_CENARIO, NOME_CENARIO, HORARIO, TIPO_REINO)\n" +
-                    "\tVALUES (SEQ_CENARIO.nextval, ?, ?, ?)";
+                    "\tVALUES (SEQ_CENARIO.nextval, ?, CURRENT_DATE, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, object.getNomeCenario());
-            stmt.setDate(2, (Date) object.getHorario());
-//            stmt.set(3, object.getTipoCenario());
+            stmt.setString(2, object.getTipoCenario());
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -14,23 +14,23 @@ public class Main2 {
         JogadorService jogadorService = new JogadorService();
         Jogador jogador = new Jogador("Joãozito", "Senha123");
         jogadorService.adicionar(jogador);
-//        jogadorService.listarTodos();
-//        jogadorService.editar(jogadorService.retornaJogador("Joãozito"),"Luiz");
+        jogadorService.listarTodos();
+        jogadorService.editar(jogadorService.retornaJogador("Luanito"),"Luiz");
 //        jogadorService.listarTodos();
 
 //        jogadorService.remover(jogador);
-        PersonagemService personagemService = new PersonagemService();
-        Personagem personagem = new Personagem("Legolas");
+//        PersonagemService personagemService = new PersonagemService();
+//        Personagem personagem = new Personagem("Legolas");
 //
-        personagemService.adicionar(jogadorService.retornaJogador("Joãozito"),personagem);
+//        personagemService.adicionar(jogadorService.retornaJogador("Joãozito"),personagem);
 //        personagemService.listar();
 //        personagemService.editar(personagemService.retornaPersonagem("Legolas"),"Eric");
 //        personagemService.listar();
 //        personagemService.remover(personagemService.retornaPersonagem("Joao"));
-
-        ClassePersonagemService classePersonagemService = new ClassePersonagemService();
-        ClassePersonagem classePersonagem = new ClassePersonagem("Mago", 150, 50, 50);
-        classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem("Legolas") ,classePersonagem);
+//
+//        ClassePersonagemService classePersonagemService = new ClassePersonagemService();
+//        ClassePersonagem classePersonagem = new ClassePersonagem("Mago", 150, 50, 50);
+//        classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem("Legolas") ,classePersonagem);
 
     }
 }

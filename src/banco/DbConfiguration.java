@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DbConfiguration {
 
 
-    public Connection getConnection(){
+    public static Connection getConnection(){
         Connection connection = null;
         String dbUrl = "jdbc:oracle:thin:@localhost:1521:xe";
         String username = "BATALHA";

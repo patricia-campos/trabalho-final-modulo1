@@ -5,10 +5,25 @@ import java.util.List;
 
 public class Jogador {
 
+    private int id;
     private String nomeJogador;
-    private List<Personagem> personagem = new ArrayList<>();
+    private String senha;
 
+    public String getSenha() {
+        return senha;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public String getNomeJogador() {
         return nomeJogador;
@@ -18,18 +33,9 @@ public class Jogador {
         this.nomeJogador = nomeJogador;
     }
 
-    public List<Personagem> getPersonagem() {
-        return personagem;
-    }
-
-    public void setPersonagem( Personagem personagem) {
-        this.personagem.add(personagem);
-    }
-
-    public Jogador(String nomeJogador, Personagem personagem) {
-        this.nomeJogador = nomeJogador;
-        assert false;
-        this.setPersonagem(personagem);
+    public Jogador(String nomeJogador, String senha) {
+        this.setNomeJogador(nomeJogador);
+        this.setSenha(senha);
     }
 
     public Jogador() {
@@ -37,19 +43,12 @@ public class Jogador {
     }
 
     public Personagem retornaPersonagem(int index) {
-        if (this.personagem.size() == 0) {
-            return null;
-        }
-        if (this.personagem.size() > index) {
-            return personagem.get(index);
-        }
+
         return null;
     }
 
     public void listarPersonagens(Jogador jogador) {
-        for (int i = 0; i < jogador.getPersonagem().size() ; i++) {
-            System.out.println("id=" + i + "\n" + jogador.personagem.get(i));
-        }
+
     }
 
 

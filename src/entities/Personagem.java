@@ -36,7 +36,11 @@ public class Personagem {
     }
 
     public Personagem(int id,String nomePersonagem) {
-        this.nomePersonagem = nomePersonagem;
+        this.setNomePersonagem(nomePersonagem);
+        this.setId(id);
+    }
+    public Personagem(String nomePersonagem) {
+        this.setNomePersonagem(nomePersonagem);
     }
 
     public ClassePersonagem addClasse(int tipo) {

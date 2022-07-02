@@ -98,7 +98,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("editarPessoa.res=" + res);
+            System.out.println("Personagem Editado com Sucesso");
 
             return res > 0;
         } catch (SQLException e) {
@@ -122,7 +122,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
             con = DbConfiguration.getConnection();
             Statement stmt = con.createStatement();
 
-            String sql = "SELECT * FROM PESSOA";
+            String sql = "SELECT * FROM PERSONAGEM";
 
             // Executa-se a consulta
             ResultSet res = stmt.executeQuery(sql);
@@ -130,6 +130,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
             while (res.next()) {
                 Personagem personagem = new Personagem();
                 personagem.setNomePersonagem(res.getString("NOME_PERSONAGEM"));
+                personagem.setId(res.getInt("ID_PERSONAGEM"));
                 personagemList.add(personagem);
             }
         } catch (SQLException e) {

@@ -7,7 +7,6 @@ public class Boss {
     private int vida;
     private int ataque;
     private int defesa;
-    private int tipo;
 
     public Boss() {
     }
@@ -19,6 +18,9 @@ public class Boss {
         this.defesa = 15;
     }
 
+    public void setIdBoss(Integer idBoss) {
+        this.idBoss = idBoss;
+    }
     public String getNome() {
         return nome;
     }
@@ -53,6 +55,8 @@ public class Boss {
     public void setDefesa(int defesa) {
         this.defesa = defesa;
     }
+
+    public void
 
 
     @Override

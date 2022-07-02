@@ -27,11 +27,7 @@ public class JogadorManipulacao implements Impressao {
     }
 
     public void addPersonagem(Jogador jogador, Personagem personagem) {
-        for(Jogador jogador1 : getListaDeJogadores()){
-            if(jogador.equals(jogador1)){
-                jogador1.setPersonagem(personagem);
-            }
-        }
+
     }
 
     public Jogador retornarJogador(int index) {

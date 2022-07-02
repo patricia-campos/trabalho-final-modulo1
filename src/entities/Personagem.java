@@ -4,8 +4,17 @@ import entities.ClassePersonagem;
 
 public class Personagem {
 
+    private int id;
     private String nomePersonagem;
     private ClassePersonagem classePersonagem = new ClassePersonagem();
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getNomePersonagem() {
         return nomePersonagem;
@@ -26,10 +35,8 @@ public class Personagem {
     public Personagem() {
     }
 
-    public Personagem(String nomePersonagem, int index) {
+    public Personagem(String nomePersonagem) {
         this.nomePersonagem = nomePersonagem;
-        ClassePersonagem classeNova = this.addClasse(index);
-        this.classePersonagem = classeNova;
     }
 
     public ClassePersonagem addClasse(int tipo) {

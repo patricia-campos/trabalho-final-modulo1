@@ -14,37 +14,15 @@ import java.util.Random;
 public class Batalha implements Atacar {
 
     private Cenario cenario;
-    private ReinoLuz reinoLuz = new ReinoLuz();
-    private ReinoSombrio reinoSombrio = new ReinoSombrio();
     private Personagem personagem = new Personagem();
     private Boss boss = new Boss();
-    private final BossReinoLuz bossLuz = new BossReinoLuz();
-    private final BossReinoSombrio bossSombrio = new BossReinoSombrio();
     private int roundAtual = 0;
 
-    public ReinoLuz getReinoLuz() {
-        return reinoLuz;
-    }
 
-    public void setReinoLuz(ReinoLuz reinoLuz) {
-        this.reinoLuz = reinoLuz;
-    }
 
-    public ReinoSombrio getReinoSombrio() {
-        return reinoSombrio;
-    }
 
-    public void setReinoSombrio(ReinoSombrio reinoSombrio) {
-        this.reinoSombrio = reinoSombrio;
-    }
 
-    public BossReinoLuz getBossLuz() {
-        return bossLuz;
-    }
 
-    public BossReinoSombrio getBossSombrio() {
-        return bossSombrio;
-    }
 
     public Cenario getCenario() {
         return cenario;
@@ -155,11 +133,7 @@ public class Batalha implements Atacar {
         Random random = new Random();
         int sortear = random.nextInt(2) + 1;
         if (sortear == 1) {
-            setCenario(reinoLuz);
-            setBoss(bossLuz);
         }else if (sortear == 2) {
-            setCenario(reinoSombrio);
-            setBoss(bossSombrio);
         } else if(sortear > 2) {
             System.out.println("| Cenário Inválido |");
         }
@@ -170,32 +144,11 @@ public class Batalha implements Atacar {
 
         setRoundAtual(roundAtual++);
 
-        if (getBoss() == getBossLuz()) {
-            getBossLuz().recuperarVida();
-            getReinoLuz().ajudaSoldados(this);
-            getReinoLuz().bonusHorario(this);
-            getCenario().buffDebuff(this);
-            this.atacar();
-            this.ataqueBoss();
-            System.out.println(this.imprimiStatusJogador());
-            System.out.println("-------------------------");
-            System.out.println(this.imprimiStatusBoss());
-        } else if (getBoss() == getBossSombrio()) {
-            getCenario().buffDebuff(this);
-            System.out.println(getBossSombrio().danoAdicional(this));
-            getReinoSombrio().ajudaSombria(this);
-            getReinoSombrio().armadilha(this);
-            this.atacar();
-            this.ataqueBoss();
-            System.out.println(this.imprimiStatusJogador());
-            System.out.println("-------------------------");
-            System.out.println(this.imprimiStatusBoss());
-        }
     }
 
     public void retornaBoss(){
 
-        if (this.getBoss() == getBossLuz()) {
+        if (this.getBoss() != null) {
 
             System.out.println("""
                     --------------------

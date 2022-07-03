@@ -188,6 +188,9 @@ public class Main {
                             String nome = sc.nextLine();
                             classePersonagemService.remover(classePersonagemService.retornaClasse(nome));
                         }
+                        default -> {
+                            System.out.println("Opção invalida");
+                        }
                     }
                 }
                 case 5 -> {
@@ -197,7 +200,7 @@ public class Main {
 
                     Jogador jogador = jogadorService.retornaJogador(nome);
 
-                    System.out.println(jogador.getNomeJogador() + ", agora você deve criar seu personagem: ");
+                    System.out.println(nome + ", agora você deve criar seu personagem: ");
                     System.out.println("Digite o nome do personagem: ");
                     String nomePersonagem = sc.nextLine();
                     if (Objects.equals(nomePersonagem, "")) {

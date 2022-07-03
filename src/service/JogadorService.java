@@ -4,6 +4,7 @@ import entities.Jogador;
 import exceptions.BancoDeDadosException;
 import repository.JogadorRepository;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class JogadorService {
@@ -52,7 +53,7 @@ public class JogadorService {
         return jogadorRepository
                 .listar()
                 .stream()
-                .filter(a -> Objects.equals(a.getNomeJogador().toUpperCase(), nome))
+                .filter(a -> Objects.equals(a.getNomeJogador().toUpperCase(), nome.toUpperCase(Locale.ROOT)))
                 .map(a -> new Jogador(a.getId(), a.getNomeJogador(), a.getSenha()))
                 .findFirst()
                 .orElse(null);
@@ -60,13 +61,8 @@ public class JogadorService {
 
     //Verifica se existe um jogador com o nome na minha base de dados, caso exista ele traz o objeto com valor e retorna false nao podendo alterar.
     public boolean verificaNomeJogador(Jogador jogador) throws BancoDeDadosException {
-        if (jogador == null) {
-            System.out.println("Jogador não encontrado");
-        } else {
             Jogador jogador1 = this.retornaJogador(jogador.getNomeJogador());
             return jogador1 == null;
-        }
-        return false;
     }
 
 }

@@ -133,7 +133,7 @@ public class Batalha implements Atacar {
         if (sortear == 1) {
             Boss boss = new Boss("Boss Da Luz");
             Cenario cenario = new Cenario("Cenario da luz","1",new Date());
-            bossService.adicionar(boss);
+//            bossService.adicionar(boss);
             cenarioService.adicionarCenario(cenario);
         }else if (sortear == 2) {
         } else if(sortear > 2) {

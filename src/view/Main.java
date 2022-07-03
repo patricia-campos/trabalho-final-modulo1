@@ -201,35 +201,61 @@ public class Main {
                             jogadorService.remover(jogadorService.retornaJogador(nome));
                         }
                         case 2 -> {
-
+                            System.out.println("Qual personagem deseja remover? ");
+                            personagemService.listar();
+                            String nome = sc.nextLine();
+                            personagemService.remover(personagemService.retornaPersonagem(nome));
+                        }
+                        case 3 -> {
+                            System.out.println("Qual Classe deseja remover? ");
+                            classePersonagemService.listarTodos();
+                            String nome = sc.nextLine();
+                            classePersonagemService.remover(classePersonagemService.retornaClasse(nome));
                         }
                     }
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
-                    jogadorManipulacao.listarJogador();
-                    int id = sc.nextInt();
-                    sc.nextLine();
-                    Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
-
-                    System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
-                    System.out.println("Digite o nome do personagem: ");
+                    jogadorService.listarTodos();
                     String nome = sc.nextLine();
+
+                    Jogador jogador = jogadorService.retornaJogador(nome);
+
+                    System.out.println(jogador.getNomeJogador() + ", agora você deve criar seu personagem: ");
+                    System.out.println("Digite o nome do personagem: ");
+                    String nomePersonagem = sc.nextLine();
                     if (Objects.equals(nome, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
-                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-                    jogadorManipulacao.imprimir();
-                    int escolhaClasse = sc.nextInt();
-                    sc.nextLine();
-                    if (escolhaClasse > 3 || escolhaClasse < 0) {
-                        System.out.println("Tipo inválido.");
-                        break;
+
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
+
+                    System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
+                    String classeNome = sc.nextLine();
+                    int vida = 150;
+                    int defesa = 40;
+                    int ataque = 50;
+                    if (classeNome == "Mago") {
+                        vida = 150;
+                        defesa = 40;
+                        ataque = 50;
+                    } else if (classeNome == "Elfo") {
+                        vida = 150;
+                        defesa = 50;
+                        ataque = 50;
+                    } else if (classeNome == "Guerreiro") {
+                        vida = 150;
+                        defesa = 50;
+                        ataque = 40;
                     }
-//                    Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
-//                    jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome, vida, defesa, ataque);
+                    classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
+            }
+//
+        }
 //                case 6 -> {
 //                    Batalha batalha = new Batalha();
 //                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
@@ -308,10 +334,10 @@ public class Main {
 //                        }
 //                    }
 //                }
-                case 7 -> System.out.println("Você saiu do jogo");
-                case default -> System.out.println("Numero incorreto");
-            }
-        }
+//        case 7 -> System.out.println("Você saiu do jogo");
+//        case default -> System.out.println("Numero incorreto");
     }
 }
+
+
 

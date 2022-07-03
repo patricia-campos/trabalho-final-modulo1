@@ -49,9 +49,13 @@ public class PersonagemService {
     }
 
     public Personagem retornaPersonagem(String nome) throws BancoDeDadosException {
-        return personagemRepository.listar().stream().filter(a -> Objects.equals(a.getNomePersonagem(), nome)).map(a -> {
-            return new Personagem(a.getId(), a.getNomePersonagem());
-        }).findFirst().orElse(null);
+        return personagemRepository
+                .listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getNomePersonagem(), nome))
+                .map(a -> new Personagem(a.getId(), a.getNomePersonagem()))
+                .findFirst()
+                .orElse(null);
     }
 
     public void listarPersonagemsPorJogador(int idJogador) throws BancoDeDadosException {
@@ -66,11 +70,7 @@ public class PersonagemService {
             System.out.println("Personagem inexistente");
         } else {
             Personagem personagem1 = this.retornaPersonagem(personagem.getNomePersonagem());
-            if (personagem1 == null) {
-                return true;
-            } else {
-                return false;
-            }
+            return personagem1 == null;
         }
         return false;
     }

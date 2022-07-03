@@ -60,14 +60,6 @@ public class Batalha {
         this.status = status;
     }
 
-    public Batalha(int idBatalha, int idCenario, int idJogador, int idBoss, int roundBatalha, String status) {
-        this.idBatalha = idBatalha;
-        this.idCenario = idCenario;
-        this.idJogador = idJogador;
-        this.idBoss = idBoss;
-        this.roundBatalha = roundBatalha;
-        this.status = status;
-    }
     public Batalha( int idCenario, int idJogador, int idBoss, int roundBatalha, String status) {
         this.idCenario = idCenario;
         this.idJogador = idJogador;

@@ -44,9 +44,6 @@ public class BatalhaController implements Atacar {
         this.boss = boss;
     }
 
-    public int getRoundAtual() {
-        return roundAtual;
-    }
 
     public void setRoundAtual(int roundAtual) {
         this.roundAtual = roundAtual;
@@ -142,15 +139,13 @@ public class BatalhaController implements Atacar {
                 cenarioService.adicionarCenario(cenario);
                 setBoss(bossService.retornaBoss("Boss Da Luz"));
                 setCenario(cenarioService.retornaCenario("1"));
-            } else if (sortear == 2) {
+            } else {
                 Boss boss = new Boss("Boss Da Sombras");
                 Cenario cenario = new Cenario("Cenario da sombras", "2", new Date());
                 bossService.adicionar(boss);
                 cenarioService.adicionarCenario(cenario);
                 setBoss(bossService.retornaBoss("Boss Da Sombras"));
                 setCenario(cenarioService.retornaCenario("2"));
-            } else if (sortear > 2) {
-                System.out.println("| Cenário Inválido |");
             }
         }
     }
@@ -170,7 +165,7 @@ public class BatalhaController implements Atacar {
             System.out.println("""
                     --------------------
                     O BOSS DA LUZ ESTÁ CHEGANDO...
-                    --------------------        
+                    --------------------\040\040\040\040\040\040\040\040
                                /                            )
                               (                             |\\
                              /|                              \\\\
@@ -213,7 +208,7 @@ public class BatalhaController implements Atacar {
             System.out.println("""
                     --------------------
                     O BOSS DAS SOMBRAS ESTÁ CHEGANDO...
-                    --------------------              
+                    --------------------\040\040\040\040\040\040\040\040\040\040\040\040\040\040
                                                                        ,--,  ,.-.
                                    ,                   \\,       '-,-`,'-.' | ._
                                   /|           \\    ,   |\\         }  )/  / `-,',

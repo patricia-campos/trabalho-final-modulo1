@@ -10,8 +10,6 @@ import java.util.List;
 
 public class BossRepository implements Repositorio<Integer,Boss>{
 
-    Connection con = null;
-
     @Override
     public Integer getProximoId(Connection connection) throws SQLException {
         String sql = "SELECT SEQ_BOSS.nextval proximoIdBoss from DUAL";

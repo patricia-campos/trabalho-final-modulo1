@@ -1,14 +1,10 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Jogador {
 
     private int id;
     private String nomeJogador;
     private String senha;
-    private int personagem;
 
     public String getSenha() {
         return senha;
@@ -46,16 +42,6 @@ public class Jogador {
     public Jogador() {
 
     }
-
-    public Personagem retornaPersonagem(int index) {
-
-        return null;
-    }
-
-    public void listarPersonagens(Jogador jogador) {
-
-    }
-
 
     @Override
     public String toString() {

@@ -33,17 +33,18 @@ public class BossService {
     }
 
     public void editar(Boss boss) throws BancoDeDadosException {
-        if (boss == null) {
-            System.out.println("Cenario inexistente");
-        }
+        assert boss != null;
         bossRepository.editar(boss.getIdBoss(), boss);
 
     }
 
     public Boss retornaBoss(String nome) throws BancoDeDadosException {
-        return bossRepository.listar().stream().filter(a -> Objects.equals(a.getNome(), nome)).map(a -> {
-            return new Boss(a.getIdBoss(), a.getNome());
-        }).findFirst().orElse(null);
+        return bossRepository.listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getNome(), nome))
+                .map(a -> new Boss(a.getIdBoss(), a.getNome()))
+                .findFirst()
+                .orElse(null);
     }
 
 }

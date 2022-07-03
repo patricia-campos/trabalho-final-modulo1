@@ -1,9 +1,9 @@
 package view;
 
 import controller.BatalhaController;
-import entities.ClassePersonagem;
-import entities.Jogador;
-import entities.Personagem;
+import model.entities.ClassePersonagem;
+import model.entities.Jogador;
+import model.entities.Personagem;
 import exceptions.BancoDeDadosException;
 import service.BatalhaService;
 import service.ClassePersonagemService;

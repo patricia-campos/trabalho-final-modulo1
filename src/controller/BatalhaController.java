@@ -1,9 +1,9 @@
 package controller;
 
-import entities.Batalha;
-import entities.Boss;
-import entities.Cenario;
-import entities.Personagem;
+import model.entities.Batalha;
+import model.entities.Boss;
+import model.entities.Cenario;
+import model.entities.Personagem;
 import exceptions.BancoDeDadosException;
 import interfaces.Atacar;
 import service.BossService;

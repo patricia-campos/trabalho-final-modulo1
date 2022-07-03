@@ -1,6 +1,6 @@
 package service;
 
-import entities.Boss;
+import model.entities.Boss;
 import exceptions.BancoDeDadosException;
 import repository.BossRepository;
 

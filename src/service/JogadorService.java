@@ -1,6 +1,6 @@
 package service;
 
-import entities.Jogador;
+import model.entities.Jogador;
 import exceptions.BancoDeDadosException;
 import repository.JogadorRepository;
 

@@ -1,7 +1,7 @@
 package service;
 
-import entities.ClassePersonagem;
-import entities.Personagem;
+import model.entities.ClassePersonagem;
+import model.entities.Personagem;
 import exceptions.BancoDeDadosException;
 import repository.ClassePersonagemRepository;
 

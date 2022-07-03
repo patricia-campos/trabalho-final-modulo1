@@ -1,7 +1,7 @@
 package repository;
 
 import banco.DbConfiguration;
-import entities.ClassePersonagem;
+import model.entities.ClassePersonagem;
 import exceptions.BancoDeDadosException;
 
 import java.sql.*;

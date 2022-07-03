@@ -1,6 +1,6 @@
 package service;
 
-import entities.Cenario;
+import model.entities.Cenario;
 import exceptions.BancoDeDadosException;
 import repository.CenarioRepository;
 

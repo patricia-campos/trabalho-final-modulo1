@@ -1,7 +1,7 @@
 package repository;
 
 import banco.DbConfiguration;
-import entities.Batalha;
+import model.entities.Batalha;
 import exceptions.BancoDeDadosException;
 import java.sql.*;
 import java.util.ArrayList;

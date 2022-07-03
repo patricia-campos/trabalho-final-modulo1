@@ -1,7 +1,7 @@
 package repository;
 
 import banco.DbConfiguration;
-import entities.Boss;
+import model.entities.Boss;
 import exceptions.BancoDeDadosException;
 
 import java.sql.*;

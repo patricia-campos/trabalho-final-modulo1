@@ -1,6 +1,6 @@
 package service;
 
-import entities.Batalha;
+import model.entities.Batalha;
 import exceptions.BancoDeDadosException;
 import repository.BatalhaRepository;
 

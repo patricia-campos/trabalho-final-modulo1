@@ -248,7 +248,7 @@ public class Main {
                     }
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
-                    String classeNome = sc.nextLine();
+                    String classeNome = sc.nextLine().toUpperCase();;
                     if (!Objects.equals(classeNome, "MAGO") &&!Objects.equals(classeNome, "ELFO") &&!Objects.equals(classeNome, "GUERREIRO") ){
                         System.out.println("Classe invalida");
                         break;

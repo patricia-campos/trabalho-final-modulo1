@@ -6,6 +6,7 @@ import repository.JogadorRepository;
 import repository.PersonagemRepository;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 public class JogadorService {
@@ -54,7 +55,7 @@ public class JogadorService {
     }
 
     public Jogador retornaJogador(String nome) throws BancoDeDadosException {
-        Jogador jogador = jogadorRepository.listar().stream().filter(a -> Objects.equals(a.getNomeJogador(), nome)).map(a -> {
+        Jogador jogador = jogadorRepository.listar().stream().filter(a -> Objects.equals(a.getNomeJogador().toUpperCase(Locale.ROOT), nome)).map(a -> {
             return new Jogador(a.getId(), a.getNomeJogador(), a.getSenha());
         }).findFirst().orElse(null);
         if(jogador == null){

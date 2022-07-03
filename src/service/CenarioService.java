@@ -15,7 +15,7 @@ public class CenarioService {
     public void adicionarCenario(Cenario cenario) throws BancoDeDadosException {
         if (cenario == null) {
             System.out.println("Cenario inexistente");
-        } else if (verificaNomeCenario(cenario)) {
+        } else {
             cenarioRepository.adicionar(cenario);
         }
     }
@@ -37,13 +37,13 @@ public class CenarioService {
     public void editar(Cenario cenario) throws BancoDeDadosException {
         if (cenario == null) {
             System.out.println("Cenario inexistente");
-        } else if (verificaNomeCenario(cenario)) {
+        } else {
             cenarioRepository.editar(cenario.getIdCenario(), cenario);
         }
     }
 
-    public Cenario retornaClasse(String nome) throws BancoDeDadosException {
-        return cenarioRepository.listar().stream().filter(a -> Objects.equals(a.getNomeCenario(), nome)).map(a -> {
+    public Cenario retornaCenario(String tipo) throws BancoDeDadosException {
+        return cenarioRepository.listar().stream().filter(a -> Objects.equals(a.getTipoCenario(), tipo)).map(a -> {
             return new Cenario(a.getIdCenario(), a.getNomeCenario(), a.getTipoCenario(), a.getHorario());
         }).findFirst().orElse(null);
     }
@@ -53,7 +53,7 @@ public class CenarioService {
         if (cenario == null) {
             System.out.println("Cenario inexistente");
         } else {
-            Cenario cenario1 = this.retornaClasse(cenario.getNomeCenario());
+            Cenario cenario1 = this.retornaCenario(cenario.getNomeCenario());
             if (cenario1 == null) {
                 return true;
             } else {

@@ -10,6 +10,7 @@ import service.ClassePersonagemService;
 import service.JogadorService;
 import service.PersonagemService;
 
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -218,7 +219,7 @@ public class Main {
                     BatalhaController batalhaController = new BatalhaController();
                     System.out.println("Selecione seu jogador digitando seu username:");
                     jogadorService.listarTodos();
-                    String localJogador = sc.nextLine();
+                    String localJogador = sc.nextLine().toUpperCase(Locale.ROOT);
 
                     Jogador jogadorDoJogo = jogadorService.retornaJogador(localJogador);
                     System.out.println("Selecione seu personagem digitando seu nome: ");
@@ -257,17 +258,18 @@ public class Main {
                                 } else if (batalhaController.getBoss().getVida() <= 0) {
                                     i = 1;
                                     vitoria = true;
+                                    batalhaController.retornaStatusVitoria(vitoria);
+                                    batalhaService.adicionar(batalhaController.retornaBatalha(jogadorDoJogo.getId(),"Vitoria",batalhaController.getCenario()));
                                     batalhaController.setBoss(null);
                                     batalhaController.setCenario(null);
-                                    batalhaController.retornaStatusVitoria(vitoria);
-
                                     comecar = 3;
                                 } else if (batalhaController.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
                                     i = 1;
                                     vitoria = false;
+                                    batalhaController.retornaStatusVitoria(vitoria);
+                                    batalhaService.adicionar(batalhaController.retornaBatalha(jogadorDoJogo.getId(),"Derrota", batalhaController.getCenario()));
                                     batalhaController.setBoss(null);
                                     batalhaController.setCenario(null);
-                                    batalhaController.retornaStatusVitoria(vitoria);
                                     comecar = 3;
                                 } else {
                                     System.out.println("\nRound: " + i + "\n");

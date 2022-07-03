@@ -17,13 +17,16 @@ public class BossService {
     }
 
     public void adicionar(Boss boss) throws BancoDeDadosException {
-
-        bossRepository.adicionar(boss);
+        if (boss == null) {
+            System.out.println("Boss inexistente");
+        }else {
+            bossRepository.adicionar(boss);
+        }
     }
 
     public void remover(Boss boss) throws BancoDeDadosException {
         if (boss == null) {
-            System.out.println("Cenario inexistente");
+            System.out.println("Boss inexistente");
         } else {
             bossRepository.remover(boss.getIdBoss());
         }

@@ -1,5 +1,6 @@
 package controller;
 
+import entities.Batalha;
 import entities.Boss;
 import entities.Cenario;
 import entities.Personagem;
@@ -70,6 +71,10 @@ public class BatalhaController implements Atacar {
         }
     }
 
+    public Batalha retornaBatalha(int idJogador,String status,Cenario cenario){
+        return new Batalha(cenario.getIdCenario(), idJogador,this.getBoss().getIdBoss(),this.roundAtual,status);
+    }
+
     public String imprimiStatusJogador() {
         String nome = getPersonagem().getClassePersonagem().getNomeClassePersonagem();
         int vida = getPersonagem().getClassePersonagem().getVidaClasse();
@@ -133,17 +138,17 @@ public class BatalhaController implements Atacar {
             if (sortear == 1) {
                 Boss boss = new Boss("Boss Da Luz");
                 Cenario cenario = new Cenario("Cenario da luz", "1", new Date());
-                setBoss(boss);
-                setCenario(cenario);
                 bossService.adicionar(boss);
                 cenarioService.adicionarCenario(cenario);
+                setBoss(bossService.retornaBoss("Boss Da Luz"));
+                setCenario(cenarioService.retornaCenario("1"));
             } else if (sortear == 2) {
                 Boss boss = new Boss("Boss Da Sombras");
                 Cenario cenario = new Cenario("Cenario da sombras", "2", new Date());
-                this.boss = boss;
-                this.cenario = cenario;
                 bossService.adicionar(boss);
                 cenarioService.adicionarCenario(cenario);
+                setBoss(bossService.retornaBoss("Boss Da Sombras"));
+                setCenario(cenarioService.retornaCenario("2"));
             } else if (sortear > 2) {
                 System.out.println("| Cenário Inválido |");
             }

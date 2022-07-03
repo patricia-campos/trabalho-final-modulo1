@@ -20,7 +20,11 @@ public class Boss {
 
     public Boss(int id, String nome) {
         this.setNome(nome);
-        this.setIdBoss(idBoss);
+        this.setIdBoss(id);
+        this.nome = nome;
+        this.vida = 300;
+        this.ataque = 30;
+        this.defesa = 25;
     }
 
     public void setIdBoss(Integer idBoss) {

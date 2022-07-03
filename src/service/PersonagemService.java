@@ -15,9 +15,9 @@ public class PersonagemService {
 
     public void adicionar(Jogador jogador, Personagem personagem) throws BancoDeDadosException {
         if (personagem == null) {
-            System.out.println();
+            System.out.println("Personagem inexistente");
         } else if (jogador == null) {
-            System.out.println("");
+            System.out.println("Jogador inexistente");
         } else if (this.verificaNomePersonagem(personagem)) {
             personagemRepository.adicionar(personagem, jogador.getId());
         }
@@ -41,6 +41,7 @@ public class PersonagemService {
 
     public void remover(Personagem personagem) throws BancoDeDadosException {
         if (personagem == null) {
+            System.out.println("Personagem inexistente");
         } else {
             personagemRepository.remover(personagem.getId());
         }

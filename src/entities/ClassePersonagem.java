@@ -6,10 +6,19 @@ import java.util.Objects;
 
 public class ClassePersonagem implements Impressao {
     private int idClassePersonagem;
+    private int idPersonagem;
     private String nomeClassePersonagem;
     private int vidaClasse;
     private int defesaClasse;
     private int ataqueClasse;
+
+    public int getIdPersonagem() {
+        return idPersonagem;
+    }
+
+    public void setIdPersonagem(int idPersonagem) {
+        this.idPersonagem = idPersonagem;
+    }
 
     public ClassePersonagem(String nomeClassePersonagem) {
         if (Objects.equals(nomeClassePersonagem, "Mago")) {
@@ -30,12 +39,13 @@ public class ClassePersonagem implements Impressao {
         }
     }
 
-    public ClassePersonagem(int id, String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse) {
+    public ClassePersonagem(int id, String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse, int idPersonagem) {
         this.idClassePersonagem = id;
         this.nomeClassePersonagem = nomeClassePersonagem;
         this.vidaClasse = vidaClasse;
         this.defesaClasse = defesaClasse;
         this.ataqueClasse = ataqueClasse;
+        this.idPersonagem = idPersonagem;
     }
 
     public int getIdClassePersonagem() {

@@ -9,6 +9,7 @@ import service.BossService;
 import service.CenarioService;
 
 import java.util.Date;
+import java.util.Objects;
 import java.util.Random;
 
 public class BatalhaController implements Atacar {
@@ -123,41 +124,43 @@ public class BatalhaController implements Atacar {
 
         if (this.personagem == null) {
             System.out.println("| Não há personagem disponível para a batalha |");
-        }
-        BossService bossService = new BossService();
-        CenarioService cenarioService = new CenarioService();
-        Random random = new Random();
+        }else {
+            BossService bossService = new BossService();
+            CenarioService cenarioService = new CenarioService();
+            Random random = new Random();
 
-        int sortear = random.nextInt(2) + 1;
-        if (sortear == 1) {
-            Boss boss = new Boss("Boss Da Luz");
-            Cenario cenario = new Cenario("Cenario da luz","1",new Date());
-            this.boss = boss;
-            this.cenario = cenario;
-            bossService.adicionar(boss);
-            cenarioService.adicionarCenario(cenario);
-        }else if (sortear == 2) {
-        } else if(sortear > 2) {
-            Boss boss = new Boss("Boss Da Sombras");
-            Cenario cenario = new Cenario("Cenario da sombras","2",new Date());
-            this.boss = boss;
-            this.cenario = cenario;
-            bossService.adicionar(boss);
-            cenarioService.adicionarCenario(cenario);
-        } else if(sortear > 2) {
-            System.out.println("| Cenário Inválido |");
+            int sortear = random.nextInt(2) + 1;
+            if (sortear == 1) {
+                Boss boss = new Boss("Boss Da Luz");
+                Cenario cenario = new Cenario("Cenario da luz", "1", new Date());
+                setBoss(boss);
+                setCenario(cenario);
+                bossService.adicionar(boss);
+                cenarioService.adicionarCenario(cenario);
+            } else if (sortear == 2) {
+                Boss boss = new Boss("Boss Da Sombras");
+                Cenario cenario = new Cenario("Cenario da sombras", "2", new Date());
+                this.boss = boss;
+                this.cenario = cenario;
+                bossService.adicionar(boss);
+                cenarioService.adicionarCenario(cenario);
+            } else if (sortear > 2) {
+                System.out.println("| Cenário Inválido |");
+            }
         }
     }
 
     public void inciarAtaque() {
         setRoundAtual(roundAtual++);
+        this.imprimiStatusBoss();
+        this.imprimiStatusJogador();
         this.atacar();
         this.ataqueBoss();
     }
 
     public void retornaBoss(){
 
-        if (this.getBoss() != null) {
+        if (Objects.equals(this.boss.getNome(), "Boss Da Luz")) {
 
             System.out.println("""
                     --------------------

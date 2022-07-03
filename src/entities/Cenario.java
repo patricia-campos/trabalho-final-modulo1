@@ -3,6 +3,7 @@ package entities;
 import controller.BatalhaController;
 import interfaces.Impressao;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Cenario implements Impressao {
@@ -61,11 +62,10 @@ public class Cenario implements Impressao {
 
     @Override
     public String toString() {
-        return "Cenario{" +
-                "idCenario=" + idCenario +
-                ", nomeCenario='" + nomeCenario + '\'' +
-                ", horario=" + horario +
-                '}';
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        return "Cenario:\n" +
+                "" + nomeCenario +
+                "\nHorario: " + sdf.format(horario);
     }
 
     public void buffDebuff(BatalhaController batalhaController) {

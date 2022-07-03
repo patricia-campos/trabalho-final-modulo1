@@ -247,6 +247,8 @@ public class Main {
                         break;
                     }
                     batalhaController.setPersonagem(personagem);
+                    batalhaController.getPersonagem().setClassePersonagem(classePersonagemService.retornaClassePorPersonagem(personagem));
+                    System.out.println(batalhaController.getPersonagem().getClassePersonagem());
                     comecar = 0;
                     while (comecar != 3) {
 

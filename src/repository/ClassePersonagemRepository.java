@@ -125,6 +125,7 @@ public class ClassePersonagemRepository implements Repositorio<Integer, ClassePe
                 classePersonagem.setVidaClasse(res.getInt("VIDA_PERSONAGEM"));
                 classePersonagem.setDefesaClasse(res.getInt("DEFESA_PERSONAGEM"));
                 classePersonagem.setAtaqueClasse(res.getInt("ATAQUE_PERSONAGEM"));
+                classePersonagem.setIdPersonagem(res.getInt("ID_PERSONAGEM"));
                 classes.add(classePersonagem);
             }
         } catch (SQLException e) {

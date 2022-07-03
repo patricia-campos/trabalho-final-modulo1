@@ -115,7 +115,7 @@ public class Main {
                     personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
-                    String classeNome = sc.nextLine();
+                    String classeNome = sc.nextLine().toUpperCase();
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
@@ -221,7 +221,7 @@ public class Main {
                     personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
-                    String classeNome = sc.nextLine();
+                    String classeNome = sc.nextLine().toUpperCase();
 
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);

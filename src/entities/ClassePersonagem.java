@@ -12,17 +12,17 @@ public class ClassePersonagem implements Impressao {
     private int ataqueClasse;
 
     public ClassePersonagem(String nomeClassePersonagem) {
-        if (Objects.equals(nomeClassePersonagem, "Mago")) {
+        if (Objects.equals(nomeClassePersonagem, "MAGO")) {
             this.nomeClassePersonagem = nomeClassePersonagem;
             this.vidaClasse = 150;
             this.defesaClasse = 40;
             this.ataqueClasse = 50;
-        } else if (Objects.equals(nomeClassePersonagem, "Elfo")) {
+        } else if (Objects.equals(nomeClassePersonagem, "ELFO")) {
             this.nomeClassePersonagem = nomeClassePersonagem;
             this.vidaClasse = 150;
             this.defesaClasse = 50;
             this.ataqueClasse = 50;
-        } else if (Objects.equals(nomeClassePersonagem, "Guerreiro")) {
+        } else if (Objects.equals(nomeClassePersonagem, "GUERREIRO")) {
             this.nomeClassePersonagem = nomeClassePersonagem;
             this.vidaClasse = 150;
             this.defesaClasse = 50;

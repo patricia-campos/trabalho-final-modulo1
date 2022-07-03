@@ -204,13 +204,7 @@ public class Main {
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
-                    jogadorManipulacao.listarJogador();
-                    int id = sc.nextInt();
-                    sc.nextLine();
-                    Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
-
-                    System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
-                    System.out.println("Digite o nome do personagem: ");
+                    jogadorService.listarTodos();
                     String nome = sc.nextLine();
 
                     Jogador jogador = jogadorService.retornaJogador(nome);
@@ -227,7 +221,7 @@ public class Main {
                     personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
-                    String classeNome = sc.nextLine().toUpperCase();
+                    String classeNome = sc.nextLine();
 
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);

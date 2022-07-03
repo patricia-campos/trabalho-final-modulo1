@@ -152,8 +152,8 @@ public class BatalhaController implements Atacar {
 
     public void inciarAtaque() {
         setRoundAtual(roundAtual++);
-        this.imprimiStatusBoss();
-        this.imprimiStatusJogador();
+        System.out.println(this.imprimiStatusBoss());
+        System.out.println(this.imprimiStatusJogador());
         this.atacar();
         this.ataqueBoss();
     }

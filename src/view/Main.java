@@ -1,12 +1,11 @@
 package view;
 
-import banco.DbConfiguration;
 import controller.BatalhaController;
-import controller.JogadorManipulacao;
 import entities.ClassePersonagem;
 import entities.Jogador;
 import entities.Personagem;
 import exceptions.BancoDeDadosException;
+import service.BatalhaService;
 import service.ClassePersonagemService;
 import service.JogadorService;
 import service.PersonagemService;
@@ -53,7 +52,6 @@ public class Main {
                 ██╔══██╗██╔══██║   ██║      ██║   ██║     ██╔══╝      ██║   ██║██╔══╝      ██║███╗██║██║   ██║██╔══██╗██║     ██║  ██║╚════██║
                 ██████╔╝██║  ██║   ██║      ██║   ███████╗███████╗    ╚██████╔╝██║         ╚███╔███╔╝╚██████╔╝██║  ██║███████╗██████╔╝███████║""");
 
-        JogadorManipulacao jogadorManipulacao = new JogadorManipulacao();
 
         boolean vitoria;
         int opcao = 0;
@@ -62,10 +60,10 @@ public class Main {
         int i = 1;
 
         while (opcao != 7) {
-            DbConfiguration db = new DbConfiguration();
             JogadorService jogadorService = new JogadorService();
             PersonagemService personagemService = new PersonagemService();
             ClassePersonagemService classePersonagemService = new ClassePersonagemService();
+            BatalhaService batalhaService = new BatalhaService();
 
             System.out.print("\n");
             System.out.println("Digite 0 para cadastrar automaticamente");
@@ -80,13 +78,12 @@ public class Main {
             sc.nextLine();
             switch (opcao) {
                 case 0 -> {
-//                    String nomeJogador = "Gustavo";
-//                    String nomePersonagem = "Legolas";
-//                    Personagem personagemInicial = new Personagem(nomePersonagem, escolhaClasse);
-//                    Jogador jogador = new Jogador(nomeJogador, personagemInicial);
-//                    personagemInicial.setNomePersonagem(nomePersonagem);
-//                    jogadorManipulacao.addPersonagem(jogador, personagemInicial);
-//                    jogadorManipulacao.adicionarJogador(jogador);
+                    Personagem personagemInicial = new Personagem("Legolas");
+                    Jogador jogador = new Jogador("Gustavo", "senha");
+                    ClassePersonagem classePersonagem = new ClassePersonagem("Mago");
+                    classePersonagemService.adicionarClassePersonagem(personagemInicial,classePersonagem);
+                    personagemService.adicionar(jogador, personagemInicial);
+                    jogadorService.adicionar(jogador);
                 }
                 case 1 -> {
                     System.out.println("Olá jogador! Digite seu nome: ");
@@ -126,21 +123,14 @@ public class Main {
                     opcaoImprimir = sc.nextInt();
                     sc.nextLine();
                     switch (opcaoImprimir) {
-                        case 1 -> {
-                            jogadorService.listarTodos();
-                            break;
-                        }
+                        case 1 -> jogadorService.listarTodos();
                         case 2 -> {
                             System.out.println("Qual o nome do seu Jogador? ");
                             String nomeJogador = sc.nextLine();
                             Jogador jogadorParaListar = jogadorService.retornaJogador(nomeJogador);
                             personagemService.listarPersonagemsPorJogador(jogadorParaListar.getId());
-                            break;
                         }
-                        case 3 -> {
-                            classePersonagemService.listarTodos();
-                            break;
-                        }
+                        case 3 -> classePersonagemService.listarTodos();
                         case default -> System.out.println("Numero incorreto");
                     }
                 }
@@ -170,9 +160,7 @@ public class Main {
                             String novoNome = sc.nextLine();
                             personagemService.editar(personagem, novoNome);
                         }
-                        default -> {
-                            System.out.println("opcão inválida");
-                        }
+                        default -> System.out.println("opcão inválida");
                     }
                 }
                 case 4 -> {
@@ -228,10 +216,6 @@ public class Main {
                 }
                 case 6 -> {
                     BatalhaController batalhaController = new BatalhaController();
-                    if (jogadorService.listarTodos().size() == 0) {
-                        System.out.println("Jogadores vazios");
-                        break;
-                    }
                     System.out.println("Selecione seu jogador digitando seu username:");
                     jogadorService.listarTodos();
                     String localJogador = sc.nextLine();
@@ -276,6 +260,7 @@ public class Main {
                                     batalhaController.setBoss(null);
                                     batalhaController.setCenario(null);
                                     batalhaController.retornaStatusVitoria(vitoria);
+
                                     comecar = 3;
                                 } else if (batalhaController.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
                                     i = 1;

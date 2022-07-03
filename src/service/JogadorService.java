@@ -24,13 +24,10 @@ public class JogadorService {
         }
     }
 
-    public List<Jogador> listarTodos() throws BancoDeDadosException {
-        if (jogadorRepository.listar() != null) {
-            return jogadorRepository.listar();
-        }else {
-            System.out.println("Lista Vazia");
-            return null;
-        }
+    public void listarTodos() throws BancoDeDadosException {
+     for(Jogador jogador: jogadorRepository.listar()){
+         System.out.println(jogador);
+     }
     }
 
     public void remover(Jogador jogador) throws BancoDeDadosException {

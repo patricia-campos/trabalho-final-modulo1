@@ -18,7 +18,7 @@ public class ClassePersonagemService {
             System.out.println("Personagem inexistente");
         }else if(classePersonagem == null){
             System.out.println("Classe inexistente");
-        }else if (verificaNomeClasse(classePersonagem)) {
+        }else{
             classePersonagemRepository.adicionar(classePersonagem, personagem.getId());
         }
     }
@@ -40,7 +40,7 @@ public class ClassePersonagemService {
     public void editar(ClassePersonagem classePersonagem) throws BancoDeDadosException {
         if(classePersonagem == null){
             System.out.println("Classe inexistente");
-        }else if (verificaNomeClasse(classePersonagem)) {
+        }else{
             classePersonagemRepository.editar(classePersonagem.getIdClassePersonagem(), classePersonagem);
         }
     }
@@ -50,20 +50,6 @@ public class ClassePersonagemService {
             return new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse());
         }).findFirst().orElse(null);
     }
-
-
-    public boolean verificaNomeClasse(ClassePersonagem classePersonagem) throws BancoDeDadosException {
-        if (classePersonagem == null) {
-            System.out.println("Classe inexistente");
-        } else {
-            ClassePersonagem classePersonagem1 = this.retornaClasse(classePersonagem.getNomeClassePersonagem());
-            if (classePersonagem1 == null) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
+    
 }
 

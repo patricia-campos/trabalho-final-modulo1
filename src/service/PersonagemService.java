@@ -5,7 +5,9 @@ import entities.Personagem;
 import exceptions.BancoDeDadosException;
 import repository.PersonagemRepository;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class PersonagemService {
 
@@ -50,6 +52,13 @@ public class PersonagemService {
         return personagemRepository.listar().stream().filter(a -> Objects.equals(a.getNomePersonagem(), nome)).map(a -> {
             return new Personagem(a.getId(), a.getNomePersonagem());
         }).findFirst().orElse(null);
+    }
+
+    public void listarPersonagemsPorJogador(int idJogador) throws BancoDeDadosException {
+        List<Personagem> listaPersonagem = personagemRepository.listar().stream().filter(a ->Objects.equals(a.getIdJogador(), idJogador)).collect(Collectors.toList());
+        for (Personagem personagem : listaPersonagem) {
+            System.out.println(personagem);
+        }
     }
 
     public boolean verificaNomePersonagem(Personagem personagem) throws BancoDeDadosException {

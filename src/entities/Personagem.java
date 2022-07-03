@@ -3,8 +3,17 @@ package entities;
 public class Personagem {
 
     private int id;
+    private int idJogador;
     private String nomePersonagem;
     private ClassePersonagem classePersonagem = new ClassePersonagem();
+
+    public int getIdJogador() {
+        return idJogador;
+    }
+
+    public void setIdJogador(int idJogador) {
+        this.idJogador = idJogador;
+    }
 
     public int getId() {
         return id;
@@ -44,10 +53,8 @@ public class Personagem {
     @Override
     public String toString() {
         return "========================="
-                + "\nNome do seu personagem: " + nomePersonagem
-                + "\n Classe do personagem: " + getClassePersonagem()
-                + "\n" +
-                "=========================";
+                + "\nNome do seu personagem: " + nomePersonagem +
+                "\n=========================";
     }
 }
 

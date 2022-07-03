@@ -8,6 +8,7 @@ public class Jogador {
     private int id;
     private String nomeJogador;
     private String senha;
+    private int personagem;
 
     public String getSenha() {
         return senha;

@@ -11,7 +11,7 @@ import service.CenarioService;
 import java.util.Date;
 import java.util.Random;
 
-public class Batalha implements Atacar {
+public class BatalhaController implements Atacar {
 
     private Cenario cenario;
     private Personagem personagem = new Personagem();
@@ -65,7 +65,6 @@ public class Batalha implements Atacar {
 
         } else {
             System.out.println("Ataque bem sucedido, você causou " + getPersonagem().getClassePersonagem().getAtaqueClasse() + " de dano no boss");
-
             this.boss.setVida(vidaBoss + defesaBoss - valorAtq);
         }
     }
@@ -133,21 +132,27 @@ public class Batalha implements Atacar {
         if (sortear == 1) {
             Boss boss = new Boss("Boss Da Luz");
             Cenario cenario = new Cenario("Cenario da luz","1",new Date());
+            this.boss = boss;
+            this.cenario = cenario;
             bossService.adicionar(boss);
             cenarioService.adicionarCenario(cenario);
         }else if (sortear == 2) {
         } else if(sortear > 2) {
             Boss boss = new Boss("Boss Da Sombras");
             Cenario cenario = new Cenario("Cenario da sombras","2",new Date());
+            this.boss = boss;
+            this.cenario = cenario;
+            bossService.adicionar(boss);
+            cenarioService.adicionarCenario(cenario);
+        } else if(sortear > 2) {
             System.out.println("| Cenário Inválido |");
         }
     }
 
-
-    public void inciarRound() {
-
+    public void inciarAtaque() {
         setRoundAtual(roundAtual++);
-
+        this.atacar();
+        this.ataqueBoss();
     }
 
     public void retornaBoss(){

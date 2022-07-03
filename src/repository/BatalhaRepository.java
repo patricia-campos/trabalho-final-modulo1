@@ -24,7 +24,7 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
         return null;
     }
 
-    //Adicionando uma batalha - CREATE
+    //Adicionando uma batalhaController - CREATE
     @Override
     public Batalha adicionar (Batalha object) throws BancoDeDadosException {
 
@@ -40,17 +40,18 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
                          VALUES(SEQ_BATALHA.nextval, ?, ?, ?, ?, ?)
                         """;
 
+            // TODO: 02/07/2022 CHECAR COMO SERÁ O ROUND - LINHA 50
+
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, proximoId);
-            stmt.setInt(2, object.getIdCenario());
-            stmt.setInt(3, object.getIdJogador());
-            stmt.setInt(4, object.getIdBoss());
-            stmt.setInt(5, object.getRoundBatalha());
-            stmt.setString(6, object.getStatus());
+            stmt.setInt(1, object.getIdCenario());
+            stmt.setInt(2, object.getIdJogador());
+            stmt.setInt(3, object.getIdBoss());
+            stmt.setInt(4, object.getRoundBatalha());
+            stmt.setString(5, object.getStatus());
 
 
             stmt.executeUpdate();
-            System.out.println("A batalha começou!");
+            System.out.println("A batalhaController começou!");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -81,13 +82,13 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
             ResultSet res = stmt.executeQuery(sql);
 
             while (res.next()) {
-                Batalha batalha = new Batalha();
-                batalha.setIdBatalha(res.getInt("ID_BATALHA"));
-                batalha.setIdCenario(res.getInt("ID_CENARIO"));
-                batalha.setIdJogador(res.getInt("ID_JOGADOR"));
-                batalha.setIdBoss(res.getInt("ID_BOSS"));
-                batalha.setRoundBatalha(res.getInt("ROUND_BATALHA"));
-                batalha.setStatus(res.getString("STATUS"));
+                Batalha batalhaController = new Batalha();
+                batalhaController.setIdBatalha(res.getInt("ID_BATALHA"));
+                batalhaController.setIdCenario(res.getInt("ID_CENARIO"));
+                batalhaController.setIdJogador(res.getInt("ID_JOGADOR"));
+                batalhaController.setIdBoss(res.getInt("ID_BOSS"));
+                batalhaController.setRoundBatalha(res.getInt("ROUND_BATALHA"));
+                batalhaController.setStatus(res.getString("STATUS"));
             }
 
         } catch (SQLException e) {

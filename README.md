@@ -32,7 +32,7 @@ Acesse nosso diagrama UML através do link: https://miro.com/app/board/uXjVOqHKk
 2. Cadastre o Personagem
 3. Escolha uma das 3 classes de personagens disponíveis.
 Cada um tem poderes de ataque ou defessa diferentes.
-4. Inicie a batalha
+4. Inicie a batalhaController
 5. Dê start no round e boa sorte!
 
   

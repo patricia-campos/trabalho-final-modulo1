@@ -1,7 +1,7 @@
 package view;
 
 import banco.DbConfiguration;
-import controller.Batalha;
+import controller.BatalhaController;
 import controller.JogadorManipulacao;
 import entities.ClassePersonagem;
 import entities.Jogador;
@@ -38,7 +38,7 @@ public class Main {
                                        | || |                                                 | || |
                                        | || |                   Você está pronto              | || |
                                        | || |                     para iniciar                | || |
-                                       | || |                     a batalha?                  | || |
+                                       | || |                     a batalhaController?        | || |
                                        ( () )                                                 ( () )
                                         \\  /                                                   \\  /
                                          \\/                                                     \\/
@@ -116,23 +116,7 @@ public class Main {
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine();
-                    int vida = 150;
-                    int defesa = 40;
-                    int ataque = 50;
-                    if (classeNome == "Mago") {
-                        vida = 150;
-                        defesa = 40;
-                        ataque = 50;
-                    } else if (classeNome == "Elfo") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 50;
-                    } else if (classeNome == "Guerreiro") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 40;
-                    }
-                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome, vida, defesa, ataque);
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
                 case 2 -> {
@@ -140,13 +124,17 @@ public class Main {
                     System.out.println("Digite 2 para ver personagens cadastrados");
                     System.out.println("Digite 3 para ver classes cadastradas");
                     opcaoImprimir = sc.nextInt();
+                    sc.nextLine();
                     switch (opcaoImprimir) {
                         case 1 -> {
                             jogadorService.listarTodos();
                             break;
                         }
                         case 2 -> {
-                            personagemService.listar();
+                            System.out.println("Qual o nome do seu Jogador? ");
+                            String nomeJogador = sc.nextLine();
+                            Jogador jogadorParaListar = jogadorService.retornaJogador(nomeJogador);
+                            personagemService.listarPersonagemsPorJogador(jogadorParaListar.getId());
                             break;
                         }
                         case 3 -> {
@@ -201,12 +189,22 @@ public class Main {
                             jogadorService.remover(jogadorService.retornaJogador(nome));
                         }
                         case 2 -> {
-
+                            System.out.println("Qual personagem deseja remover? ");
+                            personagemService.listar();
+                            String nome = sc.nextLine();
+                            personagemService.remover(personagemService.retornaPersonagem(nome));
+                        }
+                        case 3 -> {
+                            System.out.println("Qual Classe deseja remover? ");
+                            classePersonagemService.listarTodos();
+                            String nome = sc.nextLine();
+                            classePersonagemService.remover(classePersonagemService.retornaClasse(nome));
                         }
                     }
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
+                    jogadorManipulacao.listarJogador();
                     int id = sc.nextInt();
                     sc.nextLine();
                     Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
@@ -214,17 +212,97 @@ public class Main {
                     System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
                     System.out.println("Digite o nome do personagem: ");
                     String nome = sc.nextLine();
+
+                    Jogador jogador = jogadorService.retornaJogador(nome);
+
+                    System.out.println(jogador.getNomeJogador() + ", agora você deve criar seu personagem: ");
+                    System.out.println("Digite o nome do personagem: ");
+                    String nomePersonagem = sc.nextLine();
                     if (Objects.equals(nome, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
-                    System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
-                    jogadorManipulacao.imprimir();
-                    int escolhaClasse = sc.nextInt();
-                    sc.nextLine();
-                    if (escolhaClasse > 3 || escolhaClasse < 0) {
-                        System.out.println("Tipo inválido.");
+
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
+
+                    System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
+                    String classeNome = sc.nextLine();
+
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
+                    classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
+                }
+                case 6 -> {
+                    BatalhaController batalhaController = new BatalhaController();
+                    if (jogadorService.listarTodos().size() == 0) {
+                        System.out.println("Jogadores vazios");
                         break;
+                    }
+                    System.out.println("Selecione seu jogador digitando seu username:");
+                    jogadorService.listarTodos();
+                    String localJogador = sc.nextLine();
+
+                    Jogador jogadorDoJogo = jogadorService.retornaJogador(localJogador);
+                    System.out.println("Selecione seu personagem digitando seu nome: ");
+                    personagemService.listarPersonagemsPorJogador(jogadorDoJogo.getId());
+
+                    String nomePersonagem = sc.nextLine();
+
+                    Personagem personagem = personagemService.retornaPersonagem(nomePersonagem);
+                    if (personagem == null) {
+                        break;
+                    }
+                    batalhaController.setPersonagem(personagem);
+                    comecar = 0;
+                    while (comecar != 3) {
+
+                        System.out.println("Digite 1 para começar a batalha: ");
+                        System.out.println("Digite 2 para atacar: ");
+                        System.out.println("Digite 3 para fugir da batalha:");
+                        comecar = sc.nextInt();
+                        sc.nextLine();
+                        switch (comecar) {
+                            case 1 -> {
+                                if (!Objects.isNull(batalhaController.getCenario())) {
+                                    System.out.println("Batalha já foi iniciada");
+                                    break;
+                                }
+                                batalhaController.sortearCenario();
+                                batalhaController.retornaBoss();
+                                System.out.println("Batalha iniciada");
+                                System.out.println("Cenario sorteado\n" + batalhaController.getCenario());
+                            }
+                            case 2 -> {
+                                if (Objects.isNull(batalhaController.getCenario())) {
+                                    System.out.println("Você precisa começar a batalhaController");
+                                } else if (batalhaController.getBoss().getVida() <= 0) {
+                                    i = 1;
+                                    vitoria = true;
+                                    batalhaController.setBoss(null);
+                                    batalhaController.setCenario(null);
+                                    batalhaController.retornaStatusVitoria(vitoria);
+                                    comecar = 3;
+                                } else if (batalhaController.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
+                                    i = 1;
+                                    vitoria = false;
+                                    batalhaController.setBoss(null);
+                                    batalhaController.setCenario(null);
+                                    batalhaController.retornaStatusVitoria(vitoria);
+                                    comecar = 3;
+                                } else {
+                                    System.out.println("\nRound: " + i + "\n");
+                                    batalhaController.inciarAtaque();
+                                    batalhaController.setRoundAtual(i);
+                                    i++;
+                                }
+                            }
+                            case 3 -> {
+                                System.out.println("Você fugiu da batalhaController");
+                                batalhaController.setBoss(null);
+                                batalhaController.setCenario(null);
+                            }
+                            case default -> System.out.println("Numero incorreto");
+                        }
                     }
 //                    Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
 //                    jogadorParaAddPersonagem.setPersonagem(novoPersonagem);

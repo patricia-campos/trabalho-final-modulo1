@@ -2,6 +2,8 @@ package entities;
 
 import interfaces.Impressao;
 
+import java.util.Objects;
+
 public class ClassePersonagem implements Impressao {
     private int idClassePersonagem;
     private String nomeClassePersonagem;
@@ -9,12 +11,23 @@ public class ClassePersonagem implements Impressao {
     private int defesaClasse;
     private int ataqueClasse;
 
-    public ClassePersonagem(String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse) {
-
-        this.nomeClassePersonagem = nomeClassePersonagem;
-        this.vidaClasse = vidaClasse;
-        this.defesaClasse = defesaClasse;
-        this.ataqueClasse = ataqueClasse;
+    public ClassePersonagem(String nomeClassePersonagem) {
+        if (Objects.equals(nomeClassePersonagem, "Mago")) {
+            this.nomeClassePersonagem = nomeClassePersonagem;
+            this.vidaClasse = 150;
+            this.defesaClasse = 40;
+            this.ataqueClasse = 50;
+        } else if (Objects.equals(nomeClassePersonagem, "Elfo")) {
+            this.nomeClassePersonagem = nomeClassePersonagem;
+            this.vidaClasse = 150;
+            this.defesaClasse = 50;
+            this.ataqueClasse = 50;
+        } else if (Objects.equals(nomeClassePersonagem, "Guerreiro")) {
+            this.nomeClassePersonagem = nomeClassePersonagem;
+            this.vidaClasse = 150;
+            this.defesaClasse = 50;
+            this.ataqueClasse = 40;
+        }
     }
 
     public ClassePersonagem(int id, String nomeClassePersonagem, int vidaClasse, int defesaClasse, int ataqueClasse) {

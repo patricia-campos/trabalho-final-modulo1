@@ -37,7 +37,7 @@ public class CenarioRepository implements Repositorio<Integer, Cenario> {
             stmt.setString(2, object.getTipoCenario());
 
             stmt.executeUpdate();
-            System.out.println("Boss adicionado com sucesso!");
+            System.out.println("Cenário adicionado com sucesso!");
 
             return object;
 

@@ -75,6 +75,13 @@ public class Main {
             System.out.println("Digite 5 para ADICIONAR um PERSONAGEM");
             System.out.println("Digite 6 para INICIAR a BATALHA");
             System.out.println("Digite 7 para SAIR do JOGO");
+
+            //While até pessoa digitar opção do menu
+            while (!sc.hasNextInt()) {
+                System.out.println("Opção inválida. Digite um número conforme menu.");
+                sc.nextLine();
+            }
+
             opcao = sc.nextInt();
             sc.nextLine();
             switch (opcao) {
@@ -121,6 +128,13 @@ public class Main {
                     System.out.println("Digite 1 para ver jogadores cadastrados");
                     System.out.println("Digite 2 para ver personagens cadastrados");
                     System.out.println("Digite 3 para ver classes cadastradas");
+
+                    //While até pessoa digitar opção do menu
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Opção inválida. Digite um número conforme menu.");
+                        sc.nextLine();
+                    }
+
                     opcaoImprimir = sc.nextInt();
                     sc.nextLine();
                     switch (opcaoImprimir) {
@@ -129,9 +143,17 @@ public class Main {
                             System.out.println("Qual o nome do seu Jogador? ");
                             String nomeJogador = sc.nextLine().toUpperCase();
                             Jogador jogadorParaListar = jogadorService.retornaJogador(nomeJogador);
+                            if (jogadorParaListar == null) {
+                                System.out.println("Jogador não encontrado");
+                                break;
+                            }
                             personagemService.listarPersonagemsPorJogador(jogadorParaListar.getId());
                         }
-                        case 3 -> classePersonagemService.listarTodos();
+                        case 3 -> {
+                            System.out.println("Digite o nome do seu personagem: ");
+                            String nomePersonagem = sc.nextLine();
+                            classePersonagemService.retornaClasseDoPersonagem(personagemService.retornaPersonagem(nomePersonagem));
+                        }
                         case default -> System.out.println("Numero incorreto");
                     }
                 }
@@ -139,6 +161,13 @@ public class Main {
                     System.out.println("Digite 1 para alterar nome do Jogador");
                     System.out.println("Digite 2 alterar nome do Personagem");
                     System.out.println("Digite 3 para ver classes cadastradas");
+
+                    //While até pessoa digitar opção do menu
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Opção inválida. Digite um número conforme menu.");
+                        sc.nextLine();
+                    }
+
                     opcao = sc.nextInt();
                     sc.nextLine();
                     switch (opcao) {
@@ -168,6 +197,13 @@ public class Main {
                     System.out.println("Digite 1 para remover Jogador");
                     System.out.println("Digite 2 para remover Personagem");
                     System.out.println("Digite 3 para ver classes cadastradas");
+
+                    //While até pessoa digitar opção do menu
+                    while (!sc.hasNextInt()) {
+                        System.out.println("Opção inválida. Digite um número conforme menu.");
+                        sc.nextLine();
+                    }
+
                     opcao = sc.nextInt();
                     sc.nextLine();
                     switch (opcao) {
@@ -213,6 +249,13 @@ public class Main {
                     personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
+                    String classeNome = sc.nextLine();
+                    if (!Objects.equals(classeNome, "MAGO") &&!Objects.equals(classeNome, "ELFO") &&!Objects.equals(classeNome, "GUERREIRO") ){
+                        System.out.println("Classe invalida");
+                        break;
+                    }
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
                     String classeNome = sc.nextLine().toUpperCase();
 
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
@@ -242,6 +285,13 @@ public class Main {
                         System.out.println("Digite 1 para começar a batalha: ");
                         System.out.println("Digite 2 para atacar: ");
                         System.out.println("Digite 3 para fugir da batalha:");
+
+                        //While até pessoa digitar opção do menu
+                        while (!sc.hasNextInt()) {
+                            System.out.println("Opção inválida. Digite um número conforme menu.");
+                            sc.nextLine();
+                        }
+
                         comecar = sc.nextInt();
                         sc.nextLine();
                         switch (comecar) {

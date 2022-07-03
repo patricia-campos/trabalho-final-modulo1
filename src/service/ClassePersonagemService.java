@@ -5,7 +5,9 @@ import entities.Personagem;
 import exceptions.BancoDeDadosException;
 import repository.ClassePersonagemRepository;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 public class ClassePersonagemService {
@@ -14,9 +16,9 @@ public class ClassePersonagemService {
 
     public void adicionarClassePersonagem(Personagem personagem, ClassePersonagem classePersonagem) throws BancoDeDadosException {
         if(personagem == null){
-            System.out.println("Personagem inexistente");
+            System.out.println("");
         }else if(classePersonagem == null){
-            System.out.println("Classe inexistente");
+            System.out.println("");
         }else{
             classePersonagemRepository.adicionar(classePersonagem, personagem.getId());
         }
@@ -59,6 +61,17 @@ public class ClassePersonagemService {
                 .map(a -> new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse(),a.getIdPersonagem()))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public void retornaClasseDoPersonagem(Personagem personagem) throws BancoDeDadosException {
+        List<ClassePersonagem> listaPersonagemPorClasse = classePersonagemRepository.listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getIdPersonagem(), personagem.getId()))
+                .map(a -> new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse(),a.getIdPersonagem()))
+                .collect(Collectors.toList());
+        for (ClassePersonagem classe : listaPersonagemPorClasse) {
+            System.out.println(classe);
+        }
     }
 
 }

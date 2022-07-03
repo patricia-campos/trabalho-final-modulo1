@@ -49,9 +49,14 @@ public class JogadorService {
     }
 
     public Jogador retornaJogador(String nome) throws BancoDeDadosException {
-        return jogadorRepository.listar().stream().filter(a -> Objects.equals(a.getNomeJogador(), nome)).map(a -> {
+        Jogador jogador = jogadorRepository.listar().stream().filter(a -> Objects.equals(a.getNomeJogador(), nome)).map(a -> {
             return new Jogador(a.getId(), a.getNomeJogador(), a.getSenha());
         }).findFirst().orElse(null);
+        if(jogador == null){
+            System.out.println("Jogador Vazio");
+            return null;
+        }
+        return jogador;
     }
 
     //Verifica se existe um jogador com o nome na minha base de dados, caso exista ele traz o objeto com valor e retorna false nao podendo alterar.

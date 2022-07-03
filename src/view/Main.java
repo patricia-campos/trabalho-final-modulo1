@@ -69,7 +69,7 @@ public class Main {
             System.out.print("\n");
             System.out.println("Digite 0 para cadastrar automaticamente");
             System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
-            System.out.println("Digite 2 para VER os JOGADORES CADASTRADOS");
+            System.out.println("Digite 2 para VER INFORMAÇÕES DOS CADASTROS");
             System.out.println("Digite 3 para EDITAR um JOGADOR");
             System.out.println("Digite 4 para EXCLUIR um JOGADOR");
             System.out.println("Digite 5 para ADICIONAR um PERSONAGEM");
@@ -160,7 +160,6 @@ public class Main {
                 case 3 -> {
                     System.out.println("Digite 1 para alterar nome do Jogador");
                     System.out.println("Digite 2 alterar nome do Personagem");
-                    System.out.println("Digite 3 para ver classes cadastradas");
 
                     //While até pessoa digitar opção do menu
                     while (!sc.hasNextInt()) {

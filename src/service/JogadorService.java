@@ -3,14 +3,11 @@ package service;
 import entities.Jogador;
 import exceptions.BancoDeDadosException;
 import repository.JogadorRepository;
-import repository.PersonagemRepository;
 
-import java.util.List;
 import java.util.Objects;
 
 public class JogadorService {
     JogadorRepository jogadorRepository = new JogadorRepository();
-    PersonagemService personagemService = new PersonagemService();
 
     public void adicionar(Jogador jogador) throws BancoDeDadosException {
         if (jogador == null) {
@@ -54,13 +51,13 @@ public class JogadorService {
     }
 
     public Jogador retornaJogador(String nome) throws BancoDeDadosException {
-        Jogador jogador = jogadorRepository.listar().stream().filter(a -> Objects.equals(a.getNomeJogador().toUpperCase(), nome)).map(a -> {
-            return new Jogador(a.getId(), a.getNomeJogador(), a.getSenha());
-        }).findFirst().orElse(null);
-        if(jogador == null){
-            return null;
-        }
-        return jogador;
+        return jogadorRepository
+                .listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getNomeJogador().toUpperCase(), nome))
+                .map(a -> new Jogador(a.getId(), a.getNomeJogador(), a.getSenha()))
+                .findFirst()
+                .orElse(null);
     }
 
     //Verifica se existe um jogador com o nome na minha base de dados, caso exista ele traz o objeto com valor e retorna false nao podendo alterar.
@@ -69,11 +66,7 @@ public class JogadorService {
             System.out.println("Jogador não encontrado");
         } else {
             Jogador jogador1 = this.retornaJogador(jogador.getNomeJogador());
-            if (jogador1 == null) {
-                return true;
-            } else {
-                return false;
-            }
+            return jogador1 == null;
         }
         return false;
     }

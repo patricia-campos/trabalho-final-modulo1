@@ -51,7 +51,6 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
 
 
             stmt.executeUpdate();
-            System.out.println("A batalhaController começou!");
 
         } catch (SQLException e) {
             e.printStackTrace();

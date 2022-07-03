@@ -32,8 +32,14 @@ public class CenarioRepository implements Repositorio<Integer, Cenario> {
             String sql = "INSERT INTO CENARIO (ID_CENARIO, NOME_CENARIO, HORARIO, TIPO_REINO)\n" +
                     "\tVALUES (SEQ_CENARIO.nextval, ?, CURRENT_DATE, ?)";
             PreparedStatement stmt = con.prepareStatement(sql);
+
             stmt.setString(1, object.getNomeCenario());
             stmt.setString(2, object.getTipoCenario());
+
+            stmt.executeUpdate();
+            System.out.println("Boss adicionado com sucesso!");
+
+            return object;
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -110,7 +116,7 @@ public class CenarioRepository implements Repositorio<Integer, Cenario> {
         List<Cenario> cenarios = new ArrayList<>();
         try {
             con = DbConfiguration.getConnection();
-            Statement  stmt = con.createStatement();
+            Statement stmt = con.createStatement();
 
             String sql = "SELECT * FROM CENARIO";
 
@@ -118,9 +124,11 @@ public class CenarioRepository implements Repositorio<Integer, Cenario> {
 
             while (res.next()) {
                 Cenario cenario = new Cenario();
+                cenario.setIdCenario(res.getInt("ID_CENARIO"));
                 cenario.setNomeCenario(res.getString("NOME_CENARIO"));
                 cenario.setHorario(res.getDate("HORARIO"));
                 cenario.setTipoCenario(res.getString("TIPO_REINO"));
+                cenarios.add(cenario);
             }
 
 

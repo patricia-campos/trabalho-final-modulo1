@@ -1,8 +1,6 @@
 package service;
 
 import entities.Cenario;
-import entities.ClassePersonagem;
-import entities.Personagem;
 import exceptions.BancoDeDadosException;
 import repository.CenarioRepository;
 
@@ -15,14 +13,8 @@ public class CenarioService {
     public void adicionarCenario(Cenario cenario) throws BancoDeDadosException {
         if (cenario == null) {
             System.out.println("Cenario inexistente");
-        } else if (verificaNomeCenario(cenario)) {
+        } else {
             cenarioRepository.adicionar(cenario);
-        }
-    }
-
-    public void listarTodos() throws BancoDeDadosException {
-        for (Cenario cenario : cenarioRepository.listar()) {
-            System.out.println(cenario);
         }
     }
 
@@ -37,29 +29,18 @@ public class CenarioService {
     public void editar(Cenario cenario) throws BancoDeDadosException {
         if (cenario == null) {
             System.out.println("Cenario inexistente");
-        } else if (verificaNomeCenario(cenario)) {
+        } else {
             cenarioRepository.editar(cenario.getIdCenario(), cenario);
         }
     }
 
-    public Cenario retornaClasse(String nome) throws BancoDeDadosException {
-        return cenarioRepository.listar().stream().filter(a -> Objects.equals(a.getNomeCenario(), nome)).map(a -> {
-            return new Cenario(a.getIdCenario(), a.getNomeCenario(), a.getTipoCenario(), a.getHorario());
-        }).findFirst().orElse(null);
+    public Cenario retornaCenario(String tipo) throws BancoDeDadosException {
+        return cenarioRepository.listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getTipoCenario(), tipo))
+                .map(a -> new Cenario(a.getIdCenario(), a.getNomeCenario(), a.getTipoCenario(), a.getHorario()))
+                .findFirst()
+                .orElse(null);
     }
 
-
-    public boolean verificaNomeCenario(Cenario cenario) throws BancoDeDadosException {
-        if (cenario == null) {
-            System.out.println("Cenario inexistente");
-        } else {
-            Cenario cenario1 = this.retornaClasse(cenario.getNomeCenario());
-            if (cenario1 == null) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        return false;
-    }
 }

@@ -45,14 +45,20 @@ public class ClassePersonagemService {
     }
 
     public ClassePersonagem retornaClasse(String nome) throws BancoDeDadosException {
-        return classePersonagemRepository.listar().stream().filter(a -> Objects.equals(a.getNomeClassePersonagem(), nome)).map(a -> {
-            return new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse(),a.getIdPersonagem());
-        }).findFirst().orElse(null);
+        return classePersonagemRepository.listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getNomeClassePersonagem(), nome))
+                .map(a -> new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse(),a.getIdPersonagem()))
+                .findFirst()
+                .orElse(null);
     }
     public ClassePersonagem retornaClassePorPersonagem(Personagem personagem) throws BancoDeDadosException {
-        return classePersonagemRepository.listar().stream().filter(a -> Objects.equals(a.getIdPersonagem(), personagem.getId())).map(a -> {
-            return new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse(),a.getIdPersonagem());
-        }).findFirst().orElse(null);
+        return classePersonagemRepository.listar()
+                .stream()
+                .filter(a -> Objects.equals(a.getIdPersonagem(), personagem.getId()))
+                .map(a -> new ClassePersonagem(a.getIdClassePersonagem(), a.getNomeClassePersonagem(), a.getVidaClasse(), a.getDefesaClasse(), a.getAtaqueClasse(),a.getIdPersonagem()))
+                .findFirst()
+                .orElse(null);
     }
 
 }

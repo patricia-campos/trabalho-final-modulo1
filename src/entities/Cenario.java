@@ -1,6 +1,5 @@
 package entities;
 
-import controller.BatalhaController;
 import interfaces.Impressao;
 
 import java.text.SimpleDateFormat;
@@ -57,7 +56,7 @@ public class Cenario implements Impressao {
     }
 
     public void setHorario(Date horario) {
-        this.horario = (java.sql.Date) horario;
+        this.horario = horario;
     }
 
     @Override
@@ -66,10 +65,6 @@ public class Cenario implements Impressao {
         return "Cenario:\n" +
                 "" + nomeCenario +
                 "\nHorario: " + sdf.format(horario);
-    }
-
-    public void buffDebuff(BatalhaController batalhaController) {
-
     }
 
     @Override

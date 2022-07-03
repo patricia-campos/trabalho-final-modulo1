@@ -28,8 +28,6 @@ public class JogadorService {
     }
 
     public void remover(Jogador jogador) throws BancoDeDadosException {
-
-
         if (jogador == null) {
             System.out.println("Jogador não encontrado");
         } else {

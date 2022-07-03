@@ -196,7 +196,6 @@ public class Main {
                 case 4 -> {
                     System.out.println("Digite 1 para remover Jogador");
                     System.out.println("Digite 2 para remover Personagem");
-                    System.out.println("Digite 3 para ver classes cadastradas");
 
                     //While até pessoa digitar opção do menu
                     while (!sc.hasNextInt()) {
@@ -209,21 +208,13 @@ public class Main {
                     switch (opcao) {
                         case 1 -> {
                             System.out.println("Qual jogador deseja remover? ");
-                            jogadorService.listarTodos();
                             String nome = sc.nextLine();
                             jogadorService.remover(jogadorService.retornaJogador(nome));
                         }
                         case 2 -> {
                             System.out.println("Qual personagem deseja remover? ");
-                            personagemService.listar();
                             String nome = sc.nextLine();
                             personagemService.remover(personagemService.retornaPersonagem(nome));
-                        }
-                        case 3 -> {
-                            System.out.println("Qual Classe deseja remover? ");
-                            classePersonagemService.listarTodos();
-                            String nome = sc.nextLine();
-                            classePersonagemService.remover(classePersonagemService.retornaClasse(nome));
                         }
                         default -> {
                             System.out.println("Opção invalida");
@@ -232,8 +223,7 @@ public class Main {
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
-                    jogadorService.listarTodos();
-                    String nome = sc.nextLine();
+                    String nome = sc.nextLine().toUpperCase();
 
                     Jogador jogador = jogadorService.retornaJogador(nome);
 
@@ -245,18 +235,14 @@ public class Main {
                         break;
                     }
 
-                    Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
-
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
-                    String classeNome = sc.nextLine();
+                    String classeNome = sc.nextLine().toUpperCase();
                     if (!Objects.equals(classeNome, "MAGO") &&!Objects.equals(classeNome, "ELFO") &&!Objects.equals(classeNome, "GUERREIRO") ){
                         System.out.println("Classe invalida");
                         break;
                     }
                     Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
-                    String classeNome = sc.nextLine().toUpperCase();
+                    personagemService.adicionar(jogador, personagem);
 
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
@@ -264,7 +250,6 @@ public class Main {
                 case 6 -> {
                     BatalhaController batalhaController = new BatalhaController();
                     System.out.println("Selecione seu jogador digitando seu username:");
-                    jogadorService.listarTodos();
                     String localJogador = sc.nextLine().toUpperCase(Locale.ROOT);
 
                     Jogador jogadorDoJogo = jogadorService.retornaJogador(localJogador);

@@ -180,9 +180,13 @@ public class Main {
                             System.out.println("Qual jogador deseja alterar o nome? ");
                             jogadorService.listarTodos();
                             String nome = sc.nextLine();
+                            Jogador jogador1 = jogadorService.retornaJogador(nome);
+                            if(jogador1 == null){
+                                System.out.println("Jogador não encontrado");
+                                break;
+                            }
                             System.out.println("Digite o novo nome do Jogador: ");
                             String novoNome = sc.nextLine();
-                            Jogador jogador1 = jogadorService.retornaJogador(nome);
                             jogadorService.editar(jogador1, novoNome);
 
                         }
@@ -191,6 +195,10 @@ public class Main {
                             personagemService.listar();
                             String nome = sc.nextLine();
                             Personagem personagem = personagemService.retornaPersonagem(nome);
+                            if(personagem == null){
+                                System.out.println("Personagem não encontrado");
+                                break;
+                            }
                             System.out.println("Digite o novo nome do Personagem: ");
                             String novoNome = sc.nextLine();
                             personagemService.editar(personagem, novoNome);

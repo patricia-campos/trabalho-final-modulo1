@@ -126,7 +126,7 @@ public class Main {
                         case 1 -> jogadorService.listarTodos();
                         case 2 -> {
                             System.out.println("Qual o nome do seu Jogador? ");
-                            String nomeJogador = sc.nextLine();
+                            String nomeJogador = sc.nextLine().toUpperCase();
                             Jogador jogadorParaListar = jogadorService.retornaJogador(nomeJogador);
                             personagemService.listarPersonagemsPorJogador(jogadorParaListar.getId());
                         }

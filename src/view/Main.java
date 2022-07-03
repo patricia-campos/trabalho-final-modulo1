@@ -82,7 +82,7 @@ public class Main {
                     Personagem personagemInicial = new Personagem("Legolas");
                     Jogador jogador = new Jogador("Gustavo", "senha");
                     ClassePersonagem classePersonagem = new ClassePersonagem("Mago");
-                    classePersonagemService.adicionarClassePersonagem(personagemInicial,classePersonagem);
+                    classePersonagemService.adicionarClassePersonagem(personagemInicial, classePersonagem);
                     personagemService.adicionar(jogador, personagemInicial);
                     jogadorService.adicionar(jogador);
                 }
@@ -97,9 +97,6 @@ public class Main {
                     System.out.println(nomeJogador + " digite sua senha: ");
                     String senhaJogador = sc.nextLine();
 
-                    Jogador jogador = new Jogador(nomeJogador, senhaJogador);
-                    jogadorService.adicionar(jogador);
-
                     System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
 
                     System.out.println("Digite o nome do personagem: ");
@@ -109,11 +106,17 @@ public class Main {
                         break;
                     }
 
-                    Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine().toUpperCase();
+                    if (!Objects.equals(classeNome, "MAGO") &&!Objects.equals(classeNome, "ELFO") &&!Objects.equals(classeNome, "GUERREIRO") ){
+                        System.out.println("Classe invalida");
+                        break;
+                    }
+                    Jogador jogador = new Jogador(nomeJogador, senhaJogador);
+                    jogadorService.adicionar(jogador);
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
@@ -129,9 +132,17 @@ public class Main {
                             System.out.println("Qual o nome do seu Jogador? ");
                             String nomeJogador = sc.nextLine().toUpperCase();
                             Jogador jogadorParaListar = jogadorService.retornaJogador(nomeJogador);
+                            if (jogadorParaListar == null) {
+                                System.out.println("Jogador não encontrado");
+                                break;
+                            }
                             personagemService.listarPersonagemsPorJogador(jogadorParaListar.getId());
                         }
-                        case 3 -> classePersonagemService.listarTodos();
+                        case 3 -> {
+                            System.out.println("Digite o nome do seu personagem: ");
+                            String nomePersonagem = sc.nextLine();
+                            classePersonagemService.retornaClasseDoPersonagem(personagemService.retornaPersonagem(nomePersonagem));
+                        }
                         case default -> System.out.println("Numero incorreto");
                     }
                 }
@@ -206,12 +217,14 @@ public class Main {
                         break;
                     }
 
-                    Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
-
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine();
-
+                    if (!Objects.equals(classeNome, "MAGO") &&!Objects.equals(classeNome, "ELFO") &&!Objects.equals(classeNome, "GUERREIRO") ){
+                        System.out.println("Classe invalida");
+                        break;
+                    }
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
@@ -259,7 +272,7 @@ public class Main {
                                     i = 1;
                                     vitoria = true;
                                     batalhaController.retornaStatusVitoria(vitoria);
-                                    batalhaService.adicionar(batalhaController.retornaBatalha(jogadorDoJogo.getId(),"Vitoria",batalhaController.getCenario()));
+                                    batalhaService.adicionar(batalhaController.retornaBatalha(jogadorDoJogo.getId(), "Vitoria", batalhaController.getCenario()));
                                     batalhaController.setBoss(null);
                                     batalhaController.setCenario(null);
                                     comecar = 3;
@@ -267,7 +280,7 @@ public class Main {
                                     i = 1;
                                     vitoria = false;
                                     batalhaController.retornaStatusVitoria(vitoria);
-                                    batalhaService.adicionar(batalhaController.retornaBatalha(jogadorDoJogo.getId(),"Derrota", batalhaController.getCenario()));
+                                    batalhaService.adicionar(batalhaController.retornaBatalha(jogadorDoJogo.getId(), "Derrota", batalhaController.getCenario()));
                                     batalhaController.setBoss(null);
                                     batalhaController.setCenario(null);
                                     comecar = 3;

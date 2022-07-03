@@ -15,9 +15,9 @@ public class PersonagemService {
 
     public void adicionar(Jogador jogador, Personagem personagem) throws BancoDeDadosException {
         if (personagem == null) {
-            System.out.println("Personagem inexistente");
+            System.out.println();
         } else if (jogador == null) {
-            System.out.println("Jogador inexistente");
+            System.out.println("");
         } else if (this.verificaNomePersonagem(personagem)) {
             personagemRepository.adicionar(personagem, jogador.getId());
         }
@@ -25,7 +25,6 @@ public class PersonagemService {
 
     public void editar(Personagem personagem, String nome) throws BancoDeDadosException {
         if (personagem == null) {
-            System.out.println("Personagem inexistente");
         } else {
             personagem.setNomePersonagem(nome);
             if (this.verificaNomePersonagem(personagem)) {
@@ -42,7 +41,6 @@ public class PersonagemService {
 
     public void remover(Personagem personagem) throws BancoDeDadosException {
         if (personagem == null) {
-            System.out.println("Personagem inexistente");
         } else {
             personagemRepository.remover(personagem.getId());
         }
@@ -66,9 +64,7 @@ public class PersonagemService {
     }
 
     public boolean verificaNomePersonagem(Personagem personagem) throws BancoDeDadosException {
-        if (personagem == null) {
-            System.out.println("Personagem inexistente");
-        } else {
+        if (personagem != null) {
             Personagem personagem1 = this.retornaPersonagem(personagem.getNomePersonagem());
             return personagem1 == null;
         }

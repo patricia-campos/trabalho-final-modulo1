@@ -8,5 +8,6 @@
     <orderEntry type="jdk" jdkName="azul-17" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="ojdbc11-21.6.0.0.1" level="project" />
+    <orderEntry type="library" name="ojdbc11-21.6.0.0.11" level="project" />
   </component>
 </module>

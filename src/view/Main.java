@@ -116,23 +116,7 @@ public class Main {
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine();
-                    int vida = 150;
-                    int defesa = 40;
-                    int ataque = 50;
-                    if (classeNome == "Mago") {
-                        vida = 150;
-                        defesa = 40;
-                        ataque = 50;
-                    } else if (classeNome == "Elfo") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 50;
-                    } else if (classeNome == "Guerreiro") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 40;
-                    }
-                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome, vida, defesa, ataque);
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
                 case 2 -> {
@@ -159,7 +143,6 @@ public class Main {
                 case 3 -> {
                     System.out.println("Digite 1 para alterar nome do Jogador");
                     System.out.println("Digite 2 alterar nome do Personagem");
-                    System.out.println("Digite 3 para ver classes cadastradas");
                     opcao = sc.nextInt();
                     sc.nextLine();
                     switch (opcao) {
@@ -234,23 +217,8 @@ public class Main {
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine();
-                    int vida = 150;
-                    int defesa = 40;
-                    int ataque = 50;
-                    if (classeNome == "Mago") {
-                        vida = 150;
-                        defesa = 40;
-                        ataque = 50;
-                    } else if (classeNome == "Elfo") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 50;
-                    } else if (classeNome == "Guerreiro") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 40;
-                    }
-                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome, vida, defesa, ataque);
+
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
             }

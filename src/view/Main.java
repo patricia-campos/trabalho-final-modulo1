@@ -1,7 +1,7 @@
 package view;
 
 import banco.DbConfiguration;
-import controller.Batalha;
+import controller.BatalhaController;
 import controller.JogadorManipulacao;
 import entities.ClassePersonagem;
 import entities.Jogador;
@@ -38,7 +38,7 @@ public class Main {
                                        | || |                                                 | || |
                                        | || |                   Você está pronto              | || |
                                        | || |                     para iniciar                | || |
-                                       | || |                     a batalha?                  | || |
+                                       | || |                     a batalhaController?                  | || |
                                        ( () )                                                 ( () )
                                         \\  /                                                   \\  /
                                          \\/                                                     \\/
@@ -230,84 +230,79 @@ public class Main {
 //                    Personagem novoPersonagem = new Personagem(nome, escolhaClasse);
 //                    jogadorParaAddPersonagem.setPersonagem(novoPersonagem);
                 }
-//                case 6 -> {
-//                    Batalha batalha = new Batalha();
-//                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
-//                        System.out.println("Jogadores vazios");
-//                        break;
-//                    }
-//
-//                    System.out.println("Selecione seu jogador digitando seu ID:");
-//                    jogadorManipulacao.listarJogador();
-//                    int localJogador = sc.nextInt();
-//                    sc.nextLine();
-//                    if (!(jogadorManipulacao.getListaDeJogadores().size() > localJogador)) {
-//                        System.out.println("Jogador nao existe!! ");
-//                        break;
-//                    }
-//                    Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
-//                    System.out.println("Selecione seu personagem digitando seu ID: ");
-//                    jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
-//                    int indexPersonagem = sc.nextInt();
-//                    sc.nextLine();
-//                    Personagem personagem = jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem);
-//                    if (!(jogadorDoJogo.getPersonagem().size() > indexPersonagem)) {
-//                        System.out.println("Personagem nao existe ");
-//                        break;
-//                    }
-//                    batalha.setPersonagem(personagem);
-//                    comecar = 0;
-//                    while (comecar != 3) {
-//
-//                        System.out.println("Digite 1 para começar a batalha: ");
-//                        System.out.println("Digite 2 para atacar: ");
-//                        System.out.println("Digite 3 para fugir da batalha:");
-//                        comecar = sc.nextInt();
-//                        sc.nextLine();
-//                        switch (comecar) {
-//                            case 1 -> {
-//                                if (!Objects.isNull(batalha.getCenario())) {
-//                                    System.out.println("Batalha já foi iniciada");
-//                                    break;
-//                                }
-//                                batalha.sortearCenario();
-//                                batalha.retornaBoss();
-//                                System.out.println("Batalha iniciada");
-//                                System.out.println("Cenario sorteado\n" + batalha.getCenario());
-//                            }
-//                            case 2 -> {
-//                                if (Objects.isNull(batalha.getCenario())) {
-//                                    System.out.println("Você precisa começar a batalha");
-//                                } else if (batalha.getBoss().getVida() <= 0) {
-//                                    i = 1;
-//                                    vitoria = true;
-//                                    batalha.setBoss(null);
-//                                    batalha.setCenario(null);
-//                                    batalha.retornaStatusVitoria(vitoria);
-//                                    comecar = 3;
-//                                } else if (batalha.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
-//                                    i = 1;
-//                                    vitoria = false;
-//                                    batalha.setBoss(null);
-//                                    batalha.setCenario(null);
-//                                    batalha.retornaStatusVitoria(vitoria);
-//                                    comecar = 3;
-//                                } else {
-//                                    System.out.println("\nRound: " + i + "\n");
-//                                    batalha.inciarRound();
-//                                    batalha.setRoundAtual(i);
-//                                    i++;
-//                                }
-//                            }
-//                            case 3 -> {
-//                                System.out.println("Você fugiu da batalha");
-//                                batalha.setBoss(null);
-//                                batalha.setCenario(null);
-//                            }
-//                            case default -> System.out.println("Numero incorreto");
-//                        }
-//                    }
-//                }
+                case 6 -> {
+                    BatalhaController batalhaController = new BatalhaController();
+                    if (jogadorService.listarTodos().size() == 0) {
+                        System.out.println("Jogadores vazios");
+                        break;
+                    }
+                    System.out.println("Selecione seu jogador digitando seu username:");
+                    jogadorService.listarTodos();
+                    String localJogador = sc.nextLine();
+
+                    Jogador jogadorDoJogo = jogadorService.retornaJogador(localJogador);
+                    System.out.println("Selecione seu personagem digitando seu nome: ");
+                    personagemService.listarPersonagemsPorJogador(localJogador);
+
+                    String nomePersonagem = sc.nextLine();
+
+                    Personagem personagem = personagemService.retornaPersonagem(nomePersonagem);
+                    if(personagem == null){
+                        break;
+                    }
+                    batalhaController.setPersonagem(personagem);
+                    comecar = 0;
+                    while (comecar != 3) {
+
+                        System.out.println("Digite 1 para começar a batalha: ");
+                        System.out.println("Digite 2 para atacar: ");
+                        System.out.println("Digite 3 para fugir da batalha:");
+                        comecar = sc.nextInt();
+                        sc.nextLine();
+                        switch (comecar) {
+                            case 1 -> {
+                                if (!Objects.isNull(batalhaController.getCenario())) {
+                                    System.out.println("Batalha já foi iniciada");
+                                    break;
+                                }
+                                batalhaController.sortearCenario();
+                                batalhaController.retornaBoss();
+                                System.out.println("Batalha iniciada");
+                                System.out.println("Cenario sorteado\n" + batalhaController.getCenario());
+                            }
+                            case 2 -> {
+                                if (Objects.isNull(batalhaController.getCenario())) {
+                                    System.out.println("Você precisa começar a batalhaController");
+                                } else if (batalhaController.getBoss().getVida() <= 0) {
+                                    i = 1;
+                                    vitoria = true;
+                                    batalhaController.setBoss(null);
+                                    batalhaController.setCenario(null);
+                                    batalhaController.retornaStatusVitoria(vitoria);
+                                    comecar = 3;
+                                } else if (batalhaController.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
+                                    i = 1;
+                                    vitoria = false;
+                                    batalhaController.setBoss(null);
+                                    batalhaController.setCenario(null);
+                                    batalhaController.retornaStatusVitoria(vitoria);
+                                    comecar = 3;
+                                } else {
+                                    System.out.println("\nRound: " + i + "\n");
+                                    batalhaController.inciarAtaque();
+                                    batalhaController.setRoundAtual(i);
+                                    i++;
+                                }
+                            }
+                            case 3 -> {
+                                System.out.println("Você fugiu da batalhaController");
+                                batalhaController.setBoss(null);
+                                batalhaController.setCenario(null);
+                            }
+                            case default -> System.out.println("Numero incorreto");
+                        }
+                    }
+                }
                 case 7 -> System.out.println("Você saiu do jogo");
                 case default -> System.out.println("Numero incorreto");
             }

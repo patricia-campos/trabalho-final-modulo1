@@ -1,6 +1,6 @@
 package entities;
 
-import controller.Batalha;
+import controller.BatalhaController;
 import interfaces.Impressao;
 
 import java.util.Date;
@@ -68,7 +68,7 @@ public class Cenario implements Impressao {
                 '}';
     }
 
-    public void buffDebuff(Batalha batalha) {
+    public void buffDebuff(BatalhaController batalhaController) {
 
     }
 

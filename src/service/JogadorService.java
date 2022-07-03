@@ -3,11 +3,14 @@ package service;
 import entities.Jogador;
 import exceptions.BancoDeDadosException;
 import repository.JogadorRepository;
+import repository.PersonagemRepository;
 
+import java.util.List;
 import java.util.Objects;
 
 public class JogadorService {
     JogadorRepository jogadorRepository = new JogadorRepository();
+    PersonagemService personagemService = new PersonagemService();
 
     public void adicionar(Jogador jogador) throws BancoDeDadosException {
         if (jogador == null) {
@@ -21,13 +24,18 @@ public class JogadorService {
         }
     }
 
-    public void listarTodos() throws BancoDeDadosException {
-        for (Jogador jogador1 : jogadorRepository.listar()) {
-            System.out.println(jogador1);
+    public List<Jogador> listarTodos() throws BancoDeDadosException {
+        if (jogadorRepository.listar() != null) {
+            return jogadorRepository.listar();
+        }else {
+            System.out.println("Lista Vazia");
+            return null;
         }
     }
 
     public void remover(Jogador jogador) throws BancoDeDadosException {
+
+
         if (jogador == null) {
             System.out.println("Jogador não encontrado");
         } else {

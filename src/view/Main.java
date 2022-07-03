@@ -152,7 +152,13 @@ public class Main {
                         case 3 -> {
                             System.out.println("Digite o nome do seu personagem: ");
                             String nomePersonagem = sc.nextLine();
-                            classePersonagemService.retornaClasseDoPersonagem(personagemService.retornaPersonagem(nomePersonagem));
+                            Personagem personagem =personagemService.retornaPersonagem(nomePersonagem);
+                            if(personagem == null){
+                                System.out.println("Personagem nao encontrado");
+                                break;
+                            }
+
+                            classePersonagemService.retornaClasseDoPersonagem(personagem);
                         }
                         case default -> System.out.println("Numero incorreto");
                     }
@@ -175,9 +181,9 @@ public class Main {
                             System.out.println("Qual jogador deseja alterar o nome? ");
                             jogadorService.listarTodos();
                             String nome = sc.nextLine();
-                            Jogador jogador1 = jogadorService.retornaJogador(nome);
                             System.out.println("Digite o novo nome do Jogador: ");
                             String novoNome = sc.nextLine();
+                            Jogador jogador1 = jogadorService.retornaJogador(nome);
                             jogadorService.editar(jogador1, novoNome);
 
                         }

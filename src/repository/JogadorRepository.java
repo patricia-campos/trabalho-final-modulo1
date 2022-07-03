@@ -95,7 +95,7 @@ public class JogadorRepository implements Repositorio<Integer, Jogador> {
 
             // Executa-se a consulta
             int res = stmt.executeUpdate();
-            System.out.println("Jogador editado com sucesso" + res);
+            System.out.println("Jogador editado com sucesso");
 
             return res > 0;
         } catch (SQLException e) {

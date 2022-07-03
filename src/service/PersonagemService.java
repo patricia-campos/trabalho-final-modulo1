@@ -54,8 +54,11 @@ public class PersonagemService {
         }).findFirst().orElse(null);
     }
 
-    public List<Personagem> listarPersonagemsPorJogador(String nome) throws BancoDeDadosException {
-        return personagemRepository.listar().stream().filter(a ->Objects.equals(a.getNomePersonagem(), nome)).collect(Collectors.toList());
+    public void listarPersonagemsPorJogador(int idJogador) throws BancoDeDadosException {
+        List<Personagem> listaPersonagem = personagemRepository.listar().stream().filter(a ->Objects.equals(a.getIdJogador(), idJogador)).collect(Collectors.toList());
+        for (Personagem personagem : listaPersonagem) {
+            System.out.println(personagem);
+        }
     }
 
     public boolean verificaNomePersonagem(Personagem personagem) throws BancoDeDadosException {

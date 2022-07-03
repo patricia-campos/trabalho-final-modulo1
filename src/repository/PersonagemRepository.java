@@ -131,6 +131,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
                 Personagem personagem = new Personagem();
                 personagem.setNomePersonagem(res.getString("NOME_PERSONAGEM"));
                 personagem.setId(res.getInt("ID_PERSONAGEM"));
+                personagem.setIdJogador(res.getInt("ID_JOGADOR"));
                 personagemList.add(personagem);
             }
         } catch (SQLException e) {

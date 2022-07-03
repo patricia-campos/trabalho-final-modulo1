@@ -61,7 +61,6 @@ public class JogadorService {
             return new Jogador(a.getId(), a.getNomeJogador(), a.getSenha());
         }).findFirst().orElse(null);
         if(jogador == null){
-            System.out.println("Jogador Vazio");
             return null;
         }
         return jogador;

@@ -135,7 +135,7 @@ public class PersonagemRepository implements Repositorio<Integer, Personagem> {
                 personagemList.add(personagem);
             }
         } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
+            throw new BancoDeDadosException("Erro ao listar Jogador");
         } finally {
             try {
                 if (con != null) {

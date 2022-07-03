@@ -6,4 +6,8 @@ public class BancoDeDadosException extends Throwable {
         System.out.println(cause);
     }
 
+    public BancoDeDadosException(String mensagem) {
+        System.out.println(mensagem);
+    }
+
 }

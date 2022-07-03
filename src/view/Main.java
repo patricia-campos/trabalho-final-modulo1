@@ -207,7 +207,6 @@ public class Main {
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
-                    jogadorManipulacao.listarJogador();
                     int id = sc.nextInt();
                     sc.nextLine();
                     Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);

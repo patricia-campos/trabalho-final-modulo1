@@ -40,8 +40,6 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
                          VALUES(SEQ_BATALHA.nextval, ?, ?, ?, ?, ?)
                         """;
 
-            // TODO: 02/07/2022 CHECAR COMO SERÁ O ROUND - LINHA 50
-
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, proximoId);
             stmt.setInt(2, object.getIdCenario());
@@ -60,83 +58,14 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
         return null;
     }
 
-    // TODO 02/07/2022 O REMOVE SERÁ O ENCERRAR BATALHA? TERÁ REMOVE?
-
-    //Removendo a batalha - DELETE
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
-        try {
-            con = DbConfiguration.getConnection();
-
-            String sql = "DELETE FROM BATALHA WHERE ID_BATALHA = ?";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            stmt.setInt(1, id);
-
-            int res = stmt.executeUpdate();
-            System.out.println("Batalha excluída com sucesso!");
-
-            return res > 0;
-
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        return false;
     }
 
-    //Editando a batalha - UPDATE
     @Override
     public boolean editar(Integer id, Batalha batalha) throws BancoDeDadosException {
-
-        try {
-            con = DbConfiguration.getConnection();
-
-            StringBuilder sql = new StringBuilder();
-            sql.append("UPDATE BATALHA SET ");
-            sql.append(" ID_BATALHA = ?,");
-            sql.append(" ID_CENARIO = ?,");
-            sql.append(" ID_JOGADOR = ? ");
-            sql.append(" ID_BOSS = ? ");
-            sql.append(" ID_ROUND BATALHA = ? ");
-            sql.append(" STATUS = ? ");
-            sql.append(" WHERE ID_BATALHA = ? ");
-
-            PreparedStatement stmt = con.prepareStatement(sql.toString());
-
-            stmt.setInt(1, batalha.getIdBatalha());
-            stmt.setInt(2, batalha.getIdCenario());
-            stmt.setInt(3, batalha.getIdJogador());
-            stmt.setInt(4, batalha.getIdJogador());
-            stmt.setInt(5, batalha.getRoundBatalha());
-            stmt.setString(6, batalha.getStatus());
-            stmt.setInt(7, id);
-
-            //TODO CHECAR A IMPRESSÃO DO UPDATE NO TESTE
-
-            // Executa consulta
-            int res = stmt.executeUpdate();
-            System.out.println("Batalha alterada");
-
-            return res > 0;
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        return false;
     }
 
     @Override

@@ -32,6 +32,7 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
 
         try {
             con = DbConfiguration.getConnection();
+            Integer proximoId = this.getProximoId(con);
 
             String sql = """
                          INSERT INTO BATALHA
@@ -58,83 +59,14 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
         return null;
     }
 
-    // TODO 02/07/2022 O REMOVE SERÁ O ENCERRAR BATALHA? TERÁ REMOVE?
-
-    //Removendo a batalhaController - DELETE
     @Override
     public boolean remover(Integer id) throws BancoDeDadosException {
-        try {
-            con = DbConfiguration.getConnection();
-
-            String sql = "DELETE FROM BATALHA WHERE ID_BATALHA = ?";
-
-            PreparedStatement stmt = con.prepareStatement(sql);
-
-            stmt.setInt(1, id);
-
-            int res = stmt.executeUpdate();
-            System.out.println("Batalha excluída com sucesso!");
-
-            return res > 0;
-
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+        return false;
     }
 
-    //Editando a batalhaController - UPDATE
     @Override
-    public boolean editar(Integer id, Batalha batalhaController) throws BancoDeDadosException {
-
-        try {
-            con = DbConfiguration.getConnection();
-
-            StringBuilder sql = new StringBuilder();
-            sql.append("UPDATE BATALHA SET ");
-            sql.append(" ID_BATALHA = ?,");
-            sql.append(" ID_CENARIO = ?,");
-            sql.append(" ID_JOGADOR = ? ");
-            sql.append(" ID_BOSS = ? ");
-            sql.append(" ID_ROUND BATALHA = ? ");
-            sql.append(" STATUS = ? ");
-            sql.append(" WHERE ID_BATALHA = ? ");
-
-            PreparedStatement stmt = con.prepareStatement(sql.toString());
-
-            stmt.setInt(1, batalhaController.getIdBatalha());
-            stmt.setInt(2, batalhaController.getIdCenario());
-            stmt.setInt(3, batalhaController.getIdJogador());
-            stmt.setInt(4, batalhaController.getIdJogador());
-            stmt.setInt(5, batalhaController.getRoundBatalha());
-            stmt.setString(6, batalhaController.getStatus());
-            stmt.setInt(7, id);
-
-            //TODO CHECAR A IMPRESSÃO DO UPDATE NO TESTE
-
-            // Executa consulta
-            int res = stmt.executeUpdate();
-            System.out.println("Batalha alterada");
-
-            return res > 0;
-        } catch (SQLException e) {
-            throw new BancoDeDadosException(e.getCause());
-        } finally {
-            try {
-                if (con != null) {
-                    con.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+    public boolean editar(Integer id, Batalha batalha) throws BancoDeDadosException {
+        return false;
     }
 
     @Override

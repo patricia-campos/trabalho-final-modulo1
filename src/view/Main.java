@@ -200,7 +200,7 @@ public class Main {
                     System.out.println(jogador.getNomeJogador() + ", agora você deve criar seu personagem: ");
                     System.out.println("Digite o nome do personagem: ");
                     String nomePersonagem = sc.nextLine();
-                    if (Objects.equals(nome, "")) {
+                    if (Objects.equals(nomePersonagem, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
@@ -209,7 +209,7 @@ public class Main {
                     personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
-                    String classeNome = sc.nextLine();
+                    String classeNome = sc.nextLine().toUpperCase();
 
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);

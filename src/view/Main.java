@@ -340,6 +340,8 @@ public class Main {
                 case 7 -> System.out.println("Você saiu do jogo");
                 case default -> System.out.println("Numero incorreto");
             }
+
+            //pulo de linha
         }
     }
 }

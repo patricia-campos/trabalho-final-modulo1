@@ -137,6 +137,7 @@ public class BatalhaController implements Atacar {
             bossService.adicionar(boss);
             cenarioService.adicionarCenario(cenario);
         }else if (sortear == 2) {
+        } else if(sortear > 2) {
             Boss boss = new Boss("Boss Da Sombras");
             Cenario cenario = new Cenario("Cenario da sombras","2",new Date());
             this.boss = boss;

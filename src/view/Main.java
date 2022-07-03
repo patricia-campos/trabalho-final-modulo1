@@ -1,7 +1,7 @@
 package view;
 
 import banco.DbConfiguration;
-import controller.BatalhaController;
+import controller.Batalha;
 import controller.JogadorManipulacao;
 import entities.ClassePersonagem;
 import entities.Jogador;
@@ -116,23 +116,7 @@ public class Main {
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine();
-                    int vida = 150;
-                    int defesa = 40;
-                    int ataque = 50;
-                    if (classeNome == "Mago") {
-                        vida = 150;
-                        defesa = 40;
-                        ataque = 50;
-                    } else if (classeNome == "Elfo") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 50;
-                    } else if (classeNome == "Guerreiro") {
-                        vida = 150;
-                        defesa = 50;
-                        ataque = 40;
-                    }
-                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome, vida, defesa, ataque);
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
                 case 2 -> {
@@ -201,24 +185,126 @@ public class Main {
                             jogadorService.remover(jogadorService.retornaJogador(nome));
                         }
                         case 2 -> {
-
+                            System.out.println("Qual personagem deseja remover? ");
+                            personagemService.listar();
+                            String nome = sc.nextLine();
+                            personagemService.remover(personagemService.retornaPersonagem(nome));
+                        }
+                        case 3 -> {
+                            System.out.println("Qual Classe deseja remover? ");
+                            classePersonagemService.listarTodos();
+                            String nome = sc.nextLine();
+                            classePersonagemService.remover(classePersonagemService.retornaClasse(nome));
                         }
                     }
                 }
                 case 5 -> {
                     System.out.println("Em qual jogador você deseja adicionar um personagem?");
-                    jogadorManipulacao.listarJogador();
-                    int id = sc.nextInt();
-                    sc.nextLine();
-                    Jogador jogadorParaAddPersonagem = jogadorManipulacao.retornarJogador(id);
-
-                    System.out.println(jogadorParaAddPersonagem.getNomeJogador() + ", agora você deve criar seu personagem: ");
-                    System.out.println("Digite o nome do personagem: ");
+                    jogadorService.listarTodos();
                     String nome = sc.nextLine();
+
+                    Jogador jogador = jogadorService.retornaJogador(nome);
+
+                    System.out.println(jogador.getNomeJogador() + ", agora você deve criar seu personagem: ");
+                    System.out.println("Digite o nome do personagem: ");
+                    String nomePersonagem = sc.nextLine();
                     if (Objects.equals(nome, "")) {
                         System.out.println("Nome não pode ser vazio.");
                         break;
                     }
+
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nome), personagem);
+
+                    System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
+                    String classeNome = sc.nextLine();
+
+                    ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
+                    classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
+                }
+            }
+//
+        }
+//                case 6 -> {
+//                    Batalha batalha = new Batalha();
+//                    if (jogadorManipulacao.getListaDeJogadores().size() == 0) {
+//                        System.out.println("Jogadores vazios");
+//                        break;
+//                    }
+//
+//                    System.out.println("Selecione seu jogador digitando seu ID:");
+//                    jogadorManipulacao.listarJogador();
+//                    int localJogador = sc.nextInt();
+//                    sc.nextLine();
+//                    if (!(jogadorManipulacao.getListaDeJogadores().size() > localJogador)) {
+//                        System.out.println("Jogador nao existe!! ");
+//                        break;
+//                    }
+//                    Jogador jogadorDoJogo = jogadorManipulacao.retornarJogador(localJogador);
+//                    System.out.println("Selecione seu personagem digitando seu ID: ");
+//                    jogadorManipulacao.listarPersonagens(localJogador, jogadorDoJogo);
+//                    int indexPersonagem = sc.nextInt();
+//                    sc.nextLine();
+//                    Personagem personagem = jogadorManipulacao.retornaPersonagem(jogadorDoJogo, indexPersonagem);
+//                    if (!(jogadorDoJogo.getPersonagem().size() > indexPersonagem)) {
+//                        System.out.println("Personagem nao existe ");
+//                        break;
+//                    }
+//                    batalha.setPersonagem(personagem);
+//                    comecar = 0;
+//                    while (comecar != 3) {
+//
+//                        System.out.println("Digite 1 para começar a batalha: ");
+//                        System.out.println("Digite 2 para atacar: ");
+//                        System.out.println("Digite 3 para fugir da batalha:");
+//                        comecar = sc.nextInt();
+//                        sc.nextLine();
+//                        switch (comecar) {
+//                            case 1 -> {
+//                                if (!Objects.isNull(batalha.getCenario())) {
+//                                    System.out.println("Batalha já foi iniciada");
+//                                    break;
+//                                }
+//                                batalha.sortearCenario();
+//                                batalha.retornaBoss();
+//                                System.out.println("Batalha iniciada");
+//                                System.out.println("Cenario sorteado\n" + batalha.getCenario());
+//                            }
+//                            case 2 -> {
+//                                if (Objects.isNull(batalha.getCenario())) {
+//                                    System.out.println("Você precisa começar a batalha");
+//                                } else if (batalha.getBoss().getVida() <= 0) {
+//                                    i = 1;
+//                                    vitoria = true;
+//                                    batalha.setBoss(null);
+//                                    batalha.setCenario(null);
+//                                    batalha.retornaStatusVitoria(vitoria);
+//                                    comecar = 3;
+//                                } else if (batalha.getPersonagem().getClassePersonagem().getVidaClasse() <= 0) {
+//                                    i = 1;
+//                                    vitoria = false;
+//                                    batalha.setBoss(null);
+//                                    batalha.setCenario(null);
+//                                    batalha.retornaStatusVitoria(vitoria);
+//                                    comecar = 3;
+//                                } else {
+//                                    System.out.println("\nRound: " + i + "\n");
+//                                    batalha.inciarRound();
+//                                    batalha.setRoundAtual(i);
+//                                    i++;
+//                                }
+//                            }
+//                            case 3 -> {
+//                                System.out.println("Você fugiu da batalha");
+//                                batalha.setBoss(null);
+//                                batalha.setCenario(null);
+//                            }
+//                            case default -> System.out.println("Numero incorreto");
+//                        }
+//                    }
+//                }
+//        case 7 -> System.out.println("Você saiu do jogo");
+//        case default -> System.out.println("Numero incorreto");
                     System.out.println("Escolha sua classe: 1 - Mago | 2 - Elfo | 3 - Guerreira");
                     jogadorManipulacao.imprimir();
                     int escolhaClasse = sc.nextInt();

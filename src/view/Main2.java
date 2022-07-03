@@ -37,7 +37,7 @@ public class Main2 {
 //
         ClassePersonagemService classePersonagemService = new ClassePersonagemService();
 
-        ClassePersonagem classePersonagem = new ClassePersonagem("Mago", 150, 50, 50);
+        ClassePersonagem classePersonagem = new ClassePersonagem("Mago");
 
         classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem("Legolas") ,classePersonagem);
         classePersonagemService.listarTodos();

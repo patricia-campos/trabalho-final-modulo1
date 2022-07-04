@@ -112,10 +112,10 @@ public class Main {
                         System.out.println("Classe invalida");
                         break;
                     }
-                    Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
                     Jogador jogador = new Jogador(nomeJogador, senhaJogador);
                     jogadorService.adicionar(jogador);
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }

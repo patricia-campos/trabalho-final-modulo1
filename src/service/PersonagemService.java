@@ -15,7 +15,7 @@ public class PersonagemService {
 
     public void adicionar(Jogador jogador, Personagem personagem) throws BancoDeDadosException {
         if (personagem == null) {
-            System.out.println();
+            System.out.println("Ta vazio");
         } else if (jogador == null) {
             System.out.println("");
         } else if (this.verificaNomePersonagem(personagem)) {

@@ -67,7 +67,6 @@ public class Main {
             BatalhaService batalhaService = new BatalhaService();
 
             System.out.print("\n");
-            System.out.println("Digite 0 para cadastrar automaticamente");
             System.out.println("Digite 1 para CADASTRAR um NOVO JOGADOR");
             System.out.println("Digite 2 para VER INFORMAÇÕES DOS CADASTROS");
             System.out.println("Digite 3 para EDITAR um JOGADOR");
@@ -85,14 +84,6 @@ public class Main {
             opcao = sc.nextInt();
             sc.nextLine();
             switch (opcao) {
-                case 0 -> {
-                    Personagem personagemInicial = new Personagem("Legolas");
-                    Jogador jogador = new Jogador("Gustavo", "senha");
-                    ClassePersonagem classePersonagem = new ClassePersonagem("Mago");
-                    classePersonagemService.adicionarClassePersonagem(personagemInicial,classePersonagem);
-                    personagemService.adicionar(jogador, personagemInicial);
-                    jogadorService.adicionar(jogador);
-                }
                 case 1 -> {
                     System.out.println("Olá jogador! Digite seu nome: ");
                     String nomeJogador = sc.nextLine();
@@ -262,7 +253,6 @@ public class Main {
                 case 6 -> {
                     BatalhaController batalhaController = new BatalhaController();
                     System.out.println("Selecione seu jogador digitando seu username:");
-                    jogadorService.listarTodos();
                     String localJogador = sc.nextLine().toUpperCase(Locale.ROOT);
 
                     Jogador jogadorDoJogo = jogadorService.retornaJogador(localJogador);

@@ -21,17 +21,17 @@ public class ClassePersonagem implements Impressao {
     }
 
     public ClassePersonagem(String nomeClassePersonagem) {
-        if (Objects.equals(nomeClassePersonagem, "MAGO")) {
+        if (Objects.equals(nomeClassePersonagem.toUpperCase(), "MAGO")) {
             this.nomeClassePersonagem = nomeClassePersonagem;
             this.vidaClasse = 150;
             this.defesaClasse = 40;
             this.ataqueClasse = 50;
-        } else if (Objects.equals(nomeClassePersonagem, "ELFO")) {
+        } else if (Objects.equals(nomeClassePersonagem.toUpperCase(), "ELFO")) {
             this.nomeClassePersonagem = nomeClassePersonagem;
             this.vidaClasse = 150;
             this.defesaClasse = 50;
             this.ataqueClasse = 50;
-        } else if (Objects.equals(nomeClassePersonagem, "GUERREIRO")) {
+        } else if (Objects.equals(nomeClassePersonagem.toUpperCase(), "GUERREIRO")) {
             this.nomeClassePersonagem = nomeClassePersonagem;
             this.vidaClasse = 150;
             this.defesaClasse = 50;

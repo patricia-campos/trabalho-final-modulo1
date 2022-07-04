@@ -104,8 +104,6 @@ public class Main {
                     System.out.println(nomeJogador + " digite sua senha: ");
                     String senhaJogador = sc.nextLine();
 
-                    Jogador jogador = new Jogador(nomeJogador, senhaJogador);
-                    jogadorService.adicionar(jogador);
 
                     System.out.println(nomeJogador + ", agora você deve criar seu personagem: ");
 
@@ -116,11 +114,17 @@ public class Main {
                         break;
                     }
 
-                    Personagem personagem = new Personagem(nomePersonagem);
-                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
 
                     System.out.println("Escolha sua classe: Mago | Elfo | Guerreiro");
                     String classeNome = sc.nextLine().toUpperCase();
+                    if (!Objects.equals(classeNome, "MAGO") &&!Objects.equals(classeNome, "ELFO") &&!Objects.equals(classeNome, "GUERREIRO") ){
+                        System.out.println("Classe invalida");
+                        break;
+                    }
+                    Personagem personagem = new Personagem(nomePersonagem);
+                    personagemService.adicionar(jogadorService.retornaJogador(nomeJogador), personagem);
+                    Jogador jogador = new Jogador(nomeJogador, senhaJogador);
+                    jogadorService.adicionar(jogador);
                     ClassePersonagem classePersonagem = new ClassePersonagem(classeNome);
                     classePersonagemService.adicionarClassePersonagem(personagemService.retornaPersonagem(nomePersonagem), classePersonagem);
                 }
@@ -273,6 +277,7 @@ public class Main {
 
                     Personagem personagem = personagemService.retornaPersonagem(nomePersonagem);
                     if (personagem == null) {
+                        System.out.println("Personagem não existe");
                         break;
                     }
                     batalhaController.setPersonagem(personagem);

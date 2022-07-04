@@ -24,26 +24,18 @@ Acesse nosso diagrama UML através do link: https://miro.com/app/board/uXjVOqHKk
 - CRUD
 - [x] Módulo 2 - Diagrama ER
 - [x] Módulo 2 - Script
+- [x] Módulo 2 - Trabalho Final
+- Diagrama ER atualizado
+- Projeto com padrão MVC
+- Classe Exception customizada
+- Mínimo 3 entidades com operações de  select, insert, update e delete
 
   
 ## ☕ Jogando Battle of Worlds
 
-1. Cadastre o Jogador
-2. Cadastre o Personagem
-3. Escolha uma das 3 classes de personagens disponíveis.
-Cada um tem poderes de ataque ou defessa diferentes.
-4. Inicie a batalhaController
-5. Dê start no round e boa sorte!
-
-  
-### Ajustes e melhorias
-
-O projeto ainda está em desenvolvimento e para as próximas atualizações deixamos as seguintes sugestões:
-
-1. Poder manipular  (alterar ou excluir jogador ou
-personagem pelo nome, no momento do projeto
-manipulamos através do id.
-
+1. Cadastre o Jogador ou escolha um jogador cadastrado
+2. Cadastre o Personagem ou escolha um personagem cadastrado
+3. Inicie a batalha e boa sorte!
 
 
 ## 🤝 Colaboradores
@@ -51,6 +43,3 @@ manipulamos através do id.
 Eric Andrade, 
 Gustavo Teichmann, 
 Patrícia Campos
-
-
-[⬆ Voltar ao topo](#nome-do-projeto)<br>

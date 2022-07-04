@@ -201,7 +201,6 @@ public class Main {
                 case 4 -> {
                     System.out.println("Digite 1 para remover Jogador");
                     System.out.println("Digite 2 para remover Personagem");
-                    System.out.println("Digite 3 para ver classes cadastradas");
 
                     //While até pessoa digitar opção do menu
                     while (!sc.hasNextInt()) {
@@ -224,12 +223,6 @@ public class Main {
                             String nome = sc.nextLine();
                             personagemService.remover(personagemService.retornaPersonagem(nome));
                         }
-                        case 3 -> {
-                            System.out.println("Qual Classe deseja remover? ");
-                            classePersonagemService.listarTodos();
-                            String nome = sc.nextLine();
-                            classePersonagemService.remover(classePersonagemService.retornaClasse(nome));
-                        }
                     }
                 }
                 case 5 -> {
@@ -238,8 +231,12 @@ public class Main {
                     String nome = sc.nextLine();
 
                     Jogador jogador = jogadorService.retornaJogador(nome);
+                    if (jogador == null) {
+                        System.out.println("Jogador não encontrado");
+                        break;
+                    }
 
-                    System.out.println(jogador.getNomeJogador() + ", agora você deve criar seu personagem: ");
+                    System.out.println(nome + ", agora você deve criar seu personagem: ");
                     System.out.println("Digite o nome do personagem: ");
                     String nomePersonagem = sc.nextLine();
                     if (Objects.equals(nome, "")) {
@@ -265,6 +262,10 @@ public class Main {
                     String localJogador = sc.nextLine().toUpperCase(Locale.ROOT);
 
                     Jogador jogadorDoJogo = jogadorService.retornaJogador(localJogador);
+                    if (jogadorDoJogo == null) {
+                        System.out.println("Jogador não encontrado");
+                        break;
+                    }
                     System.out.println("Selecione seu personagem digitando seu nome: ");
                     personagemService.listarPersonagemsPorJogador(jogadorDoJogo.getId());
 

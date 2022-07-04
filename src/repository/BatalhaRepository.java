@@ -40,8 +40,6 @@ public class BatalhaRepository implements Repositorio<Integer, Batalha> {
                          VALUES(SEQ_BATALHA.nextval, ?, ?, ?, ?, ?)
                         """;
 
-            // TODO: 02/07/2022 CHECAR COMO SERÁ O ROUND - LINHA 50
-
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, object.getIdCenario());
             stmt.setInt(2, object.getIdJogador());

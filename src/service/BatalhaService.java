@@ -22,8 +22,7 @@ public class BatalhaService {
         }
     }
 
-    // TODO CHECAR COMO SERÁ A REMOÇÃO, SE VAI EXISTIR REEMOÇÃO / COMO IMPLEMENTAR
-
+    //No momento do projeto não está implementado
     public void remover(Batalha batalha) throws BancoDeDadosException {
         if (batalha == null) {
             System.out.println("Não existe batalha para ser removida");
@@ -32,8 +31,7 @@ public class BatalhaService {
         }
     }
 
-    // TODO CHECAR A IMPRESSÃO DO UPDATE
-
+    //No momento do projeto não está implementado
     public void editar(Integer id, Batalha batalha) {
 
         try {
